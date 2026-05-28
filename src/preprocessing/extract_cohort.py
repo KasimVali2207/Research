@@ -18,7 +18,12 @@ import numpy as np
 import pandas as pd
 from loguru import logger
 
-from src.preprocessing.cohort_matching import match_controls, assess_matching_quality
+from src.preprocessing.cohort_matching import (
+    match_controls,
+    assess_matching_quality,
+    compute_smd,
+    plot_matching_balance,
+)
 from src.preprocessing.leakage_prevention import apply_all_leakage_filters
 
 
@@ -325,12 +330,15 @@ def main():
     cohort_labs.to_parquet(os.path.join(args.data_processed_dir, "mimic_cohort_labs.parquet"))
     
     # Assess matching and write stats
-    covariates = ["age", "admission_year"]
-    match_quality = assess_matching_quality(matched_cases_df, matched_controls_df, covariates)
-    
-    # Save Love plot
+    covariates = [c for c in ["age", "admission_year"] if c in matched_cases_df.columns and c in matched_controls_df.columns]
     smd_df = compute_smd(matched_cases_df, matched_controls_df, covariates)
-    plot_matching_balance(smd_df, os.path.join(args.data_processed_dir, "love_plot.png"))
+    match_quality = assess_matching_quality(matched_cases_df, matched_controls_df)
+
+    # Save Love plot
+    try:
+        plot_matching_balance(smd_df, os.path.join(args.data_processed_dir, "love_plot.png"))
+    except Exception as e:
+        logger.warning("Could not save Love plot: {}", e)
     
     # Attrition report
     consort_report = {
