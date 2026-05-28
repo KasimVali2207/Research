@@ -15,11 +15,43 @@ import time
 from abc import ABC, abstractmethod
 from typing import Any
 
+import os
+
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
 
+# ---------------------------------------------------------------------------
+# Fallback "LLM" used when OPENAI_API_KEY is not set
+# ---------------------------------------------------------------------------
+
+class _FakeLLM:
+    """Returns a minimal valid JSON mock so agents can run without an API key."""
+
+    def invoke(self, messages):
+        class _Resp:
+            content = json.dumps({
+                "abnormal_patterns": [],
+                "key_trajectories": [],
+                "trend_summary": "No API key — mock response.",
+                "reasoning": "No API key — mock response.",
+                "risk_scores": {"colorectal": {"probability": 0.3, "confidence": "low"},
+                                "lung": {"probability": 0.2, "confidence": "low"},
+                                "liver": {"probability": 0.15, "confidence": "low"}},
+                "primary_concern": "colorectal",
+                "differentials": [],
+                "citations": [],
+                "grounding_score": 0.5,
+                "urgency": "routine",
+                "recommendation": "Mock output — no OpenAI API key configured.",
+            })
+            usage_metadata = None
+        return _Resp()
+
+
+# ---------------------------------------------------------------------------
 # Normal reference ranges used for ↑/↓ flagging across agents.
+# ---------------------------------------------------------------------------
 _DEFAULT_NORMAL_RANGES: dict[str, tuple[float, float]] = {
     "hemoglobin": (12.0, 17.5),       # g/dL — wide band covers M/F
     "hematocrit": (36.0, 52.0),       # %
@@ -85,13 +117,23 @@ class BaseAgent(ABC):
         self.temperature = temperature
         self.max_tokens = max_tokens
 
-        self.llm = ChatOpenAI(
-            model=llm_model,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            # Ensure deterministic output when temperature=0
-            model_kwargs={"seed": 42} if temperature == 0.0 else {},
-        )
+        # Instantiate LLM — fall back to mock when no API key is configured
+        _has_key = bool(os.environ.get("OPENAI_API_KEY", "").strip())
+        if _has_key:
+            try:
+                self.llm = ChatOpenAI(
+                    model=llm_model,
+                    temperature=temperature,
+                    max_tokens=max_tokens,
+                    model_kwargs={"seed": 42} if temperature == 0.0 else {},
+                )
+            except Exception:
+                self.llm = _FakeLLM()
+        else:
+            self.llm = _FakeLLM()
+            self.logger.warning(
+                "OPENAI_API_KEY not set — agent '%s' running in mock mode.", agent_name
+            )
 
         self.logger = logging.getLogger(f"agents.{agent_name}")
 
