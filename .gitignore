@@ -13,6 +13,8 @@ build/
 .venv/
 venv/
 env/
+
+# NEVER commit secrets
 .env
 
 # Jupyter
@@ -25,14 +27,40 @@ Thumbs.db
 .vscode/
 *.swp
 
-# MLflow
-mlruns/
+# Logs
+*.log
+logs/
 
-# Hydra outputs
+# Training artifacts
+catboost_info/
+mlruns/
 outputs/
 multirun/
 .hydra/
 
-# Logs
-*.log
-logs/
+# MIMIC/eICU data — belongs in the other repo
+data/raw/mimic/
+data/raw/eicu/
+data/processed/mimic_*
+data/processed/eicu_*
+data/processed/features_horizon_*
+data/processed/faiss_index*
+data/processed/cohort_stats.json
+data/processed/love_plot.png
+data/processed/pubmed_kb.jsonl
+
+# MIMIC-specific figures
+results/figures/temporal_vs_static.png
+results/figures/subgroup_fairness.png
+
+# Docker (MIMIC pipeline)
+docker/
+
+# Hydra/MIMIC configs
+configs/
+
+# Model weights (large)
+*.pkl
+*.joblib
+*.pt
+*.pth
