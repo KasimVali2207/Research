@@ -254,15 +254,17 @@ def main():
     final_cases = first_dx[first_dx["patientunitstayid"].isin(valid_stays)].copy()
     final_cases = final_cases.merge(patient[["patientunitstayid", "gender", "age_clean"]], on="patientunitstayid", how="inner")
     final_cases.rename(columns={"age_clean": "age", "patientunitstayid": "subject_id"}, inplace=True)
+
     
     # Match controls
     cancer_stay_ids = set(diagnosis[diagnosis["cancer_type"].notna()]["patientunitstayid"])
     control_pool_stays = set(patient["patientunitstayid"]) - cancer_stay_ids
     
     control_pool = patient[patient["patientunitstayid"].isin(control_pool_stays)].copy()
-    control_pool["age_clean"] = control_pool["age"].apply(clean_age)
-    control_pool = control_pool.dropna(subset=["age_clean"])
-    control_pool.rename(columns={"age_clean": "age", "patientunitstayid": "subject_id"}, inplace=True)
+    # Convert age from string to numeric, drop original string column to avoid duplicates
+    control_pool["age_numeric"] = control_pool["age"].apply(clean_age).fillna(90.0)
+    control_pool = control_pool.drop(columns=["age"])
+    control_pool.rename(columns={"age_numeric": "age", "patientunitstayid": "subject_id"}, inplace=True)
     # Mock admission year since eICU doesn't have it
     control_pool["admission_year"] = 2150
     final_cases["admission_year"] = 2150
