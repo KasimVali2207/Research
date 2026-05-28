@@ -103,9 +103,12 @@ def match_controls(
         stratum_relaxed = case["stratum_relaxed"]
         
         # 1. Try exact matching
-        candidates = control_by_stratum.get(stratum, pd.DataFrame())
+        candidates = control_by_stratum.get(stratum, pd.DataFrame(columns=control_pool_df.columns))
         # Filter out already used controls
-        candidates = candidates[~candidates["subject_id"].isin(used_control_ids)]
+        if "subject_id" in candidates.columns and len(candidates) > 0:
+            candidates = candidates[~candidates["subject_id"].isin(used_control_ids)]
+        else:
+            candidates = pd.DataFrame(columns=control_pool_df.columns)
         
         selected_controls = pd.DataFrame()
         match_type = "exact"
@@ -115,8 +118,11 @@ def match_controls(
             exact_matches += 1
         else:
             # 2. Try relaxed matching
-            candidates_relaxed = control_by_relaxed.get(stratum_relaxed, pd.DataFrame())
-            candidates_relaxed = candidates_relaxed[~candidates_relaxed["subject_id"].isin(used_control_ids)]
+            candidates_relaxed = control_by_relaxed.get(stratum_relaxed, pd.DataFrame(columns=control_pool_df.columns))
+            if "subject_id" in candidates_relaxed.columns and len(candidates_relaxed) > 0:
+                candidates_relaxed = candidates_relaxed[~candidates_relaxed["subject_id"].isin(used_control_ids)]
+            else:
+                candidates_relaxed = pd.DataFrame(columns=control_pool_df.columns)
             
             if len(candidates_relaxed) >= ratio:
                 selected_controls = candidates_relaxed.sample(n=ratio, random_state=seed + idx)

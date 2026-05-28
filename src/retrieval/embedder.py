@@ -10,12 +10,20 @@ import re
 import numpy as np
 from loguru import logger
 
-try:
-    from sentence_transformers import SentenceTransformer
-    HAS_SENTENCE_TRANSFORMERS = True
-except ImportError:
-    HAS_SENTENCE_TRANSFORMERS = False
-    logger.warning("sentence-transformers is not installed. Embedder will run in fallback TF-IDF mode.")
+HAS_SENTENCE_TRANSFORMERS = None  # resolved lazily on first use
+
+
+def _try_import_sentence_transformers():
+    global HAS_SENTENCE_TRANSFORMERS
+    if HAS_SENTENCE_TRANSFORMERS is not None:
+        return HAS_SENTENCE_TRANSFORMERS
+    try:
+        import sentence_transformers  # noqa: F401
+        HAS_SENTENCE_TRANSFORMERS = True
+    except Exception:
+        HAS_SENTENCE_TRANSFORMERS = False
+        logger.warning("sentence-transformers unavailable. Embedder will use fallback bag-of-words mode.")
+    return HAS_SENTENCE_TRANSFORMERS
 
 
 class BiomedicalEmbedder:
@@ -27,13 +35,14 @@ class BiomedicalEmbedder:
         self.model = None
         self.embedding_dim = 768
         
-        if HAS_SENTENCE_TRANSFORMERS:
+        if _try_import_sentence_transformers():
             try:
+                from sentence_transformers import SentenceTransformer
                 logger.info("Loading sentence transformer model: {}...", model_name)
                 self.model = SentenceTransformer(model_name, device=device)
                 self.embedding_dim = self.model.get_sentence_embedding_dimension()
             except Exception as exc:
-                logger.error("Failed to load sentence transformer model: {}. Falling back to TF-IDF.", exc)
+                logger.error("Failed to load sentence transformer model: {}. Falling back to bag-of-words.", exc)
                 self.model = None
 
     def embed_texts(self, texts: list[str], batch_size: int = 32, show_progress: bool = True) -> np.ndarray:
@@ -50,7 +59,7 @@ class BiomedicalEmbedder:
         if not texts:
             return np.zeros((0, self.embedding_dim))
             
-        if HAS_SENTENCE_TRANSFORMERS and self.model is not None:
+        if _try_import_sentence_transformers() and self.model is not None:
             embeddings = self.model.encode(
                 texts,
                 batch_size=batch_size,
