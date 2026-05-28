@@ -31,6 +31,9 @@ def create_matching_strata(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
     
+    # Coerce age to numeric — eICU stores age as string (e.g. '> 89')
+    df["age"] = pd.to_numeric(df["age"], errors="coerce").fillna(90.0)
+    
     # 10-year age decade bins (e.g. 50-59, 60-69)
     df["age_decade"] = (df["age"] // 10) * 10
     

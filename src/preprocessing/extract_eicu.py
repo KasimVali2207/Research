@@ -260,6 +260,8 @@ def main():
     control_pool_stays = set(patient["patientunitstayid"]) - cancer_stay_ids
     
     control_pool = patient[patient["patientunitstayid"].isin(control_pool_stays)].copy()
+    control_pool["age_clean"] = control_pool["age"].apply(clean_age)
+    control_pool = control_pool.dropna(subset=["age_clean"])
     control_pool.rename(columns={"age_clean": "age", "patientunitstayid": "subject_id"}, inplace=True)
     # Mock admission year since eICU doesn't have it
     control_pool["admission_year"] = 2150
