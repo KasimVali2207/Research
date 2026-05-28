@@ -55,8 +55,13 @@ def main():
         controls_aligned["first_diag_date"] = controls_aligned["case_diag_date"]
         controls_aligned.drop(columns=["case_diag_date"], inplace=True)
     else:
-        # eICU already has standard aligned offsets relative to stay, mock dates are used
-        controls["first_diag_date"] = pd.Timestamp("2150-01-01") + pd.to_timedelta(500, unit="m")
+        # eICU uses relative minute offsets from stay start.
+        # Labs are stored as charttime = 2150-01-01 + offset (negative minutes = prior days).
+        # Set first_diag_date = 2150-01-01 + 6months so ALL pre-stay labs fall in the window.
+        eicu_diag_date = pd.Timestamp("2150-07-01")
+        controls["first_diag_date"] = eicu_diag_date
+        if "first_diag_date" not in cases.columns or cases["first_diag_date"].isna().all():
+            cases["first_diag_date"] = eicu_diag_date
         controls_aligned = controls
         
     cohort = pd.concat([cases, controls_aligned], ignore_index=True)
@@ -98,12 +103,26 @@ def main():
         # Ensure we only have standard columns for feature extraction
         longitudinal_df = filtered_labs[["subject_id", "charttime", "feature_name", "valuenum"]].rename(columns={"valuenum": "value"})
         
+        if longitudinal_df.empty:
+            logger.warning("No labs in observation window for horizon {}m dataset {}. Skipping.", h, args.dataset)
+            continue
+        
         # Apply TemporalFeatureExtractor
         extractor = TemporalFeatureExtractor(feature_names=feature_list)
         wide_features = extractor.fit_transform(longitudinal_df)
         
+        if wide_features.empty or "subject_id" not in wide_features.columns:
+            logger.warning("Feature extraction returned empty result for horizon {}m dataset {}. Skipping.", h, args.dataset)
+            continue
+        
+        # Ensure cohort has cancer_type (eICU controls may lack it)
+        cohort_meta = cohort[["subject_id", "label", "cancer_type", "age", "gender"]].copy()
+        if "cancer_type" not in cohort_meta.columns:
+            cohort_meta["cancer_type"] = "unknown"
+        cohort_meta["cancer_type"] = cohort_meta["cancer_type"].fillna("control")
+
         # Join labels and metadata back
-        final_dataset = cohort[["subject_id", "label", "cancer_type", "age", "gender"]].merge(
+        final_dataset = cohort_meta.merge(
             wide_features, on="subject_id", how="inner"
         )
         
