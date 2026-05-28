@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data (never commit raw / processed patient data)
+data/raw/
+data/processed/
+*.parquet
+*.csv
+*.h5
+*.hdf5
+
+# Model artifacts
+results/models/
+results/mlflow/
+*.pkl
+*.joblib
+*.pt
+*.pth
+
+# Figures (regenerate from code)
+results/figures/
+
+# FAISS indices
+*.faiss
+*.index
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# MLflow
+mlruns/
+
+# Hydra outputs
+outputs/
+multirun/
+.hydra/
+
+# Logs
+*.log
+logs/
