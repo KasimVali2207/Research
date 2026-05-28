@@ -206,13 +206,21 @@ def create_train_val_test_split(
     unique_subjects["cancer_type"] = unique_subjects["cancer_type"].fillna("control")
     unique_subjects["split_strata"] = unique_subjects["label_strata"].astype(str) + "_" + unique_subjects["cancer_type"]
 
-    # First split off test set
-    train_val_subjs, test_subjs = train_test_split(
-        unique_subjects["subject_id"],
-        test_size=test_size,
-        random_state=seed,
-        stratify=unique_subjects["split_strata"]
-    )
+    # First split off test set — fall back to non-stratified if any class is too small
+    try:
+        train_val_subjs, test_subjs = train_test_split(
+            unique_subjects["subject_id"],
+            test_size=test_size,
+            random_state=seed,
+            stratify=unique_subjects["split_strata"]
+        )
+    except ValueError:
+        logger.warning("Stratified split failed (too few members), falling back to random split.")
+        train_val_subjs, test_subjs = train_test_split(
+            unique_subjects["subject_id"],
+            test_size=test_size,
+            random_state=seed
+        )
     
     # Second split train and val
     train_val_meta = unique_subjects[unique_subjects["subject_id"].isin(train_val_subjs)]
@@ -220,12 +228,20 @@ def create_train_val_test_split(
     # Calculate adjusted validation size relative to remaining data
     adj_val_size = val_size / (1.0 - test_size)
     
-    train_subjs, val_subjs = train_test_split(
-        train_val_meta["subject_id"],
-        test_size=adj_val_size,
-        random_state=seed,
-        stratify=train_val_meta["split_strata"]
-    )
+    try:
+        train_subjs, val_subjs = train_test_split(
+            train_val_meta["subject_id"],
+            test_size=adj_val_size,
+            random_state=seed,
+            stratify=train_val_meta["split_strata"]
+        )
+    except ValueError:
+        logger.warning("Stratified val split failed, falling back to random split.")
+        train_subjs, val_subjs = train_test_split(
+            train_val_meta["subject_id"],
+            test_size=adj_val_size,
+            random_state=seed
+        )
     
     train_set_ids = set(train_subjs)
     val_set_ids = set(val_subjs)

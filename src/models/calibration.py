@@ -17,6 +17,7 @@ from loguru import logger
 from scipy.optimize import minimize
 from sklearn.isotonic import IsotonicRegression
 from sklearn.metrics import brier_score_loss
+from typing import Any
 
 
 def compute_calibration_metrics(y_true: np.ndarray, y_prob: np.ndarray, n_bins: int = 10) -> dict:

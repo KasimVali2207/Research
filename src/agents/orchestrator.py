@@ -16,6 +16,8 @@ import pandas as pd
 import numpy as np
 from loguru import logger
 from tqdm import tqdm
+from typing import Any
+from sklearn.metrics import roc_auc_score
 
 from src.agents.temporal_biomarker_agent import TemporalBiomarkerAgent
 from src.agents.risk_prediction_agent import RiskPredictionAgent
