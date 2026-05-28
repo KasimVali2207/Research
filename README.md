@@ -156,15 +156,19 @@ Research_biomedical/
 ├── src/
 │   ├── preprocessing/
 │   │   └── nhanes_to_features.py   # Step 2: Merge & process features
-│   └── models/
-│       └── train_nhanes.py         # Step 3: Train models + generate 24 figures
+│   ├── models/
+│   │   └── train_nhanes.py         # Step 3: Train models + generate 24 figures
+│   └── agents/
+│       └── nhanes_agent_pipeline.py # Step 4: LLaMA 3.3 70B Multi-Agent Triage Pipeline (figures 25-36)
 │
 └── results/
     ├── nhanes_model_results.json   # Model results (AUROC, AUPRC, F1, Brier)
-    └── figures/                    # 24 publication-quality figures
+    ├── agent_results.json          # Individual patient LLM triage outputs
+    ├── full_results_summary.json   # Consolidated statistical results (Bootstrap CI, DCA, EAS)
+    └── figures/                    # 36 publication-quality figures
         ├── fig01_roc_curves.png
         ├── fig02_pr_curves.png
-        └── ... (24 total)
+        └── ... (36 total)
 ```
 
 ---
@@ -177,19 +181,26 @@ git clone https://github.com/KasimVali2207/Research_biomedical.git
 cd Research_biomedical
 
 # 2. Install dependencies
-pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn pyarrow
+pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn pyarrow groq scipy python-dotenv shap
 
-# 3. Download real NHANES data (free, no registration, ~30 MB)
+# 3. Configure Groq API Key (for LLM Agents)
+# Create a .env file in the root folder with your console.groq.com API Key:
+echo "GROQ_API_KEY=your_groq_api_key_here" > .env
+
+# 4. Download real NHANES data (free, no registration, ~30 MB)
 python download_nhanes.py
 
-# 4. Process features
+# 5. Process features
 python -m src.preprocessing.nhanes_to_features
 
-# 5. Train all 5 models + generate 24 figures (~5 minutes)
+# 6. Train all 5 models + generate 24 figures (~5 minutes)
 python -m src.models.train_nhanes
+
+# 7. Run 5-agent LLaMA 3.3 consensus pipeline + generate figures 25-36 (~2 minutes)
+python -m src.agents.nhanes_agent_pipeline
 ```
 
-**That's it.** Results will be in `results/` and figures in `results/figures/`.
+**That's it.** All 36 publication-ready figures will be in `results/figures/` and metrics in `results/`.
 
 ---
 
