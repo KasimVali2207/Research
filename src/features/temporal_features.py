@@ -204,7 +204,10 @@ def compute_trajectory_trend(
     if len(v) < 2:
         return np.nan
 
-    # scipy linregress is robust to small n
+    # scipy linregress fails if all x values are identical (e.g. same-day measurements)
+    if len(np.unique(t)) < 2:
+        return 0.0
+
     slope, _, _, _, _ = stats.linregress(t, v)
     return float(slope)
 
