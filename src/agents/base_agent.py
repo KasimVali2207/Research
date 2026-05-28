@@ -17,36 +17,118 @@ from typing import Any
 
 import os
 
-from langchain_openai import ChatOpenAI
+# ---------------------------------------------------------------------------
+# LLM provider imports — all optional, resolved at runtime
+# ---------------------------------------------------------------------------
+try:
+    from langchain_groq import ChatGroq
+    _HAS_GROQ = True
+except ImportError:
+    _HAS_GROQ = False
+
+try:
+    from langchain_openai import ChatOpenAI
+    _HAS_OPENAI = True
+except ImportError:
+    _HAS_OPENAI = False
+
 from langchain_core.messages import HumanMessage, SystemMessage
+
+# Groq free models (ranked by capability)
+_GROQ_MODELS = [
+    "llama-3.3-70b-versatile",    # Best free: 70B LLaMA3.3, great reasoning
+    "llama-3.1-70b-versatile",    # Fallback 70B
+    "mixtral-8x7b-32768",         # Fast Mixtral
+    "gemma2-9b-it",               # Smallest fallback
+]
 
 
 # ---------------------------------------------------------------------------
-# Fallback "LLM" used when OPENAI_API_KEY is not set
+# Fallback "LLM" — used when no API key is available at all
 # ---------------------------------------------------------------------------
 
 class _FakeLLM:
-    """Returns a minimal valid JSON mock so agents can run without an API key."""
+    """Deterministic mock — lets the pipeline run end-to-end without any API key."""
 
     def invoke(self, messages):
         class _Resp:
             content = json.dumps({
-                "abnormal_patterns": [],
-                "key_trajectories": [],
-                "trend_summary": "No API key — mock response.",
-                "reasoning": "No API key — mock response.",
-                "risk_scores": {"colorectal": {"probability": 0.3, "confidence": "low"},
-                                "lung": {"probability": 0.2, "confidence": "low"},
-                                "liver": {"probability": 0.15, "confidence": "low"}},
+                "abnormal_patterns": ["declining_hemoglobin", "elevated_nlr"],
+                "key_trajectories": [
+                    {"feature": "hemoglobin", "direction": "declining", "slope": -0.05},
+                    {"feature": "nlr", "direction": "rising", "slope": 0.12},
+                ],
+                "trend_summary": "Mock mode (no LLM key): simulated declining hemoglobin and rising NLR trends noted.",
+                "reasoning": "Mock mode — configure GROQ_API_KEY for real clinical reasoning.",
+                "risk_scores": {
+                    "colorectal": {"probability": 0.31, "confidence": "low"},
+                    "lung":       {"probability": 0.19, "confidence": "low"},
+                    "liver":      {"probability": 0.14, "confidence": "low"},
+                },
                 "primary_concern": "colorectal",
-                "differentials": [],
+                "differentials": [
+                    {"diagnosis": "Colorectal adenocarcinoma", "probability": 0.31},
+                    {"diagnosis": "Inflammatory bowel disease", "probability": 0.20},
+                ],
                 "citations": [],
-                "grounding_score": 0.5,
+                "grounding_score": 0.0,
                 "urgency": "routine",
-                "recommendation": "Mock output — no OpenAI API key configured.",
+                "recommendation": "Mock output. Set GROQ_API_KEY env var for real LLM reasoning.",
             })
             usage_metadata = None
         return _Resp()
+
+
+def _build_llm(llm_model: str, temperature: float, max_tokens: int):
+    """
+    Priority chain for LLM selection:
+      1. Groq  (free, open-source models — LLaMA 3.3 70B recommended)
+      2. OpenAI (if OPENAI_API_KEY is set)
+      3. _FakeLLM (no key at all — mock mode)
+
+    Set GROQ_API_KEY env var to use Groq.
+    Get a free key at: https://console.groq.com
+    """
+    groq_key = os.environ.get("GROQ_API_KEY", "").strip()
+    openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
+
+    # ---- 1. Groq (preferred — free & OSS) --------------------------------
+    if groq_key and _HAS_GROQ:
+        # Map GPT model names to best Groq equivalent
+        _GROQ_MODEL_MAP = {
+            "gpt-4o":         "llama-3.3-70b-versatile",
+            "gpt-4":          "llama-3.3-70b-versatile",
+            "gpt-3.5-turbo":  "mixtral-8x7b-32768",
+        }
+        groq_model = _GROQ_MODEL_MAP.get(llm_model, "llama-3.3-70b-versatile")
+        try:
+            return ChatGroq(
+                model=groq_model,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                groq_api_key=groq_key,
+            ), f"groq/{groq_model}"
+        except Exception as exc:
+            logging.warning("Groq init failed (%s), trying fallback...", exc)
+
+    # ---- 2. OpenAI -------------------------------------------------------
+    if openai_key and _HAS_OPENAI:
+        try:
+            return ChatOpenAI(
+                model=llm_model,
+                temperature=temperature,
+                max_tokens=max_tokens,
+            ), f"openai/{llm_model}"
+        except Exception as exc:
+            logging.warning("OpenAI init failed (%s), using mock mode.", exc)
+
+    # ---- 3. Mock fallback ------------------------------------------------
+    logging.warning(
+        "No LLM API key found. Agents running in mock mode.\n"
+        "  → For FREE real LLM: get a key at https://console.groq.com\n"
+        "  → Then run: set GROQ_API_KEY=your_key_here"
+    )
+    return _FakeLLM(), "mock"
 
 
 # ---------------------------------------------------------------------------
@@ -117,25 +199,11 @@ class BaseAgent(ABC):
         self.temperature = temperature
         self.max_tokens = max_tokens
 
-        # Instantiate LLM — fall back to mock when no API key is configured
-        _has_key = bool(os.environ.get("OPENAI_API_KEY", "").strip())
-        if _has_key:
-            try:
-                self.llm = ChatOpenAI(
-                    model=llm_model,
-                    temperature=temperature,
-                    max_tokens=max_tokens,
-                    model_kwargs={"seed": 42} if temperature == 0.0 else {},
-                )
-            except Exception:
-                self.llm = _FakeLLM()
-        else:
-            self.llm = _FakeLLM()
-            self.logger.warning(
-                "OPENAI_API_KEY not set — agent '%s' running in mock mode.", agent_name
-            )
-
         self.logger = logging.getLogger(f"agents.{agent_name}")
+
+        # Instantiate LLM via priority chain: Groq → OpenAI → FakeLLM
+        self.llm, self._llm_backend = _build_llm(llm_model, temperature, max_tokens)
+        self.logger.info("Agent '%s' using LLM backend: %s", agent_name, self._llm_backend)
 
         # Accumulated token counters for cost tracking.
         self._total_prompt_tokens: int = 0
