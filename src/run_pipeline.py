@@ -24,6 +24,13 @@ import numpy as np
 import pandas as pd
 from loguru import logger
 
+# Auto-load .env file (GROQ_API_KEY etc.) — never committed to git
+try:
+    from dotenv import load_dotenv
+    load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"), override=False)
+except ImportError:
+    pass  # python-dotenv not installed; rely on shell env vars
+
 # Set up logging format
 logger.remove()
 logger.add(
