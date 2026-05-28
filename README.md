@@ -1,11 +1,13 @@
-# Multi-Cancer Detection from Routine Blood Biomarkers
-### Machine Learning Study on Real NHANES Data (CDC, n=16,762)
+# LLM-Augmented Multi-Cancer Early Detection from Routine Blood Biomarkers: A Machine Learning and Multi-Agent Clinical Consensus Framework
+### Population-Scale Validation on Real CDC NHANES Data (n=16,762) with a Novel Explanation Alignment Score
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Data: NHANES CDC](https://img.shields.io/badge/Data-NHANES%20CDC%20Real-green.svg)](https://wwwn.cdc.gov/nchs/nhanes/)
-[![Models: 5 ML](https://img.shields.io/badge/Models-5%20ML%20Classifiers-orange.svg)]()
-[![Figures: 24](https://img.shields.io/badge/Figures-24%20Publication%20Quality-blue.svg)]()
+[![Data: NHANES CDC](https://img.shields.io/badge/Data-NHANES%20CDC%20Real%20n=16762-green.svg)](https://wwwn.cdc.gov/nchs/nhanes/)
+[![Models: 5 ML + LLaMA 3.3](https://img.shields.io/badge/Models-5%20ML%20%2B%20LLaMA%203.3%2070B-orange.svg)]()
+[![LLM Agents: 5](https://img.shields.io/badge/LLM%20Agents-5%20Clinical%20Consensus-purple.svg)]()
+[![Figures: 36](https://img.shields.io/badge/Figures-36%20Publication%20Quality-blue.svg)]()
+[![AUROC: 0.724](https://img.shields.io/badge/AUROC-0.724%20%2895%25CI%200.706--0.744%29-brightgreen.svg)]()
 
 ---
 
@@ -217,14 +219,17 @@ python -m src.agents.nhanes_agent_pipeline
 ## Citation
 
 ```bibtex
-@misc{kasim2025nhanes_cancer,
-  title  = {Multi-Cancer Detection from Routine Blood Biomarkers:
-             A Machine Learning Study on Real NHANES Data},
-  author = {Kasim Vali},
-  year   = {2025},
-  url    = {https://github.com/KasimVali2207/Research_biomedical},
-  note   = {Data: CDC NHANES 2013-2018 (n=16,762, 485 cancer cases).
-             Best model: Gradient Boosting AUROC=0.724.}
+@article{kasim2025llm_cancer_nhanes,
+  title   = {{LLM-Augmented Multi-Cancer Early Detection from Routine Blood Biomarkers:
+              A Machine Learning and Multi-Agent Clinical Consensus Framework}},
+  author  = {Kasim Vali},
+  journal = {Under Review},
+  year    = {2025},
+  url     = {https://github.com/KasimVali2207/Research_biomedical},
+  note    = {Population-scale validation on CDC NHANES 2013--2018 (n=16,762, 485 cancer cases).
+             Best model: Gradient Boosting AUROC=0.724 (95\% CI: 0.706--0.744, p=0.002).
+             Novel contributions: 5-Agent LLaMA 3.3 70B Consensus Triage, Explanation
+             Alignment Score (EAS), Clinical Hallucination Rate, Decision Curve Analysis.}
 }
 ```
 
@@ -235,5 +240,4 @@ Apache 2.0 — see [LICENSE](LICENSE)
 
 ---
 
-*For the full LLM-orchestrated agentic pipeline with temporal features on MIMIC-IV,
-see the companion repository.*
+> **Companion Repository**: The longitudinal temporal biomarker pipeline with MIMIC-IV clinical database data (including temporal trajectory features, slope/velocity metrics, and external validation on eICU) is maintained in a separate repository.
