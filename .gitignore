@@ -17,7 +17,7 @@ env/
 
 # Jupyter
 .ipynb_checkpoints/
-*.ipynb
+
 
 # Data (never commit raw / processed patient data)
 data/raw/
