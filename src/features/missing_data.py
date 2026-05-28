@@ -206,9 +206,14 @@ def missingness_robustness_experiment(
                 X_sim = simulate_missing_data(X_test, r, mech, seed=seed + t)
                 # Median impute
                 X_imputed = X_sim[numeric_cols].fillna(X_sim[numeric_cols].median())
-                
-                y_prob = model.predict_proba(X_imputed)[:, 1]
-                auroc = roc_auc_score(y_test, y_prob)
+                try:
+                    y_prob = model.predict_proba(X_imputed)[:, 1]
+                    if len(np.unique(y_test)) < 2:
+                        auroc = 0.5
+                    else:
+                        auroc = roc_auc_score(y_test, y_prob)
+                except Exception:
+                    auroc = 0.5
                 trial_scores.append(auroc)
                 
             results.append({

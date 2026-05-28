@@ -17,6 +17,7 @@ import seaborn as sns
 from loguru import logger
 from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, f1_score, brier_score_loss
 from xgboost import XGBClassifier
+from typing import Any
 
 from src.features.temporal_features import TemporalFeatureExtractor, create_static_snapshot
 

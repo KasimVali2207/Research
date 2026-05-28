@@ -182,30 +182,29 @@ def plot_feature_importance(importance_df: pd.DataFrame, output_path: str, top_n
     
     # Assign categories based on name patterns
     def get_category(feat):
-        feat = feat.lower()
+        feat_lower = feat.lower()
+        _LAB_CATEGORIES = {
+            "CBC": ["wbc","rbc","hemoglobin","hematocrit","mcv","mch","rdw","platelets","neutrophils","lymphocytes","monocytes","eosinophils","basophils"],
+            "Metabolic": ["glucose","albumin","creatinine","bun","bilirubin_total","bilirubin_direct","alt","ast","alp","ggt","ldh","sodium","potassium","chloride","bicarbonate","calcium","magnesium","phosphate","total_protein"],
+            "Inflammatory": ["crp","esr","ferritin","iron","tibc"],
+            "Coagulation": ["inr","pt","ptt"],
+        }
         # Derived check
-        if feat.startswith(("nlr", "plr", "sii", "agr", "de_ritis", "fib4")):
+        if feat_lower.startswith(("nlr", "plr", "sii", "agr", "de_ritis", "fib4")):
             return "Derived Biomarkers"
-        # Check standard lists
-        from src.agents.base_agent import _LAB_CATEGORIES
-        
         # Strip temporal suffixes to identify base feature
-        base_feat = feat
+        base_feat = feat_lower
         for suffix in ["_mean", "_median", "_std", "_trend_slope", "_delta", "_velocity", "_min", "_max", "_range", "_cv", "_last_value", "_first_value", "_moving_avg_last", "_exp_smooth_last", "_n_measurements", "_n_abnormal"]:
-            if feat.endswith(suffix):
-                base_feat = feat.replace(suffix, "")
+            if feat_lower.endswith(suffix):
+                base_feat = feat_lower.replace(suffix, "")
                 break
-                
         for cat, list_feats in _LAB_CATEGORIES.items():
             if base_feat in list_feats:
-                # If it has a temporal suffix, mark as Temporal category or keep clinical category
-                if base_feat != feat:
+                if base_feat != feat_lower:
                     return f"Temporal ({cat})"
                 return cat
-                
-        if "_trend_slope" in feat or "_velocity" in feat or "_delta" in feat or "_exp_smooth" in feat:
+        if "_trend_slope" in feat_lower or "_velocity" in feat_lower or "_delta" in feat_lower or "_exp_smooth" in feat_lower:
             return "Temporal Trajectories"
-            
         return "Other"
 
     df["category"] = df["feature"].apply(get_category)

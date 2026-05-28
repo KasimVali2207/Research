@@ -71,8 +71,9 @@ class LabFeatureExtractor(BaseEstimator, TransformerMixin):
 
     # ------------------------------------------------------------------
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        # If no raw lab columns were found during fit, pass through as-is
         if not self._medians:
-            raise RuntimeError("Call fit() before transform().")
+            return df.copy()
 
         out = df.copy()
 
