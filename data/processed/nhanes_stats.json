@@ -1,0 +1,50 @@
+{
+  "total_subjects": 16762,
+  "cancer_cases": 485,
+  "controls": 16277,
+  "feature_columns": 32,
+  "cancer_types": {
+    "lung": 359,
+    "liver": 69,
+    "colorectal": 57
+  },
+  "cycles": [
+    "2013-2014",
+    "2015-2016",
+    "2017-2018"
+  ],
+  "missing_pct": {
+    "age": 0.0,
+    "wbc": 8.7,
+    "rbc": 8.7,
+    "hemoglobin": 8.7,
+    "hematocrit": 8.7,
+    "mcv": 8.7,
+    "mch": 8.7,
+    "rdw": 8.7,
+    "platelets": 8.7,
+    "neutrophils": 8.8,
+    "lymphocytes": 8.8,
+    "monocytes": 8.8,
+    "eosinophils_pct": 8.8,
+    "basophils_pct": 8.8,
+    "albumin": 9.9,
+    "alt": 9.9,
+    "ast": 10.0,
+    "alp": 9.9,
+    "bilirubin_total": 9.9,
+    "creatinine": 9.9,
+    "bun": 9.9,
+    "sodium": 9.9,
+    "potassium": 9.9,
+    "calcium": 10.1,
+    "total_protein": 10.0,
+    "globulin": 10.0,
+    "glucose": 9.9,
+    "crp": 41.5,
+    "ferritin": 62.3,
+    "nlr": 8.8,
+    "plr": 8.8,
+    "sii": 8.8
+  }
+}

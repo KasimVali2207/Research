@@ -1,0 +1,32 @@
+{
+  "Logistic Regression": {
+    "AUROC": 0.7185,
+    "AUPRC": 0.0682,
+    "F1": 0.1054,
+    "Brier": 0.2094
+  },
+  "Random Forest": {
+    "AUROC": 0.697,
+    "AUPRC": 0.0538,
+    "F1": 0.1015,
+    "Brier": 0.1139
+  },
+  "Gradient Boosting": {
+    "AUROC": 0.7238,
+    "AUPRC": 0.0678,
+    "F1": 0.012,
+    "Brier": 0.0281
+  },
+  "XGBoost": {
+    "AUROC": 0.6743,
+    "AUPRC": 0.0523,
+    "F1": 0.0966,
+    "Brier": 0.0866
+  },
+  "LightGBM": {
+    "AUROC": 0.6804,
+    "AUPRC": 0.0491,
+    "F1": 0.0687,
+    "Brier": 0.0616
+  }
+}

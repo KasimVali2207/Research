@@ -18,30 +18,6 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-
-# Data (never commit raw / processed patient data)
-data/raw/
-data/processed/
-*.parquet
-*.csv
-*.h5
-*.hdf5
-
-# Model artifacts
-results/models/
-results/mlflow/
-*.pkl
-*.joblib
-*.pt
-*.pth
-
-# Figures (regenerate from code)
-results/figures/
-
-# FAISS indices
-*.faiss
-*.index
-
 # OS / editor
 .DS_Store
 Thumbs.db
