@@ -1,147 +1,190 @@
-# LLM-Orchestrated Agentic Triage for Multi-Cancer Early Detection from Routine Blood Biomarkers
+# LLM-Orchestrated Agentic Triage for Multi-Cancer Early Detection
+### A Retrospective Validation Study using Routine Blood Biomarkers
 
-> **Retrospective Validation Study** — Colorectal · Lung · Liver
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ---
 
 ## Overview
 
-This project develops an agentic clinical reasoning system that identifies elevated risk for colorectal, lung, and liver cancer using only routine CBC, metabolic panels, inflammatory biomarkers, demographics, and temporal lab trajectories — without imaging, genomics, or specialist diagnostics.
+This repository contains the full research pipeline for the study:
 
-### Research Hypothesis
+> **LLM-Orchestrated Agentic Triage for Multi-Cancer Early Detection from Routine Blood Biomarkers: A Retrospective Validation Study**
 
-> Structured agentic clinical reasoning over longitudinal blood biomarkers improves multi-cancer triage performance, interpretability, and clinical usability compared with classical ML and monolithic LLM systems.
+We develop and validate a **5-agent LLM orchestration system** that identifies elevated risk for:
+- 🟠 **Colorectal cancer** (ICD: C18–C20)
+- 🔵 **Lung cancer** (ICD: C33–C34)
+- 🟢 **Liver cancer** (ICD: C22)
 
----
-
-## Datasets
-
-| Dataset | Role |
-|---------|------|
-| MIMIC-IV v3.1 | Primary training + validation |
-| eICU Collaborative Research Database | External validation |
-| SEER Program | Epidemiology justification only |
-
-**Access**: Both MIMIC-IV and eICU require credentialed PhysioNet access. Place data under `data/raw/mimic/` and `data/raw/eicu/`.
+Using **only routine blood tests** — CBC, metabolic panels, inflammatory markers, and their temporal trajectories — **without imaging or genomics**.
 
 ---
 
-## Prediction Windows
+## Architecture
 
-| Horizon | Meaning |
-|---------|---------|
-| 3 months | Near-term detection |
-| 6 months | Clinically meaningful |
-| 12 months | Strongest novelty |
-
----
-
-## Cancer ICD Codes
-
-| Cancer | ICD-10 |
-|--------|--------|
-| Colorectal | C18–C20 |
-| Lung | C33–C34 |
-| Liver | C22 |
+```
+MIMIC-IV / eICU
+      │
+      ▼
+Cohort Construction (leakage-safe, 1:3 matched)
+      │
+      ▼
+Feature Engineering
+  ├── Static: CBC, Metabolic, Inflammatory, NLR/PLR/SII
+  └── Temporal: slope, velocity, delta, exp_smooth, moving_avg
+      │
+      ▼
+Baseline ML Models
+  LR · RF · XGBoost · LightGBM · CatBoost · TabNet
+      │
+      ▼
+5-Agent LLM Pipeline
+  [1] TemporalBiomarkerAgent  → abnormal patterns
+  [2] RiskPredictionAgent     → calibrated risk scores
+  [3] DifferentialDiagnosisAgent → top differentials
+  [4] EvidenceGroundingAgent  → RAG (PubMed) grounding
+  [5] ClinicalTriageAgent     → urgency + recommendations
+      │
+      ▼
+Evaluation Suite
+  AUROC · AUPRC · ECE · Brier · DeLong · McNemar
+  Fairness · Calibration · Hallucination · EAS (novel)
+```
 
 ---
 
 ## Repository Structure
 
 ```
-project/
-├── configs/              # Hydra YAML experiment configs
-├── data/
-│   ├── raw/              # MIMIC-IV, eICU (not committed)
-│   ├── processed/        # Extracted cohorts
-│   └── external/         # SEER stats (reference only)
-├── notebooks/            # EDA + figures
+├── configs/                    # Hydra experiment configs
+│   ├── base.yaml               # Shared hyperparameters
+│   ├── experiment_baseline.yaml
+│   ├── experiment_temporal.yaml
+│   ├── experiment_agentic.yaml
+│   ├── experiment_ablation.yaml
+│   └── experiment_external_val.yaml
+│
+├── docker/                     # Reproducible Docker setup
+│   ├── Dockerfile
+│   └── docker-compose.yml
+│
+├── notebooks/                  # One notebook per experiment
+│   ├── 01_baseline_performance.ipynb
+│   ├── 02_temporal_vs_static.ipynb
+│   ├── 03_ablation_study.ipynb
+│   ├── 04_calibration_analysis.ipynb
+│   ├── 05_missing_data_robustness.ipynb
+│   ├── 06_fairness_analysis.ipynb
+│   ├── 07_external_validation.ipynb
+│   ├── 08_hallucination_faithfulness.ipynb
+│   └── 09_explanation_alignment.ipynb
+│
 ├── src/
-│   ├── preprocessing/    # Cohort construction, leakage prevention
-│   ├── features/         # Feature engineering, temporal modeling
-│   ├── models/           # Baseline ML + TabNet
-│   ├── agents/           # 5-agent LLM orchestration system
-│   ├── retrieval/        # RAG + FAISS + biomedical embeddings
-│   ├── evaluation/       # Metrics, calibration, fairness
-│   ├── explainability/   # SHAP + explanation alignment
-│   └── utils/            # Logging, seeding, I/O
-├── experiments/          # MLflow experiment configs
-├── results/              # Outputs, figures, tables
-├── tests/                # Unit + integration tests
-└── docker/               # Reproducibility containers
+│   ├── agents/                 # 5 LLM agents + orchestrator
+│   ├── evaluation/             # Metrics, fairness, hallucination
+│   ├── explainability/         # SHAP + Explanation Alignment Score
+│   ├── features/               # Feature engineering pipeline
+│   ├── models/                 # Baselines, TabNet, calibration
+│   ├── preprocessing/          # Cohort extraction, leakage prevention
+│   ├── retrieval/              # PubMed RAG pipeline
+│   ├── utils/                  # Logging, seeding, I/O
+│   └── run_pipeline.py         # Main entry point
+│
+├── tests/
+│   └── test_pipeline.py        # Unit tests
+│
+└── requirements.txt
 ```
 
 ---
 
-## Coding Phases
+## Experiments
 
-| Phase | Component | Status |
-|-------|-----------|--------|
-| 1 | Dataset extraction | ✅ |
-| 2 | Preprocessing pipeline | ✅ |
-| 3 | Feature engineering | ✅ |
-| 4 | Baseline ML | ✅ |
-| 5 | Temporal modeling | ✅ |
-| 6 | Explainability | ✅ |
-| 7 | Agent system | ✅ |
-| 8 | RAG grounding | ✅ |
-| 9 | Evaluation suite | ✅ |
-| 10 | External validation | ✅ |
+| # | Notebook | Question |
+|---|----------|---------|
+| 1 | `01_baseline_performance` | Which ML model performs best? |
+| 2 | `02_temporal_vs_static` | Do trajectory features improve AUROC? |
+| 3 | `03_ablation_study` | What does each agent contribute? |
+| 4 | `04_calibration_analysis` | Are probabilities well-calibrated? |
+| 5 | `05_missing_data_robustness` | How robust under 10/20/40% missingness? |
+| 6 | `06_fairness_analysis` | Are predictions equitable across subgroups? |
+| 7 | `07_external_validation` | Does it generalize MIMIC → eICU? |
+| 8 | `08_hallucination_faithfulness` | Do agents hallucinate biomarker values? |
+| 9 | `09_explanation_alignment` | Do agent citations align with SHAP? (EAS) |
 
 ---
 
 ## Target Performance
 
-| Cancer | AUROC Goal |
-|--------|------------|
-| Colorectal | 0.82–0.88 |
-| Liver | 0.84–0.90 |
-| Lung | 0.76–0.84 |
+| Cancer | AUROC Goal | Key Biomarkers |
+|--------|------------|----------------|
+| Colorectal | 0.82–0.88 | Hemoglobin↓, NLR↑, Platelets↑ |
+| Liver | 0.84–0.90 | ALT↑, AST↑, Albumin↓, Bilirubin↑ |
+| Lung | 0.76–0.84 | NLR↑, Albumin↓, LDH↑, PLR↑ |
 
 ---
 
-## Setup
+## Quick Start
 
+### 1. Install dependencies
 ```bash
-# Create environment
-conda create -n cancer-triage python=3.11
-conda activate cancer-triage
 pip install -r requirements.txt
+```
 
-# Configure paths
-cp configs/paths.yaml.example configs/paths.yaml
-# Edit configs/paths.yaml with your data locations
+### 2. Prepare data
+Place MIMIC-IV tables in `data/raw/mimic/` and eICU tables in `data/raw/eicu/`.
 
-# Run extraction (requires MIMIC-IV access)
-python src/preprocessing/extract_cohort.py
+For a quick demo with synthetic data:
+```bash
+python -m src.preprocessing.extract_cohort --generate-synthetic
+python -m src.preprocessing.extract_eicu --generate-synthetic
+python -m src.preprocessing.mimic_to_features --dataset mimic
+python -m src.preprocessing.mimic_to_features --dataset eicu
+```
 
-# Run full pipeline
-python src/run_pipeline.py experiment=baseline
+### 3. Run the full pipeline
+```bash
+python src/run_pipeline.py
+```
 
-# Launch MLflow UI
-mlflow ui --port 5000
+### 4. Run individual experiments
+```bash
+jupyter notebook notebooks/
+```
+
+### 5. Docker (fully reproducible)
+```bash
+docker-compose -f docker/docker-compose.yml up cancer-triage
 ```
 
 ---
 
-## Reproducibility
+## Data Requirements
 
-- All random seeds fixed via `configs/base.yaml`
-- Docker image in `docker/`
-- MLflow tracking for all experiments
-- Hydra config management
+| Dataset | Access | Tables Used |
+|---------|--------|-------------|
+| MIMIC-IV v3.1 | [PhysioNet](https://physionet.org/content/mimiciv/) | diagnoses_icd, labevents, admissions, patients |
+| eICU-CRD | [PhysioNet](https://physionet.org/content/eicu-crd/) | patient, diagnosis, lab |
 
----
-
-## Target Venues
-
-- Journal of Biomedical Informatics
-- JAMIA
-- npj Digital Medicine
-- The Lancet Digital Health (stretch)
+**Note**: Raw patient data is never committed to this repository (see `.gitignore`).
 
 ---
 
 ## Citation
 
-*Manuscript in preparation.*
+If you use this work, please cite:
+```bibtex
+@misc{kasim2024cancertriage,
+  title={LLM-Orchestrated Agentic Triage for Multi-Cancer Early Detection},
+  author={Kasim Vali},
+  year={2024},
+  url={https://github.com/KasimVali2207/Research}
+}
+```
+
+---
+
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE) for details.
