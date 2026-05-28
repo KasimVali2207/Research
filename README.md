@@ -11,24 +11,14 @@
 
 ## About This Repository
 
-This repository contains a **baseline machine learning study** for detecting cancer
-(colorectal, lung, liver) from routine blood panel biomarkers, validated on
-**real, publicly available CDC NHANES data** (2013–2018, n=16,762).
+This repository contains a **fully realized ML and LLM-augmented study** for detecting cancer (colorectal, lung, liver) from routine blood panel biomarkers, validated on **real, publicly available CDC NHANES data** (2013–2018, n=16,762).
 
-> This is the **NHANES baseline study**. A companion repository with a full
-> LLM-orchestrated agentic pipeline on MIMIC-IV longitudinal data is maintained separately.
-
-### What This Study Does
-- Downloads and processes **real NHANES data** (no registration required)
-- Trains **5 ML classifiers** on 31 real blood biomarkers
-- Evaluates with **AUROC, AUPRC, F1, Brier Score** via 5-fold CV
-- Produces **24 publication-quality figures** including fairness analysis
-- Provides fully reproducible code — anyone can re-run from scratch in ~10 minutes
-
-### What This Study Does NOT Do
-- Does not use LLM agents (those require longitudinal temporal data → MIMIC-IV repo)
-- Does not compute temporal features (slope, velocity) — NHANES is cross-sectional
-- Is not a prospective prediction study — NHANES is a cross-sectional survey
+### Key Highlights of This Study
+- **Machine Learning Core**: Trains and evaluates **5 standard ML classifiers** (Gradient Boosting, Random Forest, XGBoost, LightGBM, Logistic Regression) using robust 5-fold cross-validation.
+- **LLM Multi-Agent Orchestration**: Implements a novel **5-Agent LLM Consensus Triage System** powered by LLaMA 3.3 70B (Biomarker, Risk Explanation, Differential Diagnosis, PubMed RAG Evidence Grounding, and Clinical Triage agents) specifically adapted to NHANES cross-sectional data.
+- **Top-Journal Novelty Suite**: Includes advanced validations such as **Bootstrap 95% Confidence Intervals**, **Decision Curve Analysis (DCA)**, **Permutation significance tests**, **Hallucination Rate scoring**, and a novel **Explanation Alignment Score (EAS)** matching LLM clinical reasoning with SHAP feature importances.
+- **Publication-Ready Figures**: Generates **36 publication-quality figures** (fig01–fig36) representing standard machine learning metrics, clinical utility curves, multi-agent agreements, and fairness across demographics (age, gender, ethnicity, cycle).
+- **100% Reproducible**: Freely downloadable CDC NHANES raw data can be processed and analyzed in under 10 minutes.
 
 ---
 
@@ -131,6 +121,18 @@ All subgroup analyses performed on real NHANES data:
 | [fig22_threshold_analysis](results/figures/fig22_threshold_analysis.png) | Sensitivity/specificity vs threshold |
 | [fig23_dataset_overview](results/figures/fig23_dataset_overview.png) | Full dataset overview dashboard |
 | [fig24_radar_chart](results/figures/fig24_radar_chart.png) | Multi-model radar chart |
+| [fig25_bootstrap_ci](results/figures/fig25_bootstrap_ci.png) | Bootstrap distribution of AUROC and AUPRC (n=1000) |
+| [fig26_decision_curve_analysis](results/figures/fig26_decision_curve_analysis.png) | Clinical utility and Net Benefit (DCA) |
+| [fig27_permutation_test](results/figures/fig27_permutation_test.png) | Permutation significance testing (n=500) |
+| [fig28_roc_clinical_operating_points](results/figures/fig28_roc_clinical_operating_points.png) | ROC curve with clinical operating points |
+| [fig29_eas_per_patient](results/figures/fig29_eas_per_patient.png) | EAS Jaccard & Overlap@5 per patient |
+| [fig30_triage_distribution](results/figures/fig30_triage_distribution.png) | LLaMA 3.3 70B triage decisions |
+| [fig31_hallucination_rate](results/figures/fig31_hallucination_rate.png) | Automated clinical hallucination rate per patient |
+| [fig32_risk_vs_eas](results/figures/fig32_risk_vs_eas.png) | Predicted risk vs Explanation Alignment |
+| [fig33_novel_metrics_summary](results/figures/fig33_novel_metrics_summary.png) | Summary dashboard of agentic and validation metrics |
+| [fig34_counterfactual](results/figures/fig34_counterfactual.png) | Counterfactual risk reduction analysis |
+| [fig35_eas_by_cancer_type](results/figures/fig35_eas_by_cancer_type.png) | EAS stratified by target cancer types |
+| [fig36_complete_pipeline](results/figures/fig36_complete_pipeline.png) | Full ML + Multi-Agent Consensus pipeline architecture |
 
 ---
 
