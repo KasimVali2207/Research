@@ -50,8 +50,10 @@ pipe = Pipeline([("imp",SimpleImputer(strategy="median")),
                  ("scl",StandardScaler()),
                  ("clf",GradientBoostingClassifier(n_estimators=200,learning_rate=0.05,
                                                     max_depth=4,random_state=42))])
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+probs = cross_val_predict(pipe, X, y, cv=cv, method="predict_proba")[:,1]
 pipe.fit(X,y)
-probs = pipe.predict_proba(X)[:,1]
 
 # ── LLM helper ───────────────────────────────────────────────────────────────
 def call_llm(prompt, max_tokens=350):
