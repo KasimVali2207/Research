@@ -1,508 +1,437 @@
 [
   {
-    "patient_idx": 1716,
-    "risk_score": 0.4926909357859583,
-    "true_label": 1,
-    "cancer_type": "liver",
-    "age": 68.0,
-    "gender": "M",
-    "abnormal_features": [
-      "lymphocytes=0.7010^9/L [LOW, normal 1.0-4.5]",
-      "sodium=135.00mmol/L [LOW, normal 136.0-145.0]",
-      "glucose=194.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=5.43ratio [HIGH, normal 1.5-3.0]",
-      "plr=267.14ratio [HIGH, normal 50.0-150.0]"
-    ],
-    "shap_top_features": [
-      "lymphocytes",
-      "bun",
-      "wbc",
-      "rdw",
-      "calcium"
-    ],
-    "agent1_biomarker": "The patient's abnormal blood values, particularly the low lymphocyte count (0.7010^9/L) and elevated Neutrophil-to-Lymphocyte Ratio (NLR) of 5.43, suggest a possible underlying malignancy, as these patterns are often seen in patients with cancer. The elevated Platelet-to-Lymphocyte Ratio (PLR) of 267.14 and Systemic Immune-Inflammation Index (SII) of 1015.14 further support this concern, as these indices are associated with a poor prognosis in various types of cancer. The combination of these abnormalities, especially the markedly elevated SII, is most concerning and warrants further investigation for an underlying cancer, such as a hematologic malignancy or a solid tumor.",
-    "agent2_risk": "A cancer risk score of 49.3% indicates that the machine learning model has identified a nearly even likelihood of the patient having cancer, suggesting that there are concerning clinical features, such as abnormal lymphocyte, sodium, and glucose levels, as well as elevated neutrophil-to-lymphocyte ratio (NLR) and platelet-to-lymphocyte ratio (PLR), that warrant further investigation. \nYes, because a risk score of nearly 50% suggests a significant probability of cancer, prompting the need for additional diagnostic testing and evaluation to determine the presence and type of cancer.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Colorectal cancer: Elevated glucose and abnormal lymphocytes, along with increased NLR (neutrophil-to-lymphocyte ratio), suggest a high likelihood of colorectal cancer.\n2. Lung cancer: The presence of abnormal lymphocytes and elevated NLR, supported by an increased PLR (platelet-to-lymphocyte ratio), may indicate lung cancer, although it is less likely than colorectal cancer given the biomarker pattern.\n3. Liver cancer: The biomarker pattern, particularly the lack of specific liver function test abnormalities, makes liver cancer the least likely, although elevated glucose and SII (systemic immune-inflammation index) could be seen in various cancers, including liver cancer, but are not as strongly indicative as other biomarkers in this case.",
-    "agent4_evidence": "Based on the biomarkers you've flagged (lymphocytes, sodium, glucose), here are two published studies linking these biomarkers to early cancer detection:\n\n1. **Teramukai et al. (2009)**: Found that a high lymphocyte-to-neutrophil ratio was associated with improved overall survival and disease-free survival in patients with colorectal cancer, suggesting that lymphocyte levels could be a useful biomarker for early detection and prognosis of this cancer type.\n2. **Aykan et al. (2013)**: Discovered that alterations in serum sodium and glucose levels were associated with an increased risk of pancreatic cancer. Specifically, they found that patients with pancreatic cancer had lower serum sodium levels and higher serum glucose levels compared to healthy controls, indicating that these biomarkers could be useful in the early detection of pancreatic cancer.\n\nThese studies highlight the potential of lymphocytes, sodium, and glucose as biomarkers for early cancer detection, particularly in colorectal and pancreatic cancer.",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Colonoscopy referral\nTIMEFRAME: Within 1 week",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.08333333333333333,
-    "eas_overlap_k": 0.2,
-    "agent_mentioned_features": [
-      "lymphocytes",
-      "alt",
-      "ast",
-      "sodium",
-      "glucose",
-      "nlr",
-      "plr",
-      "sii"
-    ]
-  },
-  {
-    "patient_idx": 1267,
-    "risk_score": 0.21261325687765903,
+    "patient_idx": 290,
+    "risk": 0.15316026711886213,
     "true_label": 0,
     "cancer_type": "none",
-    "age": 80.0,
+    "age": 63.0,
     "gender": "M",
     "abnormal_features": [
-      "rbc=4.0310^12/L [LOW, normal 4.2-5.9]",
-      "hematocrit=35.60% [LOW, normal 36.0-52.0]",
-      "lymphocytes=0.9010^9/L [LOW, normal 1.0-4.5]",
-      "glucose=122.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=3.67ratio [HIGH, normal 1.5-3.0]"
+      "mcv=105.60[HIGH]",
+      "platelets=123.00[LOW]",
+      "lymphocytes=0.90[LOW]",
+      "nlr=4.44[HIGH]",
+      "sii=546.67[HIGH]"
     ],
-    "shap_top_features": [
-      "rbc",
+    "shap_top": [
+      "mcv",
       "lymphocytes",
-      "hemoglobin",
-      "total_protein",
-      "alp"
-    ],
-    "agent1_biomarker": "The patient's abnormal blood values, particularly the low lymphocyte count (0.9010^9/L) and elevated Neutrophil-to-Lymphocyte Ratio (NLR) of 3.67, suggest a potential underlying malignancy, as these findings are often associated with a systemic inflammatory response to cancer. The elevated Platelet-to-Lymphocyte Ratio (PLR) of 171.11 and Systemic Immune-Inflammation Index (SII) of 564.67 further support this concern, as these markers have been linked to poor prognosis in various types of cancer. The combination of these abnormalities, especially the low lymphocyte count and high NLR, is most concerning for a possible hematologic or solid tumor malignancy, and warrants further evaluation and diagnostic workup to rule out cancer.",
-    "agent2_risk": "A cancer risk score of 21.3% indicates that the machine learning model has identified a combination of clinical features, including abnormal red blood cell count, hematocrit, lymphocyte count, glucose level, and neutrophil-to-lymphocyte ratio, that suggest this patient has a higher-than-average likelihood of having cancer. Given the elevated risk score, this patient should be referred for further cancer workup: Yes, because a risk score of 21.3% is significantly higher than the general population risk, warranting additional diagnostic evaluation to rule out underlying malignancy.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Colorectal cancer - Elevated glucose and abnormal hematocrit, along with an elevated NLR (neutrophil-to-lymphocyte ratio), are commonly seen in colorectal cancer, which is supported by the abnormal rbc and lymphocytes levels.\n2. Lung cancer - The presence of abnormal lymphocytes and an elevated NLR, which indicates inflammation, is consistent with lung cancer, and the elevated glucose level may also be related to lung cancer's association with metabolic changes.\n3. Liver cancer - Although liver cancer can cause abnormal glucose levels, the biomarker pattern provided, particularly the combination of abnormal rbc, hematocrit, and lymphocytes, is less specific for liver cancer compared to the other two options, with the NLR and PLR (platelet-to-lymphocyte ratio) being more nonspecific indicators of inflammation that can be seen in various cancer types.",
-    "agent4_evidence": "Based on the biomarkers flagged (RBC, hematocrit, and lymphocytes), here are two published studies linking these biomarkers to early cancer detection:\n\n1. **Liu et al. (2018)**: A decrease in lymphocyte count and an increase in red blood cell distribution width (RDW) were associated with an increased risk of lung cancer, suggesting that these biomarkers may be useful for early detection of lung cancer.\n2. **Wang et al. (2020)**: A low hematocrit level and a low lymphocyte-to-monocyte ratio were found to be independently associated with poor prognosis in colorectal cancer patients, and may serve as potential biomarkers for early detection and monitoring of colorectal cancer.\n\nThese studies highlight the potential role of these biomarkers in early cancer detection, particularly for lung and colorectal cancers. However, it is essential to note that more research is needed to fully understand the relationship between these biomarkers and cancer detection.",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Colonoscopy referral\nTIMEFRAME: Within 2 weeks",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.18181818181818182,
-    "eas_overlap_k": 0.4,
-    "agent_mentioned_features": [
-      "rbc",
-      "hematocrit",
-      "lymphocytes",
-      "alt",
-      "glucose",
-      "nlr",
-      "plr",
-      "sii"
-    ]
-  },
-  {
-    "patient_idx": 31,
-    "risk_score": 0.34107090985664446,
-    "true_label": 1,
-    "cancer_type": "lung",
-    "age": 54.0,
-    "gender": "F",
-    "abnormal_features": [
-      "wbc=2.9010^9/L [LOW, normal 4.0-11.0]",
-      "neutrophils=1.7010^9/L [LOW, normal 1.8-7.5]",
-      "lymphocytes=0.9010^9/L [LOW, normal 1.0-4.5]",
-      "alp=38.00U/L [LOW, normal 44.0-147.0]",
-      "plr=217.78ratio [HIGH, normal 50.0-150.0]"
-    ],
-    "shap_top_features": [
-      "wbc",
-      "calcium",
-      "lymphocytes",
-      "basophils_pct",
-      "neutrophils"
-    ],
-    "agent1_biomarker": "The patient's low white blood cell count (WBC), particularly the decreased neutrophils and lymphocytes, suggests bone marrow suppression or failure, which can be a concern for hematologic malignancies such as leukemia or lymphoma. The most concerning values are the low WBC, neutrophils, and lymphocytes, as these can indicate a compromised immune system and increased risk of infection, which is a common complication of hematologic cancers. The high platelet-to-lymphocyte ratio (PLR) is also noteworthy, as an elevated PLR has been associated with a poor prognosis in various types of cancer, including lymphoma and leukemia, and may indicate a chronic inflammatory response or tumor-related immune suppression.",
-    "agent2_risk": "A cancer risk score of 34.1% indicates that the machine learning model has identified a heightened likelihood of cancer presence based on the patient's laboratory values, particularly the abnormal white blood cell count, neutrophils, lymphocytes, alkaline phosphatase (ALP), and platelet-to-lymphocyte ratio (PLR). This score suggests that the patient's profile is concerning for potential malignancy, warranting further investigation to determine the underlying cause of these abnormalities.\n\nYes, because the risk score of 34.1% is significantly higher than the general population risk, indicating a need for comprehensive evaluation to rule out cancer.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Liver cancer - Elevated ALP (alkaline phosphatase) and abnormal WBC, neutrophils, and lymphocytes support this ranking, as ALP is often elevated in liver cancer and the abnormal white blood cell counts can indicate liver dysfunction.\n2. Colorectal cancer - Elevated neutrophils and lymphocytes, along with an abnormal WBC count, may indicate a gastrointestinal malignancy like colorectal cancer, although the absence of more specific markers like CEA or CA 19-9 makes this less certain.\n3. Lung cancer - The biomarker pattern does not strongly support lung cancer, as lung cancer is not typically associated with elevated ALP or the specific combination of abnormal WBC, neutrophils, and lymphocytes seen in this patient, with PLR (platelet-to-lymphocyte ratio) being a non-specific marker that can be elevated in various cancers.",
-    "agent4_evidence": "Here are 2 published studies linking these biomarkers to early cancer detection:\n\n1. **Teramukai et al. (2009)**: Elevated neutrophil-to-lymphocyte ratio (NLR) is associated with poor prognosis and can be a useful biomarker for early detection of lung cancer, particularly non-small cell lung cancer (NSCLC).\n2. **Sharma et al. (2018)**: An increased white blood cell (WBC) count, specifically a higher neutrophil-to-lymphocyte ratio (NLR) and a lower lymphocyte percentage, is linked to an increased risk of colorectal cancer, suggesting that these biomarkers may be useful for early detection and risk stratification of colorectal cancer.\n\nThese studies highlight the potential of WBC, neutrophils, and lymphocytes as biomarkers for early cancer detection, particularly in lung and colorectal cancers.",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Liver cancer screening with abdominal CT\nTIMEFRAME: Within 1 week",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.3333333333333333,
-    "eas_overlap_k": 0.6,
-    "agent_mentioned_features": [
-      "wbc",
-      "neutrophils",
-      "lymphocytes",
-      "alt",
-      "ast",
-      "alp",
-      "plr"
-    ]
-  },
-  {
-    "patient_idx": 3950,
-    "risk_score": 0.2093393226230438,
-    "true_label": 0,
-    "cancer_type": "none",
-    "age": 75.0,
-    "gender": "M",
-    "abnormal_features": [
-      "nlr=5.50ratio [HIGH, normal 1.5-3.0]",
-      "plr=176.00ratio [HIGH, normal 50.0-150.0]",
-      "sii=968.00index [HIGH, normal 0.0-500.0]"
-    ],
-    "shap_top_features": [
-      "calcium",
-      "rbc",
-      "lymphocytes",
-      "nlr",
-      "eosinophils_pct"
-    ],
-    "agent1_biomarker": "The patient's elevated neutrophil-to-lymphocyte ratio (NLR) of 5.50 and platelet-to-lymphocyte ratio (PLR) of 176.00 are concerning for a potential underlying malignancy, as these ratios are often elevated in patients with cancer. The significantly elevated systemic immune-inflammation index (SII) of 968.00 is also highly suggestive of an underlying cancer, as it reflects a pronounced inflammatory response often associated with tumor growth and progression. Among these values, the extremely high PLR of 176.00 is particularly concerning, as it has been shown to be a strong predictor of poor prognosis in various types of cancer, and warrants further investigation to rule out an underlying malignancy.",
-    "agent2_risk": "A cancer risk score of 20.9% indicates that the patient has a relatively high likelihood of having cancer, with nearly 1 in 5 patients with similar characteristics being diagnosed with cancer. This score is based on abnormal values of systemic inflammation markers such as neutrophil-to-lymphocyte ratio (nlr), platelet-to-lymphocyte ratio (plr), and systemic immune-inflammation index (sii), which are associated with an increased risk of cancer.\n\nYes, because a risk score of 20.9% suggests a significant likelihood of cancer, warranting further investigation to determine the presence and type of cancer.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Colorectal cancer: Elevated NLR (neutrophil-to-lymphocyte ratio) and PLR (platelet-to-lymphocyte ratio) are commonly associated with colorectal cancer, suggesting a high likelihood.\n2. Lung cancer: The elevated NLR supports lung cancer, but the absence of other specific biomarkers and the presence of SII (systemic immune-inflammation index) which is also elevated in other cancers, makes it less likely than colorectal cancer.\n3. Liver cancer: Although SII is often associated with liver cancer, the combination of elevated NLR and PLR points more strongly towards colorectal cancer, making liver cancer the least likely of the three options given the biomarker pattern.",
-    "agent4_evidence": "Here are 2 published studies linking the biomarkers NLR, PLR, and SII to early cancer detection:\n\n1. **Neutrophil-to-Lymphocyte Ratio (NLR)**: [Templeton et al. 2014]: Elevated preoperative NLR is associated with poor overall survival in patients with colorectal cancer, and an NLR \u2265 5 is an independent predictor of recurrence and metastasis.\n2. **Platelet-to-Lymphocyte Ratio (PLR) and Systemic Immune-Inflammation Index (SII)**: [Li et al. 2020]: In patients with gastric cancer, elevated PLR and SII are significantly associated with advanced tumor stage, lymph node metastasis, and poor prognosis. Specifically, a high SII (\u2265 550) is an independent predictor of overall survival and disease-free survival in gastric cancer patients.\n\nThese studies demonstrate the potential of NLR, PLR, and SII as biomarkers for early",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Colonoscopy referral\nTIMEFRAME: Within 2 weeks",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.1111111111111111,
-    "eas_overlap_k": 0.2,
-    "agent_mentioned_features": [
-      "alt",
-      "ast",
-      "nlr",
-      "plr",
-      "sii"
-    ]
-  },
-  {
-    "patient_idx": 967,
-    "risk_score": 0.5562015092209288,
-    "true_label": 1,
-    "cancer_type": "lung",
-    "age": 46.0,
-    "gender": "F",
-    "abnormal_features": [
-      "wbc=18.2010^9/L [HIGH, normal 4.0-11.0]",
-      "hemoglobin=11.90g/dL [LOW, normal 12.0-17.5]",
-      "neutrophils=15.8010^9/L [HIGH, normal 1.8-7.5]",
-      "glucose=203.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=8.78ratio [HIGH, normal 1.5-3.0]"
-    ],
-    "shap_top_features": [
-      "neutrophils",
-      "glucose",
-      "wbc",
-      "monocytes",
-      "alp"
-    ],
-    "agent1_biomarker": "The patient's abnormal blood values, particularly the elevated white blood cell (WBC) count of 18.2010^9/L, high neutrophil count of 15.8010^9/L, and elevated neutrophil-to-lymphocyte ratio (NLR) of 8.78, suggest a potential underlying inflammatory or malignant process, with a possible diagnosis of acute myeloid leukemia (AML) or a myeloproliferative neoplasm. The significantly elevated systemic immune inflammation index (SII) of 3081.00 also supports this concern, as it is often associated with a poor prognosis in various types of cancer. The combination of these abnormalities, especially the markedly elevated neutrophil count and NLR, is most concerning for a hematologic malignancy, and further evaluation, including bone marrow biopsy and cytogenetic analysis, is warranted to establish a definitive diagnosis.",
-    "agent2_risk": "A cancer risk score of 55.6% indicates that the machine learning model has identified a higher-than-average likelihood of cancer presence in this patient, based on the provided clinical features, including abnormal values of wbc, hemoglobin, neutrophils, glucose, and nlr. \nYes, because the risk score exceeds a general threshold of 50%, suggesting that further cancer workup, such as imaging studies or biopsies, is warranted to determine the presence and type of cancer.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Colorectal cancer: Elevated neutrophils and NLR (neutrophil-to-lymphocyte ratio) are strongly associated with colorectal cancer, and the abnormal glucose levels also support this diagnosis.\n2. Lung cancer: The abnormal WBC (white blood cell count) and elevated NLR are consistent with lung cancer, but the absence of more specific biomarkers like platelets or D-dimer makes it less likely than colorectal cancer.\n3. Liver cancer: The biomarker pattern, particularly the lack of specific liver enzyme abnormalities, makes liver cancer the least likely, although elevated glucose and NLR can be seen in liver cancer, the overall pattern is less supportive than for the other two options.",
-    "agent4_evidence": "Based on the biomarkers you've flagged (WBC, hemoglobin, neutrophils), here are two published studies linking these biomarkers to early cancer detection:\n\n1. **Liu 2018**: Elevated white blood cell (WBC) count and neutrophil-to-lymphocyte ratio (NLR) are associated with poor prognosis in colorectal cancer patients, suggesting that these biomarkers may aid in early detection and risk stratification of colorectal cancer.\n2. **Rachet 2009**: A low hemoglobin level is a significant predictor of poor survival in lung cancer patients, and an elevated neutrophil count is associated with an increased risk of lung cancer, particularly non-small cell lung cancer (NSCLC), indicating that these biomarkers may be useful in early detection and monitoring of lung cancer.\n\nThese studies highlight the potential role of WBC, hemoglobin, and neutrophils as biomarkers in the early detection of colorectal and lung cancers. However,",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Colonoscopy referral\nTIMEFRAME: Within 1 week",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.2727272727272727,
-    "eas_overlap_k": 0.6,
-    "agent_mentioned_features": [
-      "wbc",
-      "hemoglobin",
       "platelets",
-      "neutrophils",
-      "alt",
-      "ast",
-      "glucose",
-      "nlr",
-      "sii"
-    ]
-  },
-  {
-    "patient_idx": 1286,
-    "risk_score": 0.347599523657433,
-    "true_label": 1,
-    "cancer_type": "lung",
-    "age": 71.0,
-    "gender": "F",
-    "abnormal_features": [
-      "ast=66.00U/L [HIGH, normal 10.0-40.0]",
-      "glucose=239.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=1.42ratio [LOW, normal 1.5-3.0]"
-    ],
-    "shap_top_features": [
-      "glucose",
-      "total_protein",
-      "globulin",
-      "alp",
-      "calcium"
-    ],
-    "agent1_biomarker": "The elevated AST (aspartate aminotransferase) level of 66.00 U/L suggests liver dysfunction or damage, which can be a concern for metastatic cancer, particularly in an older adult. The high glucose level of 239.00 mg/dL may indicate pancreatic dysfunction, which raises the possibility of pancreatic cancer, a concern given the patient's age and glucose level. The low NLR (neutrophil-to-lymphocyte ratio) of 1.42 is less concerning for cancer compared to the other two values, as an elevated NLR is often associated with a higher risk of cancer, particularly in older adults.",
-    "agent2_risk": "A cancer risk score of 34.8% indicates that the patient has a relatively high likelihood of having cancer, with nearly 35 out of 100 patients with similar characteristics and laboratory results being expected to have a cancer diagnosis. This elevated risk score is largely driven by abnormal laboratory values, including elevated aspartate aminotransferase (AST), glucose, and neutrophil-to-lymphocyte ratio (NLR), which are associated with increased inflammation and potential malignancy.\n\nYes, due to the elevated risk score and abnormal laboratory values, which may indicate underlying inflammation or malignancy.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Liver cancer - Elevated AST (aspartate aminotransferase) levels are commonly associated with liver damage or disease, making liver cancer a likely possibility.\n2. Colorectal cancer - Elevated glucose levels can be linked to colorectal cancer, as some tumors can cause changes in glucose metabolism, and an elevated NLR (neutrophil-to-lymphocyte ratio) is a marker of systemic inflammation often seen in colorectal cancer.\n3. Lung cancer - While an elevated NLR can also be seen in lung cancer, the presence of elevated AST and glucose levels in this patient's biomarker pattern makes lung cancer a less likely option compared to the other two, as these biomarkers are not as strongly associated with lung cancer.",
-    "agent4_evidence": "Based on the biomarkers flagged (AST, glucose, NLR), here are 2 published studies linking these biomarkers to early cancer detection:\n\n1. **Zheng et al. (2018)**: Elevated AST levels were associated with an increased risk of hepatocellular carcinoma (HCC) in patients with chronic liver disease, and AST was found to be a useful biomarker for early detection of HCC.\n2. **Xu et al. (2020)**: A high neutrophil-to-lymphocyte ratio (NLR) and elevated glucose levels were found to be independently associated with an increased risk of pancreatic cancer, and the combination of these biomarkers improved the accuracy of early detection of pancreatic cancer.\n\nThese studies highlight the potential of these biomarkers in early cancer detection, specifically for hepatocellular carcinoma and pancreatic cancer.",
-    "agent5_triage": "TRIAGE_LEVEL: URGENT\nACTION: Liver ultrasound and CT scan\nTIMEFRAME: Within 3-5 days",
-    "triage_level": "URGENT",
-    "eas_jaccard": 0.14285714285714285,
-    "eas_overlap_k": 0.2,
-    "agent_mentioned_features": [
-      "ast",
-      "glucose",
-      "nlr"
-    ]
-  },
-  {
-    "patient_idx": 241,
-    "risk_score": 0.38273144417329064,
-    "true_label": 1,
-    "cancer_type": "colorectal",
-    "age": 57.0,
-    "gender": "M",
-    "abnormal_features": [
-      "rbc=4.0010^12/L [LOW, normal 4.2-5.9]",
-      "mcv=103.80fL [HIGH, normal 80.0-100.0]",
-      "glucose=184.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=3.18ratio [HIGH, normal 1.5-3.0]",
-      "sii=695.65index [HIGH, normal 0.0-500.0]"
-    ],
-    "shap_top_features": [
-      "mcv",
-      "total_protein",
-      "glucose",
-      "alp",
-      "bilirubin_total"
-    ],
-    "agent1_biomarker": "The patient's abnormal blood values, particularly the elevated Neutrophil-to-Lymphocyte Ratio (NLR) of 3.18 and the Systemic Immune Inflammation Index (SII) of 695.65, suggest a potential underlying inflammatory or malignant process, with these values being most concerning for cancer. The high SII is especially alarming as it has been associated with poor prognosis in various types of cancer, indicating a significant inflammatory response that may be driven by an underlying malignancy. The combination of these inflammatory markers, along with the patient's other abnormalities, warrants further investigation to rule out cancer, with particular attention to hematologic malignancies such as lymphoma or leukemia, given the patient's abnormal red blood cell count (RBC) and mean corpuscular volume (MCV).",
-    "agent2_risk": "A cancer risk score of 38.3% indicates that the machine learning model has identified a significant likelihood of cancer presence based on the patient's abnormal laboratory values, including red blood cell count (rbc), mean corpuscular volume (mcv), glucose, neutrophil-to-lymphocyte ratio (nlr), and systemic immune-inflammation index (sii). \nYes, because the risk score exceeds the general threshold of concern, suggesting that further cancer workup, such as imaging studies and/or biopsies, is warranted to determine the presence and potential type of cancer.",
-    "agent3_differential": "Based on the biomarker pattern, the ranking is as follows: \n1. Colorectal cancer: Elevated glucose and abnormal red blood cell count (rbc) and mean corpuscular volume (mcv) are commonly seen in colorectal cancer, which may lead to anemia and increased glucose metabolism.\n2. Lung cancer: An elevated Neutrophil-to-Lymphocyte Ratio (nlr) is a marker of systemic inflammation, which is often associated with lung cancer, and the slightly elevated glucose may also support this diagnosis.\n3. Liver cancer: Although the Systemic Immune-Inflammation Index (sii) is not explicitly mentioned, the provided biomarkers do not strongly support liver cancer, as liver cancer is more closely associated with abnormal liver function tests and alpha-fetoprotein levels, which are not mentioned here.",
-    "agent4_evidence": "Based on the biomarkers flagged (RBC, MCV, glucose), here are 2 published studies linking these biomarkers to early cancer detection:\n\n1. **Liu 2019**: Elevated red blood cell (RBC) count and mean corpuscular volume (MCV) were associated with an increased risk of pancreatic cancer, suggesting that these biomarkers may be useful for early detection of pancreatic cancer.\n2. **Zhang 2018**: High glucose levels were linked to an increased risk of colorectal cancer, and the study found that glucose metabolism-related biomarkers, including glucose, could be used as potential diagnostic markers for early detection of colorectal cancer.\n\nNote: These findings are based on specific studies and may not be generalizable to all cancer types or populations. Further research is needed to confirm these associations and establish the clinical utility of these biomarkers for early cancer detection.",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99987, Requested 378. Please try again in 5m15.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.3333333333333333,
-    "eas_overlap_k": 0.6,
-    "agent_mentioned_features": [
       "rbc",
-      "mcv",
-      "alt",
-      "alp",
-      "glucose",
+      "bun"
+    ],
+    "a1_biomarker": "The patient's elevated neutrophil-to-lymphocyte ratio (NLR) of 4.44, which is above the normal range of 1.5-3.0, suggests a potential inflammatory or malignant process. The low lymphocyte count of 0.90, combined with the high NLR, may indicate a possible immunosuppressive effect, which can be seen in certain types of cancer. The high systemic immune inflammation index (SII) of 546.67, exceeding the normal range of 0-500, further supports the possibility of an underlying malignancy, particularly given the concurrent abnormalities in other blood cell parameters, such as the low platelet count of 123.00.",
+    "a2_risk": "[Rate limit]",
+    "a3_differential": "[Rate limit]",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Order comprehensive diagnostic tests, including imaging and blood work, to investigate the cause of the elevated NLR and assess for potential cancer.\nTIMEFRAME: Immediately\nRATIONALE: The patient's elevated NLR and 15.3% cancer risk warrant prompt further evaluation to determine the underlying cause and guide appropriate management.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "hallucination_rate": 0.0,
+    "agent_feats": [
       "nlr",
       "sii"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": -0.036
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.1
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.002
+      }
     ]
   },
   {
     "patient_idx": 37,
-    "risk_score": 0.4678274551006318,
+    "risk": 0.4678274551006318,
     "true_label": 1,
     "cancer_type": "liver",
     "age": 80.0,
     "gender": "M",
     "abnormal_features": [
-      "creatinine=1.81mg/dL [HIGH, normal 0.6-1.2]",
-      "bun=30.00mg/dL [HIGH, normal 7.0-25.0]",
-      "nlr=3.06ratio [HIGH, normal 1.5-3.0]",
-      "sii=534.72index [HIGH, normal 0.0-500.0]"
+      "creatinine=1.81[HIGH]",
+      "bun=30.00[HIGH]",
+      "nlr=3.06[HIGH]",
+      "sii=534.72[HIGH]"
     ],
-    "shap_top_features": [
+    "shap_top": [
       "bun",
       "total_protein",
       "globulin",
       "rdw",
       "creatinine"
     ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99982, Requested 353. Please try again in 4m49.44s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99979, Requested 268. Please try again in 3m33.408s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99975, Requested 325. Please try again in 4m19.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99971, Requested 293. Please try again in 3m48.096s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99968, Requested 414. Please try again in 5m30.048s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.0,
-    "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "[Rate limit]",
+    "a3_differential": "Based on the patient's profile, here's my assessment:\n\n1. **Colorectal cancer**: The elevated NLR (Neutrophil-to-Lymphocyte Ratio) of 3.1 is a significant indicator of colorectal cancer. A high NLR has been associated with poor prognosis and increased risk of colorectal cancer, particularly in elderly patients.\n\n2. **Lung cancer**: The high BUN (Blood Urea Nitrogen) level of 30.0 is a concern, as it may indicate renal impairment, which is often seen in patients with lung cancer, particularly those with metastatic disease. Elevated BUN levels can also be associated with paraneoplastic syndromes, which are more common in lung cancer.\n\n3. **Liver cancer**: The elevated creatinine level of 1.8 is a notable finding, as liver dysfunction can lead to impaired creatinine clearance. In the context of liver cancer, this could be indicative of underlying liver disease, such as cirrhosis, which is a major risk factor for the development of hepatocellular carcinoma.\n\nThese biomarker values, in conjunction with the patient's age, sex, and overall risk profile, contribute to the ranking of these cancer types by likelihood. However",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "[Rate limit]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.2857142857142857,
+    "eas_overlap_k": 0.4,
+    "hallucination_rate": 0.25,
+    "agent_feats": [
+      "ast",
+      "creatinine",
+      "bun",
+      "nlr"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.256
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": 0.186
+      }
+    ]
   },
   {
-    "patient_idx": 4561,
-    "risk_score": 0.26977287202096467,
-    "true_label": 0,
-    "cancer_type": "none",
-    "age": 63.0,
+    "patient_idx": 967,
+    "risk": 0.5562015092209288,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 46.0,
     "gender": "F",
     "abnormal_features": [
-      "wbc=11.1010^9/L [HIGH, normal 4.0-11.0]",
-      "neutrophils=10.1010^9/L [HIGH, normal 1.8-7.5]",
-      "lymphocytes=0.6010^9/L [LOW, normal 1.0-4.5]",
-      "glucose=209.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=16.83ratio [HIGH, normal 1.5-3.0]"
+      "wbc=18.20[HIGH]",
+      "hemoglobin=11.90[LOW]",
+      "neutrophils=15.80[HIGH]",
+      "glucose=203.00[HIGH]",
+      "nlr=8.78[HIGH]"
     ],
-    "shap_top_features": [
+    "shap_top": [
+      "neutrophils",
+      "glucose",
+      "wbc",
+      "monocytes",
+      "alp"
+    ],
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "The cancer risk score of 55.6% indicates a moderate to high likelihood of cancer presence, driven by abnormal biomarker values such as a high white blood cell count (WBC) of 18.20, elevated neutrophils of 15.80, and a high neutrophil-to-lymphocyte ratio (NLR) of 8.78. The combination of these values, particularly the elevated WBC and NLR, which are 64% and 193% above the normal range, respectively, are key drivers of this risk score, suggesting a potential inflammatory or malignant process that warrants further investigation.",
+    "a3_differential": "[Rate limit]",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Immediate referral to an oncologist for further evaluation and potential biopsy\nTIMEFRAME: Within 3-5 business days\nRATIONALE: The high cancer risk of 55.6% necessitates prompt medical attention to determine the presence and extent of cancer.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.3333333333333333,
+    "eas_overlap_k": 0.4,
+    "hallucination_rate": 0.0,
+    "agent_feats": [
+      "wbc",
+      "neutrophils",
+      "nlr"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.148
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": -0.018
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": 0.007
+      }
+    ]
+  },
+  {
+    "patient_idx": 31,
+    "risk": 0.34107090985664446,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 54.0,
+    "gender": "F",
+    "abnormal_features": [
+      "wbc=2.90[LOW]",
+      "neutrophils=1.70[LOW]",
+      "lymphocytes=0.90[LOW]",
+      "alp=38.00[LOW]",
+      "plr=217.78[HIGH]"
+    ],
+    "shap_top": [
+      "wbc",
+      "calcium",
       "lymphocytes",
-      "nlr",
-      "total_protein",
-      "globulin",
-      "calcium"
+      "basophils_pct",
+      "neutrophils"
     ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99963, Requested 422. Please try again in 5m32.64s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99960, Requested 272. Please try again in 3m20.448s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99956, Requested 311. Please try again in 3m50.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99953, Requested 295. Please try again in 3m34.272s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99949, Requested 414. Please try again in 5m13.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "[Rate limit]",
+    "a3_differential": "Based on the patient's profile, here's my assessment:\n\n1. **Colorectal cancer**: The patient's low ALP (Alkaline Phosphatase) level of 38.0 is a concern, as elevated ALP is often associated with bone metastasis, but low ALP can be seen in early stages of colorectal cancer or in cases where the cancer is not yet metastasized to the bone. However, the low ALP in this case, combined with other abnormal biomarkers, makes colorectal cancer a top consideration.\n\n2. **Lung cancer**: The patient's high PLR (Platelet-to-Lymphocyte Ratio) of 217.8 is a significant indicator of lung cancer. A high PLR has been associated with poor prognosis and advanced disease in lung cancer, suggesting that the patient's immune system is being suppressed by the tumor, leading to an elevated platelet count and a decreased lymphocyte count.\n\n3. **Liver cancer**: The patient's low WBC (White Blood Cell) count of 2.9, specifically the low neutrophil count of 1.7, is a concern. In liver cancer, particularly in cases of hepatocellular carcinoma, a low neutroph",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "[Rate limit]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.125,
+    "eas_overlap_k": 0.2,
+    "hallucination_rate": 0.0,
+    "agent_feats": [
+      "wbc",
+      "ast",
+      "alp",
+      "plr"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.053
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.008
+      }
+    ]
+  },
+  {
+    "patient_idx": 493,
+    "risk": 0.18307793392550226,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 77.0,
+    "gender": "F",
+    "abnormal_features": [
+      "platelets=146.00[LOW]",
+      "nlr=3.40[HIGH]"
+    ],
+    "shap_top": [
+      "calcium",
+      "rbc",
+      "lymphocytes",
+      "glucose",
+      "wbc"
+    ],
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "The cancer risk score of 18.3% indicates a moderately elevated risk of cancer, with abnormal biomarker values contributing to this assessment, particularly the low platelet count of 146.00 and the high neutrophil-to-lymphocyte ratio (NLR) of 3.40. The elevated NLR of 3.40, which exceeds the normal range of 1.5-3.0, is a significant driver of this risk score, as it suggests a potential inflammatory or malignant process, while the low platelet count of 146.00, below the normal range of 150-400, may also indicate an underlying hematologic abnormality.",
+    "a3_differential": "[Rate limit]",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Immediate referral to an oncologist for further evaluation and testing\nTIMEFRAME: Within 24-48 hours\nRATIONALE: The high cancer risk of 18.3% necessitates prompt medical attention to determine the presence and extent of cancer.",
+    "triage": "URGENT",
     "eas_jaccard": 0.0,
     "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
+    "hallucination_rate": 0.0,
+    "agent_feats": [
+      "nlr"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.013
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": -0.057
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.014
+      }
+    ]
+  },
+  {
+    "patient_idx": 241,
+    "risk": 0.38273144417329064,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 57.0,
+    "gender": "M",
+    "abnormal_features": [
+      "rbc=4.00[LOW]",
+      "mcv=103.80[HIGH]",
+      "glucose=184.00[HIGH]",
+      "nlr=3.18[HIGH]",
+      "sii=695.65[HIGH]"
+    ],
+    "shap_top": [
+      "mcv",
+      "total_protein",
+      "glucose",
+      "alp",
+      "bilirubin_total"
+    ],
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "[Rate limit]",
+    "a3_differential": "Based on the patient's profile, here's my assessment:\n\n1. **Colorectal cancer**: The high NLR (Neutrophil-to-Lymphocyte Ratio) of 3.2 is a significant indicator of colorectal cancer. Elevated NLR values have been associated with poor prognosis and increased risk of colorectal cancer. In this case, the high NLR suggests a potential inflammatory response, which is often seen in colorectal cancer.\n\n2. **Lung cancer**: The low RBC (Red Blood Cell) count of 4.0 is a concern, as it may indicate anemia, which is a common symptom of lung cancer. Lung cancer can cause anemia due to chronic blood loss, bone marrow infiltration, or as a paraneoplastic syndrome.\n\n3. **Liver cancer**: The high SII (Systemic Immune-Inflammation Index) of 695.6 is a notable finding, as it reflects a significant inflammatory response. Elevated SII values have been linked to an increased risk of liver cancer, particularly in patients with underlying liver disease. The high SII in this patient may indicate a chronic inflammatory state, which could be contributing to the development of liver cancer.\n\nThese biomarker values, among other",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "[Rate limit]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "hallucination_rate": 0.4,
+    "agent_feats": [
+      "rbc",
+      "ast",
+      "nlr",
+      "sii"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.322
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.008
+      }
+    ]
   },
   {
     "patient_idx": 664,
-    "risk_score": 0.7859394763685141,
+    "risk": 0.7859394763685141,
     "true_label": 1,
     "cancer_type": "lung",
     "age": 59.0,
     "gender": "F",
     "abnormal_features": [
-      "rbc=3.5510^12/L [LOW, normal 4.2-5.9]",
-      "mcv=103.40fL [HIGH, normal 80.0-100.0]",
-      "glucose=102.00mg/dL [HIGH, normal 70.0-100.0]",
-      "sii=557.11index [HIGH, normal 0.0-500.0]"
+      "rbc=3.55[LOW]",
+      "mcv=103.40[HIGH]",
+      "glucose=102.00[HIGH]",
+      "sii=557.11[HIGH]"
     ],
-    "shap_top_features": [
+    "shap_top": [
       "mch",
       "mcv",
       "total_protein",
       "albumin",
       "eosinophils_pct"
     ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99945, Requested 354. Please try again in 4m18.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99941, Requested 268. Please try again in 3m0.576s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99937, Requested 325. Please try again in 3m46.368s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99934, Requested 234. Please try again in 2m25.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99930, Requested 414. Please try again in 4m57.216s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "The cancer risk score of 78.6% indicates a significantly elevated risk of cancer, driven primarily by abnormal biomarker values, including a low red blood cell count (RBC) of 3.55, which is below the normal range of 4.2-5.9, and high levels of glucose (102.00) and SII (557.11), which exceed the normal ranges of 70-100 and 0-500, respectively. The combination of these abnormal values, particularly the markedly elevated SII (557.11) and high glucose (102.00), contributes most to the high cancer risk score, suggesting a potential underlying inflammatory or metabolic process that may be associated with an increased risk of cancer development.",
+    "a3_differential": "[Rate limit]",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Immediate referral to an oncologist for further evaluation and potential biopsy\nTIMEFRAME: Within 24 hours\nRATIONALE: The high cancer risk of 78.6% necessitates prompt medical attention to determine the presence and extent of cancer.",
+    "triage": "URGENT",
     "eas_jaccard": 0.0,
     "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
+    "hallucination_rate": 0.0,
+    "agent_feats": [
+      "rbc",
+      "glucose",
+      "sii"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.009
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": 0.006
+      }
+    ]
   },
   {
-    "patient_idx": 1172,
-    "risk_score": 0.49822233134594984,
+    "patient_idx": 519,
+    "risk": 0.5849746852327184,
     "true_label": 1,
-    "cancer_type": "lung",
-    "age": 72.0,
-    "gender": "F",
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
     "abnormal_features": [
-      "wbc=12.1010^9/L [HIGH, normal 4.0-11.0]",
-      "neutrophils=9.7010^9/L [HIGH, normal 1.8-7.5]",
-      "alp=38.00U/L [LOW, normal 44.0-147.0]",
-      "glucose=116.00mg/dL [HIGH, normal 70.0-100.0]",
-      "nlr=6.93ratio [HIGH, normal 1.5-3.0]"
+      "wbc=11.30[HIGH]",
+      "albumin=3.30[LOW]",
+      "ast=42.00[HIGH]",
+      "creatinine=1.69[HIGH]",
+      "bun=32.00[HIGH]"
     ],
-    "shap_top_features": [
-      "nlr",
-      "calcium",
+    "shap_top": [
+      "bun",
+      "total_protein",
       "wbc",
-      "mcv",
+      "alp",
       "neutrophils"
     ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99926, Requested 419. Please try again in 4m58.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99922, Requested 263. Please try again in 2m39.84s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99919, Requested 273. Please try again in 2m45.888s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99915, Requested 295. Please try again in 3m1.44s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99911, Requested 405. Please try again in 4m33.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.0,
-    "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "[Rate limit]",
+    "a3_differential": "Based on the patient's laboratory results, I will rank the likelihood of cancer types and provide a specific reason for each, citing the exact biomarker values.\n\n1. **Colorectal cancer**: The low albumin level (3.3 [LOW]) is a significant indicator of colorectal cancer. Albumin is often decreased in patients with colorectal cancer due to malabsorption, liver dysfunction, or the tumor's effect on liver function. The patient's low albumin level, combined with other abnormal biomarkers, increases the likelihood of colorectal cancer.\n\n2. **Lung cancer**: The elevated white blood cell count (wbc=11.3 [HIGH]) is a potential indicator of lung cancer. An elevated WBC count can be a response to the body's inflammatory reaction to the tumor, and lung cancer is known to cause paraneoplastic syndromes that can lead to leukocytosis (high WBC count).\n\n3. **Liver cancer**: The high AST (aspartate aminotransferase) level (ast=42.0 [HIGH]) is a specific reason to consider liver cancer. Elevated AST levels can indicate liver damage or dysfunction, which is often seen in liver cancer. The patient's",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "[Rate limit]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.14285714285714285,
+    "eas_overlap_k": 0.2,
+    "hallucination_rate": 0.2,
+    "agent_feats": [
+      "wbc",
+      "albumin",
+      "ast"
+    ],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.422
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.001
+      }
+    ]
   },
   {
     "patient_idx": 135,
-    "risk_score": 0.21233827036959932,
+    "risk": 0.21233827036959932,
     "true_label": 0,
     "cancer_type": "none",
     "age": 68.0,
     "gender": "F",
     "abnormal_features": [],
-    "shap_top_features": [
+    "shap_top": [
       "bun",
       "total_protein",
       "alp",
       "calcium",
       "rbc"
     ],
-    "agent1_biomarker": "All biomarkers within normal range.",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99907, Requested 250. Please try again in 2m15.648s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99903, Requested 258. Please try again in 2m19.104s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99900, Requested 235. Please try again in 1m56.64s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99896, Requested 352. Please try again in 3m34.272s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
+    "a1_biomarker": "[Rate limit]",
+    "a2_risk": "The cancer risk score of 21.2% indicates a moderate to high risk of developing cancer, despite all biomarkers being within normal range, suggesting that other non-biomarker factors such as family history, lifestyle, or environmental exposures may be driving this risk. The absence of abnormal biomarker values, with all biomarkers being within normal range, is notable, and in this case, the risk score is driven by non-biomarker factors, as there are no specific biomarker values (e.g. none are elevated) that are contributing to the 21.2% risk score.",
+    "a3_differential": "[Rate limit]",
+    "a4_evidence": "[Rate limit]",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Schedule an immediate consultation with an oncologist for further evaluation and potential biopsy.\nTIMEFRAME: Within 24 hours\nRATIONALE: The high cancer risk of 21.2% necessitates prompt medical attention to determine the presence and extent of cancer.",
+    "triage": "URGENT",
     "eas_jaccard": 0.0,
     "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
-  },
-  {
-    "patient_idx": 1412,
-    "risk_score": 0.2083527740759681,
-    "true_label": 0,
-    "cancer_type": "none",
-    "age": 58.0,
-    "gender": "F",
-    "abnormal_features": [
-      "hematocrit=35.80% [LOW, normal 36.0-52.0]",
-      "lymphocytes=0.8010^9/L [LOW, normal 1.0-4.5]",
-      "creatinine=1.61mg/dL [HIGH, normal 0.6-1.2]",
-      "sodium=127.00mmol/L [LOW, normal 136.0-145.0]",
-      "glucose=108.00mg/dL [HIGH, normal 70.0-100.0]"
-    ],
-    "shap_top_features": [
-      "lymphocytes",
-      "sodium",
-      "rbc",
-      "creatinine",
-      "bun"
-    ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99892, Requested 403. Please try again in 4m14.88s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99888, Requested 271. Please try again in 2m17.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99885, Requested 331. Please try again in 3m6.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99881, Requested 274. Please try again in 2m13.919999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99877, Requested 414. Please try again in 4m11.423999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.0,
-    "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
-  },
-  {
-    "patient_idx": 519,
-    "risk_score": 0.5849746852327184,
-    "true_label": 1,
-    "cancer_type": "liver",
-    "age": 80.0,
-    "gender": "M",
-    "abnormal_features": [
-      "wbc=11.3010^9/L [HIGH, normal 4.0-11.0]",
-      "albumin=3.30g/dL [LOW, normal 3.5-5.0]",
-      "ast=42.00U/L [HIGH, normal 10.0-40.0]",
-      "creatinine=1.69mg/dL [HIGH, normal 0.6-1.2]",
-      "bun=32.00mg/dL [HIGH, normal 7.0-25.0]"
-    ],
-    "shap_top_features": [
-      "bun",
-      "total_protein",
-      "wbc",
-      "alp",
-      "neutrophils"
-    ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99873, Requested 400. Please try again in 3m55.872s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99869, Requested 270. Please try again in 2m0.095999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99866, Requested 329. Please try again in 2m48.48s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99862, Requested 293. Please try again in 2m13.919999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99858, Requested 414. Please try again in 3m55.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.0,
-    "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
-  },
-  {
-    "patient_idx": 1098,
-    "risk_score": 0.34634728032638606,
-    "true_label": 1,
-    "cancer_type": "lung",
-    "age": 80.0,
-    "gender": "F",
-    "abnormal_features": [
-      "bilirubin_total=1.30mg/dL [HIGH, normal 0.1-1.2]",
-      "bun=27.00mg/dL [HIGH, normal 7.0-25.0]",
-      "potassium=3.40mmol/L [LOW, normal 3.5-5.1]",
-      "nlr=1.11ratio [LOW, normal 1.5-3.0]"
-    ],
-    "shap_top_features": [
-      "bun",
-      "potassium",
-      "total_protein",
-      "alp",
-      "rdw"
-    ],
-    "agent1_biomarker": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99854, Requested 377. Please try again in 3m19.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent2_risk": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99851, Requested 269. Please try again in 1m43.68s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent3_differential": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99847, Requested 267. Please try again in 1m38.496s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent4_evidence": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99843, Requested 273. Please try again in 1m40.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "agent5_triage": "[LLM Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k1md3tjwegrbes6dbwsqpbd0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99840, Requested 414. Please try again in 3m39.456s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]",
-    "triage_level": "UNKNOWN",
-    "eas_jaccard": 0.0,
-    "eas_overlap_k": 0.0,
-    "agent_mentioned_features": []
+    "hallucination_rate": 0.0,
+    "agent_feats": [],
+    "counterfactual": [
+      {
+        "feature": "bun",
+        "delta_risk": 0.069
+      },
+      {
+        "feature": "mcv",
+        "delta_risk": 0.0
+      },
+      {
+        "feature": "creatinine",
+        "delta_risk": -0.012
+      }
+    ]
   }
 ]

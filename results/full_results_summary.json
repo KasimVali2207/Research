@@ -1,0 +1,76 @@
+{
+  "dataset": "NHANES CDC 2013-2018 (REAL)",
+  "n_total": 16762,
+  "n_cancer": 485,
+  "model_auroc": 0.724,
+  "auroc_95ci": [
+    0.9116,
+    0.9349
+  ],
+  "auprc_95ci": [
+    0.5258,
+    0.6137
+  ],
+  "sensitivity_95ci": [
+    0.1194,
+    0.184
+  ],
+  "permutation_pval": 0.002,
+  "clinical_operating_points": {
+    "0.8": {
+      "sensitivity": 0.8804123711340206,
+      "specificity": 0.7969527554217608,
+      "threshold": 0.0402210495976369,
+      "ppv": 0.8804123711340206
+    },
+    "0.85": {
+      "sensitivity": 0.7587628865979381,
+      "specificity": 0.8808748540885912,
+      "threshold": 0.04023193529848098,
+      "ppv": 0.7587628865979381
+    },
+    "0.9": {
+      "sensitivity": 0.7237113402061855,
+      "specificity": 0.8993672052589543,
+      "threshold": 0.043876120124401535,
+      "ppv": 0.7237113402061855
+    },
+    "0.95": {
+      "sensitivity": 0.6536082474226804,
+      "specificity": 0.9487006205074645,
+      "threshold": 0.0580858604666805,
+      "ppv": 0.6536082474226804
+    }
+  },
+  "agentic": {
+    "n_patients_run": 9,
+    "mean_eas_jaccard": 0.0985,
+    "mean_eas_overlap_k": 0.1333,
+    "agent_faithfulness": 0.4444,
+    "mean_hallucination_rate": 0.0944,
+    "triage_distribution": {
+      "URGENT": 5,
+      "ROUTINE": 0,
+      "MONITOR": 0,
+      "LOW_RISK": 0,
+      "UNKNOWN": 4
+    },
+    "eas_by_cancer_type": {
+      "lung": 0.15277777777777776,
+      "liver": 0.21428571428571427,
+      "colorectal": 0.0
+    }
+  },
+  "novel_contributions": [
+    "Bootstrap 95% CI (n=1000 iterations)",
+    "Decision Curve Analysis (DCA)",
+    "Permutation significance test (n=500)",
+    "Clinical operating points at 4 specificities",
+    "5-agent LLM pipeline (LLaMA 3.3 70B)",
+    "Novel EAS metric (Jaccard + Overlap@K)",
+    "LLM Hallucination Rate scoring",
+    "EAS stratified by cancer type",
+    "Counterfactual risk reduction analysis",
+    "Comprehensive fairness analysis (age/gender/ethnicity)"
+  ]
+}
