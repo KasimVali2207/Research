@@ -1,6 +1,7 @@
-[Your Name/Affiliation Header]
-[Academic/Institution Address]
-[Email Address]
+Kasim Vali Dudekula
+Independent Student Researcher
+Andhra Pradesh, India
+dudekula.kasimvali@outlook.com
 
 May 29, 2026
 
@@ -25,12 +26,13 @@ We then implement a state-of-the-art **5-role multi-agent LLM consensus pipeline
 
 We chose *npj Digital Medicine* because of its prominent leadership in publishing high-fidelity, open-source clinical machine learning pipelines that combine rigorous technical innovation with honest clinical framing. All code, intermediate data structures, and the complete 41-figure visualization registry have been made fully open-source under the Apache 2.0 license to ensure complete clinical reproducibility.
 
-This manuscript is original work and has not been published or submitted elsewhere. There are no competing financial or non-financial interests to declare. 
+This manuscript is original work and has been conducted independently as a student research project. It has not been published or submitted elsewhere. There are no competing financial or non-financial interests to declare.
 
-Thank you for your time and consideration of our work.
+Thank you for your time and consideration of my work.
 
 Sincerely,
 
-Kasim Vali  
-Lead Researcher and Software Architect  
-[Affiliation/Contact Information]
+Kasim Vali Dudekula  
+Independent Student Researcher  
+Andhra Pradesh, India  
+dudekula.kasimvali@outlook.com

@@ -1,9 +1,13 @@
 # Biomarker-Based Discriminative Cancer Risk Analysis with LLM Multi-Agent Explanation Consensus: A Cross-Sectional Population Study Introducing the Explanation Alignment Score (EAS)
 
-**Author**: Kasim Vali  
-**Correspondence**: [Your Email/Affiliation Information]  
+**Author**: Kasim Vali Dudekula  
+**Affiliation**: Independent Student Researcher, Andhra Pradesh, India  
+**Correspondence**: dudekula.kasimvali@outlook.com  
 **Journal Target**: *npj Digital Medicine*  
 **Category**: Original Article  
+
+**Author Contributions**:
+> *K.V.D. designed the study, implemented the machine learning and multi-agent pipeline, analyzed the results, generated the figures, and wrote the manuscript as an independent student research project.*
 
 ---
 
@@ -159,3 +163,12 @@ Orchestration was implemented using a 5-role clinical architecture. Each agent e
 4.  Tang, X. et al. MedAgents: Large language models as active clinical agents. *arXiv preprint arXiv:2403.12345* (2024).
 5.  Proctor, M. J. et al. A comparison of systemic inflammatory response markers in solid tumors. *BMC Cancer* **12**, 562 (2012).
 6.  Ludwig, H. et al. Prevalence and clinical impact of anemia in patients with solid tumors. *The Oncologist* **17**, 232–244 (2012).
+
+---
+
+## Disclosures
+
+*   **Author Contributions**: K.V.D. designed the study, implemented the machine learning and multi-agent pipeline, analyzed the results, generated the figures, and wrote the manuscript as an independent student research project.
+*   **Data Availability Statement**: The data analyzed in this study are publicly available from the Centers for Disease Control and Prevention (CDC) National Health and Nutrition Examination Survey (NHANES) repository (https://wwwn.cdc.gov/nchs/nhanes/). All processed features, cohorts, and intermediate datasets have been fully open-sourced at https://github.com/KasimVali2207/Research_biomedical.
+*   **Code Availability Statement**: All source code for cohort extraction, machine learning model training, multi-agent LLM pipeline execution, Explanation Alignment Score (EAS) calculation, and figure generation is publicly available under the Apache 2.0 license at https://github.com/KasimVali2207/Research_biomedical.
+*   **Competing Interests**: The author declares no competing financial or non-financial interests.

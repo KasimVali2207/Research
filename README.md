@@ -371,11 +371,11 @@ python -m src.models.ablation_study
 ## Citation
 
 ```bibtex
-@article{kasim2025eas_cancer_biomarker,
+@article{kasimdudekula2025eas_cancer_biomarker,
   title   = {{Biomarker-Based Discriminative Cancer Risk Analysis with LLM
               Multi-Agent Explanation Consensus: A Cross-Sectional Population
               Study Introducing the Explanation Alignment Score (EAS)}},
-  author  = {Kasim Vali},
+  author  = {Kasim Vali Dudekula},
   journal = {Under Review},
   year    = {2025},
   url     = {https://github.com/KasimVali2207/Research_biomedical},

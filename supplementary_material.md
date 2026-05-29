@@ -2,7 +2,7 @@
 
 ## Multi-Cancer Risk Stratification + LLM Agent Pipeline (NHANES)
 **Study Title**: Biomarker-Based Discriminative Cancer Risk Analysis with LLM Multi-Agent Explanation Consensus: A Cross-Sectional Population Study Introducing the Explanation Alignment Score (EAS)  
-**Author**: Kasim Vali  
+**Author**: Kasim Vali Dudekula (Independent Student Researcher, Andhra Pradesh, India)  
 **Code Repository**: [https://github.com/KasimVali2207/Research_biomedical](https://github.com/KasimVali2207/Research_biomedical)
 
 ---
