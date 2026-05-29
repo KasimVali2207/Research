@@ -139,9 +139,11 @@ Tolerance 15%: chosen to accommodate clinical paraphrasing (e.g., WBC=8.2 ≈ "a
 | Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination ↓ | n | Method |
 |---|---|---|---|---|---|---|
 | ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | 16,762 | Computed |
-| Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | 9 | **Real LLM** |
-| Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | 9 | **Real LLM** |
-| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.014** | **0.024** | **0.062** | **100** | **Real LLM** |
+| Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | 9 | **Real LLM (pilot)** |
+| Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | 9 | **Real LLM (pilot)** |
+| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.014** | **0.024** | **0.062** | **100** | **Real LLM (full eval)** |
+
+> ⚠️ **Note on EAS across conditions**: The pilot conditions (n=9) and the full 5-agent evaluation (n=100) use different patient samples drawn with the same stratified seed. The lower EAS at n=100 reflects the full population variance — pilot estimates at n=9 have high uncertainty (wide CI). A directly comparable ablation on the same 100 patients is reported in [`results/ablation_results.json`](results/ablation_results.json). The key ablation finding is that **adding RAG reduces hallucination (0.161→0.062) while EAS remains in the low range across all LLM conditions**, confirming that LLM narrative features are only modestly aligned with ML-attributed features regardless of pipeline complexity.
 
 > **Real n=100 results** (25 lung, 15 liver, 10 colorectal, 50 controls; 6 API keys, 4 parallel workers). EAS Jaccard = 0.014 ± 0.052 (95% CI: [0.004, 0.025]). By cancer type: colorectal highest alignment (EAS=0.051), liver (EAS=0.036), lung (EAS=0.015), controls (EAS=0.000 — expected, no cancer biomarker pattern to align with). Hallucination rate = 0.062 ± 0.206 — low mean; high-variance tail from responses with many numeric claims. Controls near-zero hallucination (Hall=0.009) vs cancer cases (Hall=0.12). These are real LLM inference results on real NHANES data using LLaMA 3.3 70B via Groq. A fully powered study (n≥200 + clinician annotation) is recommended before clinical translation. See [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png) and [`fig31_eas_by_cancer_type_n100`](results/figures/fig31_eas_by_cancer_type_n100.png).
 
@@ -244,9 +246,9 @@ Research_biomedical/
 │   │   ├── ablation_study.py       # 4-condition ablation → fig37
 │   │   └── run_remaining_experiments.py  # Run all experiments + regenerate figs
 │   ├── agents/
-│   │   ├── nhanes_agent_pipeline.py # 5-agent LLM pipeline → fig25–fig36
-│   │   ├── scale_agent_eval.py      # NEW: 100-patient evaluation (n=100)
-│   │   └── hallucination_scorer.py  # NEW: Formal hallucination algorithm
+   │   ├── nhanes_agent_pipeline.py       # 5-agent LLM pipeline → fig25–fig36
+   │   ├── scale_agent_eval_parallel.py   # 100-patient parallel eval (6 keys, 4 workers)
+   │   └── hallucination_scorer.py        # Formal hallucination algorithm (regex ±15%)
 │   └── explainability/
 │       └── lime_comparison.py       # NEW: SHAP vs LIME vs Permutation → fig38
 │
@@ -289,8 +291,8 @@ python -m src.models.train_nhanes
 # 7. Run 5-agent pipeline (fig25–fig36)
 python -m src.agents.nhanes_agent_pipeline
 
-# 8. Scale evaluation: 100 patients (fig29 updated, fig31 updated)
-python -m src.agents.scale_agent_eval
+# 8. Scale evaluation: 100 patients, 4 parallel workers (fig29, fig31)
+ python -m src.agents.scale_agent_eval_parallel
 
 # 9. SHAP vs LIME comparison (fig38)
 python -m src.explainability.lime_comparison
@@ -301,53 +303,68 @@ python -m src.models.ablation_study
 
 ---
 
-## Visualizations (38 Figures — All from Real NHANES Data)
+## Visualizations (41 Figures — All from Real NHANES Data)
 
-### ML Baseline (fig01–fig24)
+### ML Baseline & Population Cohort (fig01–fig24)
 
 | Figure | Description |
 |---|---|
-| [fig01_roc_curves](results/figures/fig01_roc_curves.png) | ROC curves for all 5 models |
-| [fig02_pr_curves](results/figures/fig02_pr_curves.png) | Precision-Recall curves |
-| [fig03_auroc_bar](results/figures/fig03_auroc_bar.png) | AUROC comparison |
-| [fig04_auprc_bar](results/figures/fig04_auprc_bar.png) | AUPRC comparison |
-| [fig05_all_metrics](results/figures/fig05_all_metrics.png) | AUROC/AUPRC/F1/Brier |
-| [fig06_calibration](results/figures/fig06_calibration.png) | Calibration reliability diagram |
-| [fig07_confusion_matrix](results/figures/fig07_confusion_matrix.png) | Confusion matrix |
-| [fig08_risk_distribution](results/figures/fig08_risk_distribution.png) | Predicted risk score distribution |
-| [fig09_feature_importance](results/figures/fig09_feature_importance.png) | Top-20 feature importances |
-| [fig10–fig13] | Cancer types, age, gender, ethnicity distributions |
-| [fig14_biomarker_boxplots](results/figures/fig14_biomarker_boxplots.png) | Biomarker value distributions |
-| [fig15_correlation_heatmap](results/figures/fig15_correlation_heatmap.png) | Feature correlation matrix |
-| [fig16_missing_data](results/figures/fig16_missing_data.png) | Missingness pattern |
-| [fig17–fig21] | Fairness: AUROC by cancer type, age, gender, ethnicity, cycle |
-| [fig22_threshold_analysis](results/figures/fig22_threshold_analysis.png) | Sensitivity/specificity/F1 vs threshold |
-| [fig23_dataset_overview](results/figures/fig23_dataset_overview.png) | Dataset dashboard |
-| [fig24_radar_chart](results/figures/fig24_radar_chart.png) | Multi-model radar |
+| [fig01_roc_curves](results/figures/fig01_roc_curves.png) | Receiver Operating Characteristic (ROC) curves for all 5 ML models showing discrimination performance. |
+| [fig02_pr_curves](results/figures/fig02_pr_curves.png) | Precision-Recall curves indicating classification performance under low prevalence (2.89%). |
+| [fig03_auroc_bar](results/figures/fig03_auroc_bar.png) | Comparison of Area under ROC Curve (AUROC) values across all 5 trained models. |
+| [fig04_auprc_bar](results/figures/fig04_auprc_bar.png) | Comparison of Area under Precision-Recall Curve (AUPRC) values across all 5 models. |
+| [fig05_all_metrics](results/figures/fig05_all_metrics.png) | Grouped bar chart comparing AUROC, AUPRC, F1-score, and Brier Score across all models. |
+| [fig06_calibration](results/figures/fig06_calibration.png) | Reliability diagram showing model probability calibration before and after isotonic regression. |
+| [fig07_confusion_matrix](results/figures/fig07_confusion_matrix.png) | Confusion matrix of the best model (Gradient Boosting) at the target specificity threshold. |
+| [fig08_risk_distribution](results/figures/fig08_risk_distribution.png) | Density distribution of predicted cancer probability scores for cancer cases vs. controls. |
+| [fig09_feature_importance](results/figures/fig09_feature_importance.png) | Mean absolute SHAP values for the top 20 biomarkers ranking feature importance. |
+| [fig10_cancer_types](results/figures/fig10_cancer_types.png) | Frequency distribution of self-reported lung, liver, and colorectal cancer cases within the cohort. |
+| [fig11_age_distribution](results/figures/fig11_age_distribution.png) | Age distribution profile of the study population. |
+| [fig12_gender_distribution](results/figures/fig12_gender_distribution.png) | Gender distribution profile of the study population. |
+| [fig13_ethnicity_distribution](results/figures/fig13_ethnicity_distribution.png) | Self-reported ethnicity distribution in the NHANES population sample. |
+| [fig14_biomarker_boxplots](results/figures/fig14_biomarker_boxplots.png) | Boxplots showing distributions of raw biomarker values comparing cancer cases vs. controls. |
+| [fig15_correlation_heatmap](results/figures/fig15_correlation_heatmap.png) | Pearson correlation matrix heatmap for all 31 biomarker features. |
+| [fig16_missing_data](results/figures/fig16_missing_data.png) | Missingness pattern and percentage map for clinical laboratory variables. |
+| [fig17_auroc_by_cancer_type](results/figures/fig17_auroc_by_cancer_type.png) | Model discrimination (AUROC) stratified across cancer sites (Lung, Liver, Colorectal). |
+| [fig18_auroc_by_age](results/figures/fig18_auroc_by_age.png) | Fairness analysis showing model AUROC stratified across age groups. |
+| [fig19_auroc_by_gender](results/figures/fig19_auroc_by_gender.png) | Fairness analysis showing model AUROC stratified across genders. |
+| [fig20_auroc_by_ethnicity](results/figures/fig20_auroc_by_ethnicity.png) | Fairness analysis showing model AUROC stratified across racial/ethnic groups. |
+| [fig21_auroc_by_cycle](results/figures/fig21_auroc_by_cycle.png) | Fairness analysis showing model temporal stability (AUROC) across NHANES survey cycles. |
+| [fig22_threshold_analysis](results/figures/fig22_threshold_analysis.png) | Trade-offs in model sensitivity, specificity, and F1-score across risk thresholds. |
+| [fig23_dataset_overview](results/figures/fig23_dataset_overview.png) | Visual dashboard of NHANES cohort statistics, missingness, and biomarker profiles. |
+| [fig24_radar_chart](results/figures/fig24_radar_chart.png) | Unified performance radar chart comparing models across five key evaluation metrics. |
 
 ### Statistical Validation & Clinical Utility (fig25–fig28)
 
 | Figure | Description |
 |---|---|
-| [fig25_bootstrap_ci](results/figures/fig25_bootstrap_ci.png) | Bootstrap AUROC/AUPRC (n=1000) |
-| [fig26_decision_curve_analysis](results/figures/fig26_decision_curve_analysis.png) | Decision Curve Analysis |
-| [fig27_permutation_test](results/figures/fig27_permutation_test.png) | Permutation test (n=500, p<0.001) |
-| [fig28_roc_clinical_operating_points](results/figures/fig28_roc_clinical_operating_points.png) | ROC with clinical operating points (PPV fixed) |
+| [fig25_bootstrap_ci](results/figures/fig25_bootstrap_ci.png) | Empirical probability density distributions from 1000-fold bootstrapping for AUROC/AUPRC 95% CIs. |
+| [fig26_decision_curve_analysis](results/figures/fig26_decision_curve_analysis.png) | Decision Curve Analysis (DCA) demonstrating clinical net benefit across threshold probabilities. |
+| [fig26_triage_distribution](results/figures/fig26_triage_distribution.png) | Breakdown of multi-agent triage recommendation levels across pilot samples. |
+| [fig27_permutation_test](results/figures/fig27_permutation_test.png) | Statistical significance validation via 500-fold label permutation test (p < 0.001). |
+| [fig28_roc_clinical_operating_points](results/figures/fig28_roc_clinical_operating_points.png) | ROC curve highlighting specific clinical operating points and Number Needed to Screen (NNS). |
 
-### Multi-Agent LLM Evaluation (fig29–fig37)
+### Multi-Agent LLM Evaluation & Ablation (fig29–fig37)
 
 | Figure | Description |
 |---|---|
-| [fig29_eas_per_patient](results/figures/fig29_eas_per_patient.png) | EAS per patient (n=9 pilot) |
-| [fig29_eas_distribution_n100](results/figures/fig29_eas_distribution_n100.png) | EAS distribution (n=100 full eval) |
-| [fig30–fig36] | Triage distribution, hallucination, risk vs EAS, pipeline diagram |
-| [fig37_ablation_study](results/figures/fig37_ablation_study.png) | 4-condition ablation study |
+| [fig29_eas_per_patient](results/figures/fig29_eas_per_patient.png) | Explanation Alignment Score (EAS) across individual pilot patients. |
+| [fig29_eas_distribution_n100](results/figures/fig29_eas_distribution_n100.png) | Density distribution of the Explanation Alignment Score (EAS) across the full n=100 evaluation. |
+| [fig30_triage_distribution](results/figures/fig30_triage_distribution.png) | Triage recommendation level distribution across the n=100 evaluation. |
+| [fig31_eas_by_cancer_type_n100](results/figures/fig31_eas_by_cancer_type_n100.png) | Explanation Alignment Score (EAS) comparison stratified by cancer site (Lung, Liver, Colorectal, Control) at scale. |
+| [fig31_hallucination_rate](results/figures/fig31_hallucination_rate.png) | Distribution of LLM numeric hallucination rates across the n=100 scale evaluation. |
+| [fig32_risk_vs_eas](results/figures/fig32_risk_vs_eas.png) | Scatter plot correlating patient ML predicted risk score against multi-agent Explanation Alignment Score. |
+| [fig33_novel_metrics_summary](results/figures/fig33_novel_metrics_summary.png) | Boxplot summary of novel metric distributions (EAS and Hallucination Rates) across the cohort. |
+| [fig34_counterfactual](results/figures/fig34_counterfactual.png) | Patient explanation walk-through showing risk factors, protective factors, and agent consensus. |
+| [fig35_eas_by_cancer_type](results/figures/fig35_eas_by_cancer_type.png) | Analysis of pilot alignment scores (EAS) by specific cancer subgroups. |
+| [fig36_complete_pipeline](results/figures/fig36_complete_pipeline.png) | Visual flow architecture of the 5-Agent LLM pipeline with PubMed RAG evidence grounding. |
+| [fig37_ablation_study](results/figures/fig37_ablation_study.png) | Performance cascade across the 4 ablation conditions showing trade-offs between orchestration complexity, grounding, and alignment. |
 
 ### Explainability Validation (fig38)
 
 | Figure | Description |
 |---|---|
-| [fig38_shap_vs_lime](results/figures/fig38_shap_vs_lime.png) | SHAP vs LIME vs Permutation — EAS robustness across explainer |
+| [fig38_shap_vs_lime](results/figures/fig38_shap_vs_lime.png) | Cross-method explainer validation comparing EAS scores calculated with SHAP, LIME, and Permutation Importance. |
 
 ---
 
