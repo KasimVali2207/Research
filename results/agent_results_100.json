@@ -3663,5 +3663,76 @@
     },
     "mode": "parallel_4key",
     "worker": 4
+  },
+  {
+    "eval_idx": 94,
+    "patient_idx": 94,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 65.0,
+    "gender": "F",
+    "risk": 0.0226,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 93,
+    "patient_idx": 93,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 37.0,
+    "gender": "M",
+    "risk": 0.0458,
+    "abnormal_features": [
+      "crp=4.70[HIGH]",
+      "nlr=0.97[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
   }
 ]
