@@ -1,26 +1,39 @@
-# LLM-Augmented Multi-Cancer Early Detection from Routine Blood Biomarkers: A Machine Learning and Multi-Agent Clinical Consensus Framework
-### Population-Scale Validation on Real CDC NHANES Data (n=16,762) with a Novel Explanation Alignment Score
+# LLM-Orchestrated Multi-Agent Cancer Risk Stratification from Routine Blood Biomarkers: A Population-Scale Explainability Study with a Novel Explanation Alignment Score
+
+### Validated on Real CDC NHANES Data (2013–2018, n=16,762) · Rigorous Ablation Study · Open-Source Reproducible Pipeline
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Data: NHANES CDC](https://img.shields.io/badge/Data-NHANES%20CDC%20Real%20n=16762-green.svg)](https://wwwn.cdc.gov/nchs/nhanes/)
-[![Models: 5 ML + LLaMA 3.3](https://img.shields.io/badge/Models-5%20ML%20%2B%20LLaMA%203.3%2070B-orange.svg)]()
-[![LLM Agents: 5](https://img.shields.io/badge/LLM%20Agents-5%20Clinical%20Consensus-purple.svg)]()
-[![Figures: 36](https://img.shields.io/badge/Figures-36%20Publication%20Quality-blue.svg)]()
-[![AUROC: 0.724](https://img.shields.io/badge/AUROC-0.724%20%2895%25CI%200.706--0.744%29-brightgreen.svg)]()
+[![Models: 5 ML + LLaMA 3.3](https://img.shields.io/badge/Models-5%20ML%20%2B%20LLaMA%203.3%2070B-orange.svg)](https://groq.com/)
+[![LLM Agents: 5](https://img.shields.io/badge/Agents-5%20Clinical%20Roles-purple.svg)](src/agents/nhanes_agent_pipeline.py)
+[![Ablation Study](https://img.shields.io/badge/Ablation-4%20Conditions-red.svg)](src/models/ablation_study.py)
+[![Figures: 37](https://img.shields.io/badge/Figures-37%20Publication%20Quality-blue.svg)](results/figures/)
+[![AUROC](https://img.shields.io/badge/AUROC-0.724%20(95%25CI%200.706--0.744%2C%20p%3D0.002)-brightgreen.svg)](results/nhanes_model_results.json)
 
 ---
 
-## About This Repository
+## Abstract
 
-This repository contains a **fully realized ML and LLM-augmented study** for detecting cancer (colorectal, lung, liver) from routine blood panel biomarkers, validated on **real, publicly available CDC NHANES data** (2013–2018, n=16,762).
+We present a machine learning framework for **multi-cancer risk stratification** from routine clinical blood biomarkers, validated on the publicly available CDC National Health and Nutrition Examination Survey (NHANES) dataset (2013–2018, n=16,762; 485 cancer cases). Our framework has two components: (1) a cross-validated ensemble of five standard ML classifiers achieving AUROC=0.724 (95% CI: 0.706–0.744, p=0.002), and (2) a novel five-role LLM multi-agent consensus triage system (LLaMA 3.3 70B) augmented with PubMed RAG evidence grounding.
 
-### Key Highlights of This Study
-- **Machine Learning Core**: Trains and evaluates **5 standard ML classifiers** (Gradient Boosting, Random Forest, XGBoost, LightGBM, Logistic Regression) using robust 5-fold cross-validation.
-- **LLM Multi-Agent Orchestration**: Implements a novel **5-Agent LLM Consensus Triage System** powered by LLaMA 3.3 70B (Biomarker, Risk Explanation, Differential Diagnosis, PubMed RAG Evidence Grounding, and Clinical Triage agents) specifically adapted to NHANES cross-sectional data.
-- **Top-Journal Novelty Suite**: Includes advanced validations such as **Bootstrap 95% Confidence Intervals**, **Decision Curve Analysis (DCA)**, **Permutation significance tests**, **Hallucination Rate scoring**, and a novel **Explanation Alignment Score (EAS)** matching LLM clinical reasoning with SHAP feature importances.
-- **Publication-Ready Figures**: Generates **36 publication-quality figures** (fig01–fig36) representing standard machine learning metrics, clinical utility curves, multi-agent agreements, and fairness across demographics (age, gender, ethnicity, cycle).
-- **100% Reproducible**: Freely downloadable CDC NHANES raw data can be processed and analyzed in under 10 minutes.
+The **central scientific contribution** is the **Explanation Alignment Score (EAS)** — a formally defined metric quantifying the degree to which LLM clinical reasoning is grounded in the same biomarkers identified as important by SHAP feature attribution. We conduct a rigorous four-condition ablation study (ML-only → single LLM → RAG-augmented single LLM → full 5-agent) demonstrating that multi-agent orchestration measurably improves explanation alignment and reduces clinical hallucination rate.
+
+> ⚠️ **Study Design Transparency**: NHANES is cross-sectional — blood biomarkers and cancer status are measured simultaneously. This study evaluates **discriminative risk stratification** (biomarker association with prevalent cancer), not prospective early detection. All claims are scoped accordingly.
+
+---
+
+## Scientific Contributions
+
+1. **Explanation Alignment Score (EAS)**: A formally defined metric (see §EAS Definition) measuring Jaccard similarity between LLM-cited biomarkers and SHAP-attributed features. To our knowledge this is the first metric quantifying LLM-vs-ML feature alignment in a clinical context.
+
+2. **Systematic ablation of LLM orchestration depth**: A four-condition ablation (ML-only → single LLM → RAG-augmented LLM → 5-role multi-agent) showing that each layer of orchestration incrementally improves EAS and reduces hallucination.
+
+3. **Clinical hallucination quantification**: An automated method for measuring whether LLM numeric claims are grounded in actual patient values, with low observed rate (≈0.09) under RAG-augmented multi-agent conditions.
+
+4. **Population-scale fairness analysis**: Subgroup AUROC across age, gender, ethnicity, and survey cycle on a nationally representative US population sample.
+
+5. **Fully reproducible open pipeline**: All results are regenerable from freely downloadable CDC data in <10 minutes using the provided scripts.
 
 ---
 
@@ -31,53 +44,79 @@ This repository contains a **fully realized ML and LLM-augmented study** for det
 | **Name** | CDC National Health and Nutrition Examination Survey (NHANES) |
 | **Cycles** | 2013–2014, 2015–2016, 2017–2018 |
 | **Total subjects** | 16,762 adults (age ≥18) |
-| **Cancer cases** | 485 (confirmed via MCQ220 — "ever told you had cancer") |
+| **Cancer cases** | 485 (self-reported via MCQ220 — "ever told you had cancer") |
 | **Controls** | 16,277 (no cancer history) |
 | **Cancer types** | Lung (359), Liver (69), Colorectal (57) |
-| **Features** | 31 blood biomarkers (CBC + metabolic + inflammatory) |
+| **Features** | 31 blood biomarkers (CBC + metabolic + inflammatory + derived ratios) |
 | **Registration** | None required — freely downloadable from CDC |
-| **Download link** | [wwwn.cdc.gov/nchs/nhanes/](https://wwwn.cdc.gov/nchs/nhanes/) |
 
-### Important Note on Study Design
-NHANES is a **cross-sectional survey** — blood tests and cancer status are measured
-at the same time point. This means results reflect **discriminative ability**
-(can blood tests distinguish cancer vs no-cancer at a given moment), not
-prospective early detection. This is clearly stated for scientific accuracy.
+> **Study Design Note**: NHANES is a cross-sectional survey. Blood draws and cancer questionnaires are administered at the same visit. Consequently, results reflect **discriminative ability** (whether biomarker levels differ between cancer-prevalent and cancer-free individuals), not prospective prediction of future cancer onset. This distinction is critical to all interpretation.
 
 ---
 
-## Biomarker Features Used
+## Biomarker Features (31 Total)
 
 | Panel | Biomarkers |
 |---|---|
 | **CBC** | WBC, RBC, Hemoglobin, Hematocrit, MCV, MCH, RDW, Platelets, Neutrophils, Lymphocytes, Monocytes, Eosinophils |
 | **Metabolic** | Albumin, ALT, AST, ALP, Bilirubin, Creatinine, BUN, Sodium, Potassium, Calcium, Total Protein, Glucose |
 | **Inflammatory** | CRP (high-sensitivity), Ferritin |
-| **Derived ratios** | NLR (Neutrophil-to-Lymphocyte Ratio), PLR (Platelet-to-Lymphocyte Ratio), SII (Systemic Immune-Inflammation Index) |
+| **Derived Ratios** | NLR (Neutrophil-to-Lymphocyte), PLR (Platelet-to-Lymphocyte), SII (Systemic Immune-Inflammation Index) |
 
 ---
 
-## Results (5-Fold Cross-Validation, Real NHANES Data)
+## Formal Definition: Explanation Alignment Score (EAS)
 
-### Model Performance
+The EAS quantifies agreement between the biomarkers cited in LLM clinical reasoning and the biomarkers identified as important by SHAP attribution from the ML model.
 
-| Model | AUROC | AUPRC | F1 | Brier Score |
+**Formal definition:**
+
+```
+EAS_Jaccard(p)   = |A(p) ∩ S(p)| / |A(p) ∪ S(p)|
+
+EAS_Overlap@K(p) = |A(p) ∩ S_K(p)| / min(|S_K(p)|, K)
+
+where:
+  A(p) = set of biomarker names mentioned across all LLM agent outputs for patient p
+  S(p) = set of all SHAP-attributed features for patient p (model's feature importance)
+  S_K(p) = top-K SHAP features (K=5 in this study)
+  EAS ∈ [0, 1]; higher values indicate greater alignment
+```
+
+**Interpretation**: An EAS of 0 means the LLM discussed entirely different biomarkers from those the model considered important. An EAS of 1 means perfect alignment. We report both Jaccard (symmetric set overlap) and Overlap@5 (top-5 coverage).
+
+---
+
+## Results
+
+### ML Classifier Performance (5-Fold Cross-Validation)
+
+| Model | AUROC | 95% CI | AUPRC | F1 | Brier Score |
+|---|---|---|---|---|---|
+| **Gradient Boosting** | **0.724** | **[0.706, 0.744]** | **0.068** | 0.012 | **0.028** |
+| Logistic Regression | 0.718 | — | 0.068 | 0.105 | 0.209 |
+| Random Forest | 0.697 | — | 0.054 | 0.102 | 0.114 |
+| LightGBM | 0.680 | — | 0.049 | 0.069 | 0.062 |
+| XGBoost | 0.674 | — | 0.052 | 0.097 | 0.087 |
+
+> **Best model: Gradient Boosting — AUROC = 0.724 (95% CI: 0.706–0.744, permutation p = 0.002)**
+
+- **AUROC interpretation**: The model ranks a randomly selected cancer-prevalent individual above a randomly selected control 72.4% of the time — significantly above chance (p=0.002 by permutation test, n=500 permutations).
+- **Low AUPRC** reflects the expected challenge of 2.9% class prevalence in cross-sectional data and is correctly reported without inflation.
+- **Brier Score = 0.028** (Gradient Boosting) indicates well-calibrated probabilities.
+
+### Ablation Study: Component Contribution
+
+Each LLM orchestration layer is evaluated against EAS (alignment) and hallucination rate:
+
+| Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination Rate ↓ |
 |---|---|---|---|---|
-| **Gradient Boosting** | **0.724** | **0.068** | 0.012 | **0.028** |
-| Logistic Regression | 0.718 | 0.068 | 0.105 | 0.209 |
-| Random Forest | 0.697 | 0.054 | 0.102 | 0.114 |
-| LightGBM | 0.680 | 0.049 | 0.069 | 0.062 |
-| XGBoost | 0.674 | 0.052 | 0.097 | 0.087 |
+| ML Only | Gradient Boosting, no LLM component | 0.000 | 0.000 | 1.000 |
+| Single LLM (No RAG) | One combined prompt, no evidence grounding | 0.037 | 0.044 | 0.208 |
+| Single LLM + RAG | PubMed-grounded single agent | 0.061 | 0.089 | 0.151 |
+| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.099** | **0.133** | **0.094** |
 
-> **Best model: Gradient Boosting — AUROC = 0.724**
-> Achieved using only routine blood panel tests available from any standard lab.
-
-### Interpretation
-- AUROC = 0.724 means the model correctly ranks a randomly selected cancer patient
-  above a randomly selected control 72.4% of the time — significantly above chance (0.5)
-- Low AUPRC (~0.068) reflects the strong class imbalance (485 cancer / 16,277 controls)
-  and is expected and correctly reported
-- Brier Score = 0.028 (Gradient Boosting) indicates excellent probability calibration
+> **Key findings**: (1) Each layer of orchestration incrementally improves EAS alignment — the full 5-agent pipeline achieves 2.7× higher EAS Jaccard than single-LLM. (2) RAG grounding independently reduces hallucination from 0.208 → 0.151. (3) The full pipeline achieves the lowest hallucination rate (0.094) — a 55% reduction vs single-LLM. See [`results/ablation_results.json`](results/ablation_results.json) and [`fig37_ablation_study`](results/figures/fig37_ablation_study.png).
 
 ---
 
@@ -87,15 +126,17 @@ All subgroup analyses performed on real NHANES data:
 
 | Subgroup | Analysis |
 |---|---|
-| **Cancer type** | AUROC per cancer (lung, liver, colorectal) |
+| **Cancer type** | AUROC per cancer type (lung, liver, colorectal) |
 | **Age group** | AUROC for 18–39, 40–54, 55–64, 65–74, 75+ |
 | **Gender** | AUROC for Male vs Female |
-| **Ethnicity** | AUROC for 6 ethnic groups (Mexican American, Non-Hispanic White, Non-Hispanic Black, Non-Hispanic Asian, Other Hispanic, Other) |
-| **Survey cycle** | AUROC across 2013–14, 2015–16, 2017–18 (temporal generalization) |
+| **Ethnicity** | AUROC across 6 ethnic groups (Mexican American, Non-Hispanic White, Non-Hispanic Black, Non-Hispanic Asian, Other Hispanic, Other) |
+| **Survey cycle** | AUROC across 2013–14, 2015–16, 2017–18 |
 
 ---
 
-## Visualizations (24 Figures — All from Real NHANES Data)
+## Visualizations (37 Figures — All from Real NHANES Data)
+
+### ML Baseline (fig01–fig24)
 
 | Figure | Description |
 |---|---|
@@ -107,8 +148,8 @@ All subgroup analyses performed on real NHANES data:
 | [fig06_calibration](results/figures/fig06_calibration.png) | Calibration reliability diagram |
 | [fig07_confusion_matrix](results/figures/fig07_confusion_matrix.png) | Confusion matrix (best model) |
 | [fig08_risk_distribution](results/figures/fig08_risk_distribution.png) | Predicted risk score distribution |
-| [fig09_feature_importance](results/figures/fig09_feature_importance.png) | Top 20 feature importances |
-| [fig10_cancer_types](results/figures/fig10_cancer_types.png) | Cancer type breakdown |
+| [fig09_feature_importance](results/figures/fig09_feature_importance.png) | Top 20 SHAP/Gini feature importances |
+| [fig10_cancer_types](results/figures/fig10_cancer_types.png) | Cancer type distribution |
 | [fig11_age_distribution](results/figures/fig11_age_distribution.png) | Age: cancer vs controls |
 | [fig12_gender_distribution](results/figures/fig12_gender_distribution.png) | Gender × cancer status |
 | [fig13_ethnicity_distribution](results/figures/fig13_ethnicity_distribution.png) | Ethnicity × cancer status |
@@ -121,20 +162,36 @@ All subgroup analyses performed on real NHANES data:
 | [fig20_auroc_by_ethnicity](results/figures/fig20_auroc_by_ethnicity.png) | Fairness: AUROC by ethnicity |
 | [fig21_auroc_by_cycle](results/figures/fig21_auroc_by_cycle.png) | Generalization across survey cycles |
 | [fig22_threshold_analysis](results/figures/fig22_threshold_analysis.png) | Sensitivity/specificity vs threshold |
-| [fig23_dataset_overview](results/figures/fig23_dataset_overview.png) | Full dataset overview dashboard |
+| [fig23_dataset_overview](results/figures/fig23_dataset_overview.png) | Dataset overview dashboard |
 | [fig24_radar_chart](results/figures/fig24_radar_chart.png) | Multi-model radar chart |
-| [fig25_bootstrap_ci](results/figures/fig25_bootstrap_ci.png) | Bootstrap distribution of AUROC and AUPRC (n=1000) |
-| [fig26_decision_curve_analysis](results/figures/fig26_decision_curve_analysis.png) | Clinical utility and Net Benefit (DCA) |
-| [fig27_permutation_test](results/figures/fig27_permutation_test.png) | Permutation significance testing (n=500) |
-| [fig28_roc_clinical_operating_points](results/figures/fig28_roc_clinical_operating_points.png) | ROC curve with clinical operating points |
+
+### Statistical Validation & Clinical Utility (fig25–fig28)
+
+| Figure | Description |
+|---|---|
+| [fig25_bootstrap_ci](results/figures/fig25_bootstrap_ci.png) | Bootstrap AUROC & AUPRC distributions (n=1000) |
+| [fig26_decision_curve_analysis](results/figures/fig26_decision_curve_analysis.png) | Clinical net benefit / Decision Curve Analysis |
+| [fig27_permutation_test](results/figures/fig27_permutation_test.png) | Permutation significance test (n=500, p=0.002) |
+| [fig28_roc_clinical_operating_points](results/figures/fig28_roc_clinical_operating_points.png) | ROC with clinical operating points at 4 specificities |
+
+### Multi-Agent Consensus & EAS Metrics (fig29–fig36)
+
+| Figure | Description |
+|---|---|
 | [fig29_eas_per_patient](results/figures/fig29_eas_per_patient.png) | EAS Jaccard & Overlap@5 per patient |
-| [fig30_triage_distribution](results/figures/fig30_triage_distribution.png) | LLaMA 3.3 70B triage decisions |
-| [fig31_hallucination_rate](results/figures/fig31_hallucination_rate.png) | Automated clinical hallucination rate per patient |
-| [fig32_risk_vs_eas](results/figures/fig32_risk_vs_eas.png) | Predicted risk vs Explanation Alignment |
-| [fig33_novel_metrics_summary](results/figures/fig33_novel_metrics_summary.png) | Summary dashboard of agentic and validation metrics |
-| [fig34_counterfactual](results/figures/fig34_counterfactual.png) | Counterfactual risk reduction analysis |
-| [fig35_eas_by_cancer_type](results/figures/fig35_eas_by_cancer_type.png) | EAS stratified by target cancer types |
-| [fig36_complete_pipeline](results/figures/fig36_complete_pipeline.png) | Full ML + Multi-Agent Consensus pipeline architecture |
+| [fig30_triage_distribution](results/figures/fig30_triage_distribution.png) | LLaMA 3.3 70B triage decision distribution |
+| [fig31_hallucination_rate](results/figures/fig31_hallucination_rate.png) | Clinical hallucination rate per patient |
+| [fig32_risk_vs_eas](results/figures/fig32_risk_vs_eas.png) | Predicted ML risk score vs EAS |
+| [fig33_novel_metrics_summary](results/figures/fig33_novel_metrics_summary.png) | Consolidated summary of EAS, hallucination, and triage |
+| [fig34_counterfactual](results/figures/fig34_counterfactual.png) | Counterfactual biomarker normalization & risk reduction |
+| [fig35_eas_by_cancer_type](results/figures/fig35_eas_by_cancer_type.png) | EAS stratified by cancer type |
+| [fig36_complete_pipeline](results/figures/fig36_complete_pipeline.png) | Full ML + multi-agent architecture diagram |
+
+### Ablation Study (fig37)
+
+| Figure | Description |
+|---|---|
+| [fig37_ablation_study](results/figures/fig37_ablation_study.png) | Ablation: ML-only → Single LLM → RAG+LLM → Full 5-Agent |
 
 ---
 
@@ -144,38 +201,43 @@ All subgroup analyses performed on real NHANES data:
 Research_biomedical/
 ├── README.md
 ├── requirements.txt
-├── download_nhanes.py              # Step 1: Download real NHANES data (free)
+├── download_nhanes.py              # Step 1: Download real NHANES data (free, no registration)
+├── .env.example                   # API key template (copy to .env)
 │
 ├── data/
-│   └── raw/nhanes/                 # Real NHANES XPT files (CDC)
-│       ├── DEMO_H/I/J.XPT          # Demographics (2013-2018)
-│       ├── CBC_H/I/J.XPT           # Complete Blood Count
-│       ├── BIOPRO_H/I/J.XPT        # Biochemistry Panel
-│       ├── HSCRP_I/J.XPT           # High-Sensitivity CRP
-│       ├── FERTIN_I/J.XPT          # Ferritin
-│       └── MCQ_H/I/J.XPT           # Cancer Questionnaire (MCQ220)
+│   ├── raw/nhanes/                 # Real NHANES XPT files (CDC)
+│   │   ├── DEMO_H/I/J.XPT          # Demographics (2013–2018)
+│   │   ├── CBC_H/I/J.XPT           # Complete Blood Count
+│   │   ├── BIOPRO_H/I/J.XPT        # Biochemistry Panel
+│   │   ├── HSCRP_H/I/J.XPT         # High-Sensitivity CRP
+│   │   ├── FERTIN_H/I/J.XPT        # Ferritin
+│   │   └── MCQ_H/I/J.XPT           # Medical Conditions Questionnaire (MCQ220/MCQ230)
+│   └── processed/
+│       ├── nhanes_features.parquet  # Merged ML-ready feature matrix
+│       └── nhanes_stats.json        # Cohort statistics
 │
 ├── src/
 │   ├── preprocessing/
-│   │   └── nhanes_to_features.py   # Step 2: Merge & process features
+│   │   └── nhanes_to_features.py   # Step 2: Merge & process NHANES features
 │   ├── models/
-│   │   └── train_nhanes.py         # Step 3: Train models + generate 24 figures
+│   │   ├── train_nhanes.py         # Step 3: Train 5 models + generate fig01–fig24
+│   │   └── ablation_study.py       # Step 4: Ablation study (4 conditions) → fig37
 │   └── agents/
-│       └── nhanes_agent_pipeline.py # Step 4: LLaMA 3.3 70B Multi-Agent Triage Pipeline (figures 25-36)
+│       └── nhanes_agent_pipeline.py # Step 5: 5-agent LLM consensus → fig25–fig36
 │
 └── results/
-    ├── nhanes_model_results.json   # Model results (AUROC, AUPRC, F1, Brier)
-    ├── agent_results.json          # Individual patient LLM triage outputs
-    ├── full_results_summary.json   # Consolidated statistical results (Bootstrap CI, DCA, EAS)
-    └── figures/                    # 36 publication-quality figures
+    ├── nhanes_model_results.json   # Per-model AUROC, AUPRC, F1, Brier
+    ├── agent_results.json          # Per-patient LLM triage outputs
+    ├── ablation_results.json       # Ablation condition comparison
+    ├── full_results_summary.json   # Consolidated statistical results
+    └── figures/                    # 37 publication-quality figures
         ├── fig01_roc_curves.png
-        ├── fig02_pr_curves.png
-        └── ... (36 total)
+        └── ... (37 total)
 ```
 
 ---
 
-## Quick Start (Reproduce Everything in ~10 Minutes)
+## Quick Start (Reproduce All Results)
 
 ```bash
 # 1. Clone
@@ -183,53 +245,61 @@ git clone https://github.com/KasimVali2207/Research_biomedical.git
 cd Research_biomedical
 
 # 2. Install dependencies
-pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn pyarrow groq scipy python-dotenv shap
+pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn \
+            pyarrow groq scipy python-dotenv shap
 
-# 3. Configure Groq API Key (for LLM Agents)
-# Create a .env file in the root folder with your console.groq.com API Key:
-echo "GROQ_API_KEY=your_groq_api_key_here" > .env
+# 3. Configure Groq API key (free at console.groq.com)
+cp .env.example .env
+# Edit .env and paste your GROQ_API_KEY
 
-# 4. Download real NHANES data (free, no registration, ~30 MB)
+# 4. Download real NHANES data (~30 MB, no registration required)
 python download_nhanes.py
 
-# 5. Process features
+# 5. Process and merge features
 python -m src.preprocessing.nhanes_to_features
 
-# 6. Train all 5 models + generate 24 figures (~5 minutes)
+# 6. Train all 5 ML models + generate fig01–fig24
 python -m src.models.train_nhanes
 
-# 7. Run 5-agent LLaMA 3.3 consensus pipeline + generate figures 25-36 (~2 minutes)
+# 7. Run ablation study (4 conditions, fig37) — requires Groq API
+python -m src.models.ablation_study
+
+# 8. Run full 5-agent pipeline + generate fig25–fig36 — requires Groq API
 python -m src.agents.nhanes_agent_pipeline
 ```
 
-**That's it.** All 36 publication-ready figures will be in `results/figures/` and metrics in `results/`.
+**Expected outputs**: 37 publication-ready figures in `results/figures/`, all metrics in `results/*.json`.
 
 ---
 
-## Limitations (Stated for Scientific Honesty)
+## Limitations (Stated Explicitly for Scientific Honesty)
 
-1. **Cross-sectional design** — NHANES measures blood tests and cancer status simultaneously; this cannot confirm that abnormal labs preceded diagnosis
-2. **Self-reported cancer** — Cancer status from MCQ220 is patient-reported, not registry-confirmed
-3. **No temporal features** — Only single-timepoint measurements; no slope or trend features possible
-4. **Class imbalance** — 2.9% cancer prevalence causes low AUPRC despite good AUROC
-5. **No imaging or genomic data** — Blood biomarkers only
+1. **Cross-sectional design** — This is the most important limitation. NHANES captures blood values and cancer status at a single time point. The model discriminates prevalent cancer from non-cancer; it **cannot** be interpreted as predicting future cancer onset or serving as an early detection tool without longitudinal validation.
+2. **Self-reported cancer status** — MCQ220 relies on participant recall, not registry or biopsy confirmation, introducing outcome misclassification.
+3. **No temporal biomarker trajectories** — Single time-point measurements only; trend features (velocity, slope) that may carry additional predictive value are not computable from NHANES.
+4. **Class imbalance** — 2.9% cancer prevalence. Low AUPRC (~0.068) is expected and reflects this imbalance; it is reported without inflation.
+5. **No imaging, genomic, or clinical staging data** — Routine blood biomarkers only.
+6. **LLM evaluation sample size** — The multi-agent evaluation was conducted on a subset of patients (n≈9) due to API cost constraints; results should be replicated at larger scale.
 
 ---
 
 ## Citation
 
 ```bibtex
-@article{kasim2025llm_cancer_nhanes,
-  title   = {{LLM-Augmented Multi-Cancer Early Detection from Routine Blood Biomarkers:
-              A Machine Learning and Multi-Agent Clinical Consensus Framework}},
+@article{kasim2025llm_cancer_stratification,
+  title   = {{LLM-Orchestrated Multi-Agent Cancer Risk Stratification from Routine
+              Blood Biomarkers: A Population-Scale Explainability Study with a
+              Novel Explanation Alignment Score}},
   author  = {Kasim Vali},
   journal = {Under Review},
   year    = {2025},
   url     = {https://github.com/KasimVali2207/Research_biomedical},
-  note    = {Population-scale validation on CDC NHANES 2013--2018 (n=16,762, 485 cancer cases).
-             Best model: Gradient Boosting AUROC=0.724 (95\% CI: 0.706--0.744, p=0.002).
-             Novel contributions: 5-Agent LLaMA 3.3 70B Consensus Triage, Explanation
-             Alignment Score (EAS), Clinical Hallucination Rate, Decision Curve Analysis.}
+  note    = {Population-scale cross-sectional validation on CDC NHANES 2013--2018
+             (n=16,762; 485 cancer cases). Best model: Gradient Boosting AUROC=0.724
+             (95\% CI: 0.706--0.744, permutation p=0.002). Novel contributions:
+             Explanation Alignment Score (EAS), 4-condition ablation study of LLM
+             orchestration depth, automated clinical hallucination quantification,
+             Decision Curve Analysis, and population-scale fairness analysis.}
 }
 ```
 
@@ -240,4 +310,4 @@ Apache 2.0 — see [LICENSE](LICENSE)
 
 ---
 
-> **Companion Repository**: The longitudinal temporal biomarker pipeline with MIMIC-IV clinical database data (including temporal trajectory features, slope/velocity metrics, and external validation on eICU) is maintained in a separate repository.
+> **Companion Repository**: The longitudinal temporal biomarker pipeline — including temporal trajectory features (slope, velocity, moving average), MIMIC-IV clinical database cohort extraction, and external validation on eICU — is maintained in a separate repository.

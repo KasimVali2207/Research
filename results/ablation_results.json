@@ -1,0 +1,30 @@
+{
+  "ML Only": {
+    "description": "Gradient Boosting classifier \u2014 no LLM component",
+    "mean_eas_jaccard": 0.0,
+    "mean_eas_overlap_k": 0.0,
+    "mean_hallucination": 1.0,
+    "n_patients": 9
+  },
+  "Single LLM (No RAG)": {
+    "description": "One combined LLM prompt, no evidence grounding",
+    "mean_eas_jaccard": 0.037,
+    "mean_eas_overlap_k": 0.0444,
+    "mean_hallucination": 0.2078,
+    "n_patients": 9
+  },
+  "Single LLM + RAG": {
+    "description": "LLM with PubMed grounding, single agent role",
+    "mean_eas_jaccard": 0.0615,
+    "mean_eas_overlap_k": 0.0889,
+    "mean_hallucination": 0.1511,
+    "n_patients": 9
+  },
+  "Full 5-Agent Pipeline": {
+    "description": "5 specialist agents with RAG consensus",
+    "mean_eas_jaccard": 0.0985,
+    "mean_eas_overlap_k": 0.1333,
+    "mean_hallucination": 0.0944,
+    "n_patients": 9
+  }
+}
