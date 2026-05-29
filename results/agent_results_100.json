@@ -3734,5 +3734,83 @@
     },
     "mode": "parallel_4key",
     "worker": 1
+  },
+  {
+    "eval_idx": 98,
+    "patient_idx": 98,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 28.0,
+    "gender": "F",
+    "risk": 0.0074,
+    "abnormal_features": [
+      "wbc=11.80[HIGH]",
+      "neutrophils=8.00[HIGH]",
+      "potassium=3.30[LOW]",
+      "glucose=187.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 97,
+    "patient_idx": 97,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 26.0,
+    "gender": "F",
+    "risk": 0.0397,
+    "abnormal_features": [
+      "rbc=3.81[LOW]",
+      "hematocrit=35.10[LOW]",
+      "creatinine=0.59[LOW]",
+      "crp=8.50[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
   }
 ]
