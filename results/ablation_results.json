@@ -1,30 +1,200 @@
 {
   "ML Only": {
-    "description": "Gradient Boosting classifier \u2014 no LLM component",
+    "description": "Gradient Boosting, no LLM",
+    "method": "computed",
     "mean_eas_jaccard": 0.0,
     "mean_eas_overlap_k": 0.0,
     "mean_hallucination": 1.0,
-    "n_patients": 9
+    "n": 9
   },
   "Single LLM (No RAG)": {
-    "description": "One combined LLM prompt, no evidence grounding",
-    "mean_eas_jaccard": 0.037,
-    "mean_eas_overlap_k": 0.0444,
-    "mean_hallucination": 0.2078,
-    "n_patients": 9
+    "description": "One combined LLM prompt per patient \u2014 REAL LLM CALLS",
+    "method": "real_llm",
+    "mean_eas_jaccard": 0.1157,
+    "mean_eas_overlap_k": 0.2,
+    "mean_hallucination": 0.0,
+    "n": 9,
+    "patient_results": [
+      {
+        "patient_idx": 290,
+        "cancer_type": "none",
+        "eas_jaccard": 0.1111,
+        "eas_overlap_k": 0.2,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "1. The patient's lab results indicate an increased cancer risk, as evidenced by a high mean corpuscular volume (MCV) of "
+      },
+      {
+        "patient_idx": 37,
+        "cancer_type": "liver",
+        "eas_jaccard": 0.2857,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's abnormal lab values, including a creatinine level of 1.81, BUN of 30.00, NLR of 3.06, and SII of 534.72, i"
+      },
+      {
+        "patient_idx": 967,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's lab results indicate an elevated white blood cell count (WBC) of 18.20, which may suggest an underlying in"
+      },
+      {
+        "patient_idx": 31,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's lab results show a low white blood cell count (wbc=2.90) with decreased neutrophils (1.70) and lymphocytes"
+      },
+      {
+        "patient_idx": 493,
+        "cancer_type": "none",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's low platelet count of 146.00 indicates a potential issue with blood cell production, which can be a sign o"
+      },
+      {
+        "patient_idx": 241,
+        "cancer_type": "colorectal",
+        "eas_jaccard": 0.2,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's lab results indicate a potential oncological concern, with a low red blood cell (RBC) count of 4.00, high "
+      },
+      {
+        "patient_idx": 664,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.2222,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's lab results show a low red blood cell (RBC) count of 3.55, a high mean corpuscular volume (MCV) of 103.40,"
+      },
+      {
+        "patient_idx": 519,
+        "cancer_type": "liver",
+        "eas_jaccard": 0.2222,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "The patient's lab results indicate an elevated white blood cell count (WBC) of 11.30, which may suggest an inflammatory "
+      },
+      {
+        "patient_idx": 135,
+        "cancer_type": "none",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "1. The patient's cancer risk of 38.6% indicates a higher-than-average likelihood of developing cancer, with normal lab r"
+      }
+    ]
   },
   "Single LLM + RAG": {
-    "description": "LLM with PubMed grounding, single agent role",
-    "mean_eas_jaccard": 0.0615,
-    "mean_eas_overlap_k": 0.0889,
-    "mean_hallucination": 0.1511,
-    "n_patients": 9
+    "description": "Evidence-grounded single LLM prompt \u2014 REAL LLM CALLS",
+    "method": "real_llm",
+    "mean_eas_jaccard": 0.0988,
+    "mean_eas_overlap_k": 0.1556,
+    "mean_hallucination": 0.1611,
+    "n": 9,
+    "patient_results": [
+      {
+        "patient_idx": 290,
+        "cancer_type": "none",
+        "eas_jaccard": 0.1111,
+        "eas_overlap_k": 0.2,
+        "hallucination_rate": 0.0,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Published Studies:**\n\nSeveral studies have investigated the relationship between mean corpuscular volume (MCV), pla"
+      },
+      {
+        "patient_idx": 37,
+        "cancer_type": "liver",
+        "eas_jaccard": 0.3333,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.25,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking creatinine, BUN, NLR to cancer detection:**\n\nStudies have investigated the relationship between these labor"
+      },
+      {
+        "patient_idx": 967,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.2,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking WBC, Hemoglobin, Neutrophils to Cancer Detection:**\n\nStudies have investigated the relationship between com"
+      },
+      {
+        "patient_idx": 31,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.6,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking WBC, Neutrophils, Lymphocytes to Cancer Detection:**\n\nStudies have investigated the relationship between co"
+      },
+      {
+        "patient_idx": 493,
+        "cancer_type": "none",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "URGENT",
+        "response_preview": "**1. Linking platelets and NLR to cancer detection:**\n\nStudies have investigated the relationship between platelet count"
+      },
+      {
+        "patient_idx": 241,
+        "cancer_type": "colorectal",
+        "eas_jaccard": 0.2222,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.4,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking RBC, MCV, Glucose to Cancer Detection:**\n\nStudies have investigated the relationship between complete blood"
+      },
+      {
+        "patient_idx": 664,
+        "cancer_type": "lung",
+        "eas_jaccard": 0.2222,
+        "eas_overlap_k": 0.4,
+        "hallucination_rate": 0.0,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking RBC, MCV, Glucose to Cancer Detection:**\n\nStudies have investigated the relationship between complete blood"
+      },
+      {
+        "patient_idx": 519,
+        "cancer_type": "liver",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "UNKNOWN",
+        "response_preview": "**1. Linking WBC, Albumin, AST to Cancer Detection:**\n\nStudies have investigated the relationship between abnormal labor"
+      },
+      {
+        "patient_idx": 135,
+        "cancer_type": "none",
+        "eas_jaccard": 0.0,
+        "eas_overlap_k": 0.0,
+        "hallucination_rate": 0.0,
+        "triage": "MONITOR",
+        "response_preview": "Based on the patient's information, I will provide an assessment of cancer risk and recommendations.\n\n1. Studies linking"
+      }
+    ]
   },
   "Full 5-Agent Pipeline": {
-    "description": "5 specialist agents with RAG consensus",
-    "mean_eas_jaccard": 0.0985,
-    "mean_eas_overlap_k": 0.1333,
-    "mean_hallucination": 0.0944,
-    "n_patients": 9
+    "description": "5 specialist agents with RAG consensus \u2014 REAL LLM CALLS",
+    "method": "real_llm",
+    "mean_eas_jaccard": 0.1096,
+    "mean_eas_overlap_k": 0.1778,
+    "mean_hallucination": 0.0,
+    "n": 9
   }
 }

@@ -110,14 +110,14 @@ where:
 
 Each LLM orchestration layer is evaluated against EAS (alignment) and hallucination rate:
 
-| Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination Rate ↓ |
-|---|---|---|---|---|
-| ML Only | Gradient Boosting, no LLM component | 0.000 | 0.000 | 1.000 |
-| Single LLM (No RAG) | One combined prompt, no evidence grounding | 0.037 | 0.044 | 0.208 |
-| Single LLM + RAG | PubMed-grounded single agent | 0.061 | 0.089 | 0.151 |
-| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.099** | **0.133** | **0.094** |
+| Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination Rate ↓ | Method |
+|---|---|---|---|---|---|
+| ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | Computed |
+| Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | **Real LLM** |
+| Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | **Real LLM** |
+| Full 5-Agent Pipeline | 5 specialist roles + RAG consensus | 0.110 | 0.178 | 0.000 | **Real LLM** |
 
-> **Key findings**: (1) Each layer of orchestration incrementally improves EAS alignment — the full 5-agent pipeline achieves 2.7× higher EAS Jaccard than single-LLM. (2) RAG grounding independently reduces hallucination from 0.208 → 0.151. (3) The full pipeline achieves the lowest hallucination rate (0.094) — a 55% reduction vs single-LLM. See [`results/ablation_results.json`](results/ablation_results.json) and [`fig37_ablation_study`](results/figures/fig37_ablation_study.png).
+> **All ablation conditions used real LLaMA 3.3 70B calls (n=9 patients).** Key honest finding: the full 5-agent pipeline does not uniformly dominate the single-LLM on EAS at n=9 — differences are small and larger patient samples are needed for significance. RAG grounding introduces more hallucination (0.161) than no-RAG conditions (0.000), likely because evidence citations introduce unverifiable numeric claims. See [`results/ablation_results.json`](results/ablation_results.json) and [`fig37_ablation_study`](results/figures/fig37_ablation_study.png).
 
 ---
 
@@ -132,6 +132,19 @@ All subgroup analyses performed on real NHANES data:
 | **Gender** | AUROC for Male vs Female |
 | **Ethnicity** | AUROC across 6 ethnic groups (Mexican American, Non-Hispanic White, Non-Hispanic Black, Non-Hispanic Asian, Other Hispanic, Other) |
 | **Survey cycle** | AUROC across 2013–14, 2015–16, 2017–18 |
+
+### Clinical Operating Points (Bug-Fixed: PPV ≠ Sensitivity)
+
+> ⚠️ **Previously reported**: PPV incorrectly equalled Sensitivity (code bug). Now corrected — PPV is very low (0.06–0.08) because of 2.89% cancer prevalence. This is the honest clinical reality.
+
+| Target Specificity | Sensitivity | PPV | NPV | True Positives | False Positives |
+|---|---|---|---|---|---|
+| 80% | 0.456 | 0.063 | 0.980 | 221 | 3,299 |
+| 85% | 0.371 | 0.066 | 0.978 | 180 | 2,532 |
+| 90% | 0.289 | 0.080 | 0.977 | 140 | 1,627 |
+| 95% | 0.151 | 0.083 | 0.974 | 73 | 811 |
+
+> **Interpretation**: At 90% specificity, the model catches 28.9% of cancer cases with 8% PPV — meaning for every 100 flagged patients, ~8 have cancer. In a 2.89% prevalence setting this is a 2.8× enrichment over random screening. Low PPV is an inherent consequence of low prevalence and is correctly reported.
 
 ---
 

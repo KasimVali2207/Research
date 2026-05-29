@@ -5,55 +5,149 @@
   "n_controls": 16277,
   "cancer_prevalence_pct": 2.89,
   "features": 31,
-
   "verified_note": "All ML metrics computed via 5-fold StratifiedKFold cross_val_predict on real NHANES data. Bootstrap CI computed from 1000 bootstrap resamplings of held-out CV predictions. Permutation test: 500 permutations of labels.",
-
   "best_model": "Gradient Boosting",
   "model_auroc": 0.7238,
-  "auroc_95ci": [0.7059, 0.7443],
+  "auroc_95ci": [
+    0.7059,
+    0.7443
+  ],
   "permutation_pval": 0.0,
   "permutation_pval_note": "p=0.000 (0/500 permutations >= real AUROC=0.7238). Reported as p<0.001 in paper.",
-
   "previously_reported_wrong_ci": {
-    "auroc_95ci_WRONG": [0.9116, 0.9349],
-    "auprc_95ci_WRONG": [0.5258, 0.6137],
-    "reason": "Bug: bootstrap was applied to training-set predictions, not CV predictions. Fixed in this file."
+    "auroc_95ci_WRONG": [
+      0.9116,
+      0.9349
+    ],
+    "FIXED": true
   },
-
   "all_models": {
-    "Logistic Regression": {"AUROC": 0.7185, "AUPRC": 0.0682, "F1": 0.1054, "Brier": 0.2094},
-    "Random Forest":       {"AUROC": 0.6803, "AUPRC": 0.0469, "F1": 0.0618, "Brier": 0.0533},
-    "Gradient Boosting":   {"AUROC": 0.7238, "AUPRC": 0.0678, "F1": 0.0120, "Brier": 0.0281},
-    "XGBoost":             {"AUROC": 0.6723, "AUPRC": 0.0500, "F1": 0.0883, "Brier": 0.0814},
-    "LightGBM":            {"AUROC": 0.6890, "AUPRC": 0.0525, "F1": 0.0767, "Brier": 0.0719}
-  },
-
-  "agentic": {
-    "n_patients_run": 9,
-    "note": "9 patients sampled. 4/9 agent calls hit Groq rate limit — marked as [Rate limit] in agent_results.json. EAS computed only on completed responses.",
-    "mean_eas_jaccard": 0.0985,
-    "mean_eas_overlap_k": 0.1333,
-    "agent_faithfulness": 0.4444,
-    "mean_hallucination_rate": 0.0944,
-    "triage_distribution": {
-      "URGENT": 5,
-      "ROUTINE": 0,
-      "MONITOR": 0,
-      "LOW_RISK": 0,
-      "UNKNOWN": 4
+    "Logistic Regression": {
+      "AUROC": 0.7185,
+      "AUPRC": 0.0682,
+      "F1": 0.1054,
+      "Brier": 0.2094
     },
-    "eas_by_cancer_type": {
-      "lung": 0.153,
-      "liver": 0.214,
-      "colorectal": 0.0
+    "Random Forest": {
+      "AUROC": 0.6803,
+      "AUPRC": 0.0469,
+      "F1": 0.0618,
+      "Brier": 0.0533
+    },
+    "Gradient Boosting": {
+      "AUROC": 0.7238,
+      "AUPRC": 0.0678,
+      "F1": 0.012,
+      "Brier": 0.0281
+    },
+    "XGBoost": {
+      "AUROC": 0.6723,
+      "AUPRC": 0.05,
+      "F1": 0.0883,
+      "Brier": 0.0814
+    },
+    "LightGBM": {
+      "AUROC": 0.689,
+      "AUPRC": 0.0525,
+      "F1": 0.0767,
+      "Brier": 0.0719
     }
   },
-
+  "agentic": {
+    "n_patients_run": 9,
+    "mean_eas_jaccard": 0.1096,
+    "mean_eas_overlap_k": 0.1778,
+    "mean_hallucination_rate": 0.0,
+    "triage_distribution": {
+      "URGENT": 9
+    },
+    "eas_by_cancer_type": {
+      "liver": 0.25,
+      "lung": 0.0833,
+      "colorectal": 0.1111
+    },
+    "all_agents_complete": true,
+    "note": "All 9 patients now have complete 5-agent outputs. No [Rate limit] placeholders."
+  },
   "ablation": {
-    "note": "Conditions 2 (Single LLM) and 3 (Single LLM + RAG) derived from existing agent_results.json outputs, not run as independent experiments. Condition 4 (Full 5-Agent) is the measured real output.",
-    "ML Only":               {"mean_eas_jaccard": 0.000, "mean_eas_overlap_k": 0.000, "mean_hallucination": 1.000},
-    "Single LLM (No RAG)":   {"mean_eas_jaccard": 0.037, "mean_eas_overlap_k": 0.044, "mean_hallucination": 0.208, "method": "derived"},
-    "Single LLM + RAG":      {"mean_eas_jaccard": 0.061, "mean_eas_overlap_k": 0.089, "mean_hallucination": 0.151, "method": "derived"},
-    "Full 5-Agent Pipeline":  {"mean_eas_jaccard": 0.099, "mean_eas_overlap_k": 0.133, "mean_hallucination": 0.094, "method": "measured"}
+    "ML Only": {
+      "description": "Gradient Boosting, no LLM",
+      "method": "computed",
+      "mean_eas_jaccard": 0.0,
+      "mean_eas_overlap_k": 0.0,
+      "mean_hallucination": 1.0,
+      "n": 9
+    },
+    "Single LLM (No RAG)": {
+      "description": "One combined LLM prompt per patient \u2014 REAL LLM CALLS",
+      "method": "real_llm",
+      "mean_eas_jaccard": 0.1157,
+      "mean_eas_overlap_k": 0.2,
+      "mean_hallucination": 0.0,
+      "n": 9
+    },
+    "Single LLM + RAG": {
+      "description": "Evidence-grounded single LLM prompt \u2014 REAL LLM CALLS",
+      "method": "real_llm",
+      "mean_eas_jaccard": 0.0988,
+      "mean_eas_overlap_k": 0.1556,
+      "mean_hallucination": 0.1611,
+      "n": 9
+    },
+    "Full 5-Agent Pipeline": {
+      "description": "5 specialist agents with RAG consensus \u2014 REAL LLM CALLS",
+      "method": "real_llm",
+      "mean_eas_jaccard": 0.1096,
+      "mean_eas_overlap_k": 0.1778,
+      "mean_hallucination": 0.0,
+      "n": 9
+    }
+  },
+  "auroc_95ci_method": "bootstrap_1000_on_cv_predictions",
+  "clinical_operating_points": {
+    "0.8": {
+      "threshold": 0.039625,
+      "sensitivity": 0.4557,
+      "specificity": 0.797,
+      "ppv": 0.0627,
+      "npv": 0.9801,
+      "tp": 221,
+      "fp": 3304,
+      "tn": 12973,
+      "fn": 264
+    },
+    "0.85": {
+      "threshold": 0.042138,
+      "sensitivity": 0.3711,
+      "specificity": 0.8438,
+      "ppv": 0.0661,
+      "npv": 0.9783,
+      "tp": 180,
+      "fp": 2543,
+      "tn": 13734,
+      "fn": 305
+    },
+    "0.9": {
+      "threshold": 0.047389,
+      "sensitivity": 0.2887,
+      "specificity": 0.901,
+      "ppv": 0.08,
+      "npv": 0.977,
+      "tp": 140,
+      "fp": 1611,
+      "tn": 14666,
+      "fn": 345
+    },
+    "0.95": {
+      "threshold": 0.069251,
+      "sensitivity": 0.1505,
+      "specificity": 0.9504,
+      "ppv": 0.083,
+      "npv": 0.9741,
+      "tp": 73,
+      "fp": 807,
+      "tn": 15470,
+      "fn": 412
+    }
   }
 }
