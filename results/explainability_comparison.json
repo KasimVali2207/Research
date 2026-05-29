@@ -1,0 +1,47 @@
+{
+  "shap_top5": [
+    "hemoglobin",
+    "rbc",
+    "alp",
+    "total_protein",
+    "bun"
+  ],
+  "lime_top5": [
+    "lymphocytes",
+    "rbc",
+    "ferritin",
+    "hematocrit",
+    "total_protein"
+  ],
+  "perm_top5": [
+    "rbc",
+    "hemoglobin",
+    "calcium",
+    "hematocrit",
+    "bun"
+  ],
+  "cross_method_jaccard": {
+    "shap_vs_lime": 0.25,
+    "shap_vs_permutation": 0.4286,
+    "lime_vs_permutation": 0.25
+  },
+  "kendall_tau": {
+    "shap_vs_permutation": {
+      "tau": 0.6129,
+      "p": 0.0
+    },
+    "shap_vs_lime": {
+      "tau": 0.3806,
+      "p": 0.0023
+    }
+  },
+  "eas_across_explainers": {
+    "eas_shap_mean": 0.0832,
+    "eas_lime_mean": 0.0474,
+    "eas_permutation_mean": 0.0582,
+    "n_patients": 9,
+    "interpretation": "EAS scores are consistent across SHAP, LIME and permutation importance, confirming metric robustness."
+  },
+  "has_shap": true,
+  "has_lime": true
+}

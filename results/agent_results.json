@@ -46,7 +46,88 @@
         "feature": "creatinine",
         "delta_risk": -0.002
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.1429,
+          "n_extracted": 7,
+          "n_hallucinated": 1,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            4.44,
+            1.5,
+            3.0,
+            0.9,
+            546.67,
+            500.0,
+            123.0
+          ],
+          "hallucinated_numbers": [
+            1.5
+          ]
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.1667,
+          "n_extracted": 6,
+          "n_hallucinated": 1,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            22.0,
+            105.6,
+            123.0,
+            0.9,
+            4.44,
+            546.67
+          ],
+          "hallucinated_numbers": [
+            22.0
+          ]
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 9,
+          "n_hallucinated": 0,
+          "n_grounded": 9,
+          "extracted_numbers": [
+            1.0,
+            4.44,
+            4.44,
+            2.0,
+            0.9,
+            0.9,
+            3.0,
+            546.67,
+            546.67
+          ],
+          "hallucinated_numbers": []
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 1,
+          "n_hallucinated": 0,
+          "n_grounded": 1,
+          "extracted_numbers": [
+            15.3
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.0774,
+      "total_extracted": 23,
+      "total_hallucinated": 2,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 37,
@@ -96,7 +177,110 @@
         "feature": "creatinine",
         "delta_risk": 0.186
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            80.0,
+            5.0,
+            3.06,
+            534.72,
+            1.81,
+            30.0
+          ],
+          "hallucinated_numbers": []
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 5,
+          "n_hallucinated": 0,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            5.0,
+            1.81,
+            30.0,
+            3.06,
+            534.72
+          ],
+          "hallucinated_numbers": []
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            1.0,
+            3.1,
+            2.0,
+            30.0,
+            3.0,
+            1.8
+          ],
+          "hallucinated_numbers": []
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.2381,
+          "n_extracted": 21,
+          "n_hallucinated": 5,
+          "n_grounded": 16,
+          "extracted_numbers": [
+            2.0,
+            1.0,
+            1.63,
+            95.0,
+            1.23,
+            2.15,
+            2.0,
+            432.0,
+            2.11,
+            95.0,
+            1.43,
+            3.11,
+            1.85,
+            95.0,
+            1.24,
+            2.76,
+            3.0,
+            1.73,
+            95.0,
+            1.17,
+            2.56
+          ],
+          "hallucinated_numbers": [
+            1.23,
+            432.0,
+            1.43,
+            1.24,
+            1.17
+          ]
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 5,
+          "n_hallucinated": 0,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            2.0,
+            1.81,
+            30.0,
+            3.06,
+            534.72
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.0476,
+      "total_extracted": 43,
+      "total_hallucinated": 5,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 967,
@@ -146,7 +330,93 @@
         "feature": "creatinine",
         "delta_risk": 0.007
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.2857,
+          "n_extracted": 7,
+          "n_hallucinated": 2,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            46.0,
+            18.2,
+            11.9,
+            15.8,
+            203.0,
+            8.78,
+            2.2
+          ],
+          "hallucinated_numbers": [
+            46.0,
+            2.2
+          ]
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.3333,
+          "n_extracted": 6,
+          "n_hallucinated": 2,
+          "n_grounded": 4,
+          "extracted_numbers": [
+            55.6,
+            18.2,
+            15.8,
+            8.78,
+            64.0,
+            193.0
+          ],
+          "hallucinated_numbers": [
+            55.6,
+            64.0
+          ]
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 8,
+          "n_hallucinated": 0,
+          "n_grounded": 8,
+          "extracted_numbers": [
+            3.0,
+            1.0,
+            8.78,
+            15.8,
+            2.0,
+            203.0,
+            3.0,
+            11.9
+          ],
+          "hallucinated_numbers": []
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.3333,
+          "n_extracted": 3,
+          "n_hallucinated": 1,
+          "n_grounded": 2,
+          "extracted_numbers": [
+            3.0,
+            5.0,
+            55.6
+          ],
+          "hallucinated_numbers": [
+            55.6
+          ]
+        }
+      },
+      "aggregate_rate": 0.2381,
+      "total_extracted": 24,
+      "total_hallucinated": 5,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 31,
@@ -197,7 +467,90 @@
         "feature": "creatinine",
         "delta_risk": -0.008
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.2857,
+          "n_extracted": 7,
+          "n_hallucinated": 2,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            54.0,
+            2.9,
+            1.7,
+            0.9,
+            38.0,
+            1.4,
+            217.78
+          ],
+          "hallucinated_numbers": [
+            54.0,
+            1.4
+          ]
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.1667,
+          "n_extracted": 6,
+          "n_hallucinated": 1,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            1.4,
+            2.9,
+            1.7,
+            0.9,
+            38.0,
+            217.78
+          ],
+          "hallucinated_numbers": [
+            1.4
+          ]
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 7,
+          "n_hallucinated": 0,
+          "n_grounded": 7,
+          "extracted_numbers": [
+            1.0,
+            38.0,
+            2.0,
+            217.8,
+            3.0,
+            2.9,
+            1.7
+          ],
+          "hallucinated_numbers": []
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 4,
+          "n_hallucinated": 0,
+          "n_grounded": 4,
+          "extracted_numbers": [
+            2.9,
+            1.7,
+            0.9,
+            217.78
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.1131,
+      "total_extracted": 24,
+      "total_hallucinated": 3,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 493,
@@ -242,7 +595,91 @@
         "feature": "creatinine",
         "delta_risk": -0.014
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 4,
+          "n_hallucinated": 0,
+          "n_grounded": 4,
+          "extracted_numbers": [
+            77.0,
+            14.3,
+            146.0,
+            3.4
+          ],
+          "hallucinated_numbers": []
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.2222,
+          "n_extracted": 9,
+          "n_hallucinated": 2,
+          "n_grounded": 7,
+          "extracted_numbers": [
+            18.3,
+            146.0,
+            3.4,
+            3.4,
+            1.5,
+            3.0,
+            146.0,
+            150.0,
+            400.0
+          ],
+          "hallucinated_numbers": [
+            1.5,
+            400.0
+          ]
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.1429,
+          "n_extracted": 7,
+          "n_hallucinated": 1,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            1.0,
+            146.0,
+            2.0,
+            3.4,
+            3.0,
+            3.0,
+            146.0
+          ],
+          "hallucinated_numbers": [
+            2.0
+          ]
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.3333,
+          "n_extracted": 3,
+          "n_hallucinated": 1,
+          "n_grounded": 2,
+          "extracted_numbers": [
+            24.0,
+            48.0,
+            18.3
+          ],
+          "hallucinated_numbers": [
+            48.0
+          ]
+        }
+      },
+      "aggregate_rate": 0.1746,
+      "total_extracted": 23,
+      "total_hallucinated": 4,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 241,
@@ -293,7 +730,85 @@
         "feature": "creatinine",
         "delta_risk": -0.008
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 5,
+          "n_hallucinated": 0,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            4.0,
+            3.18,
+            695.65,
+            184.0,
+            5.1
+          ],
+          "hallucinated_numbers": []
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            5.1,
+            4.0,
+            103.8,
+            184.0,
+            3.18,
+            695.65
+          ],
+          "hallucinated_numbers": []
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.1667,
+          "n_extracted": 6,
+          "n_hallucinated": 1,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            1.0,
+            3.2,
+            2.0,
+            4.0,
+            3.0,
+            695.6
+          ],
+          "hallucinated_numbers": [
+            2.0
+          ]
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 5,
+          "n_hallucinated": 0,
+          "n_grounded": 5,
+          "extracted_numbers": [
+            4.0,
+            103.8,
+            184.0,
+            3.18,
+            695.65
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.0417,
+      "total_extracted": 22,
+      "total_hallucinated": 1,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 664,
@@ -342,7 +857,95 @@
         "feature": "creatinine",
         "delta_risk": 0.006
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.2,
+          "n_extracted": 5,
+          "n_hallucinated": 1,
+          "n_grounded": 4,
+          "extracted_numbers": [
+            59.0,
+            3.55,
+            1.2,
+            103.4,
+            557.11
+          ],
+          "hallucinated_numbers": [
+            1.2
+          ]
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.1818,
+          "n_extracted": 11,
+          "n_hallucinated": 2,
+          "n_grounded": 9,
+          "extracted_numbers": [
+            78.6,
+            3.55,
+            4.2,
+            5.9,
+            102.0,
+            557.11,
+            70.0,
+            100.0,
+            500.0,
+            557.11,
+            102.0
+          ],
+          "hallucinated_numbers": [
+            78.6,
+            70.0
+          ]
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.3333,
+          "n_extracted": 6,
+          "n_hallucinated": 2,
+          "n_grounded": 4,
+          "extracted_numbers": [
+            1.0,
+            3.55,
+            2.0,
+            102.0,
+            3.0,
+            557.11
+          ],
+          "hallucinated_numbers": [
+            1.0,
+            3.0
+          ]
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.5,
+          "n_extracted": 2,
+          "n_hallucinated": 1,
+          "n_grounded": 1,
+          "extracted_numbers": [
+            24.0,
+            78.6
+          ],
+          "hallucinated_numbers": [
+            78.6
+          ]
+        }
+      },
+      "aggregate_rate": 0.3038,
+      "total_extracted": 24,
+      "total_hallucinated": 6,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 519,
@@ -392,7 +995,112 @@
         "feature": "creatinine",
         "delta_risk": -0.001
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 7,
+          "n_hallucinated": 0,
+          "n_grounded": 7,
+          "extracted_numbers": [
+            80.0,
+            40.7,
+            11.3,
+            3.3,
+            42.0,
+            1.69,
+            32.0
+          ],
+          "hallucinated_numbers": []
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            40.7,
+            11.3,
+            42.0,
+            1.69,
+            3.3,
+            32.0
+          ],
+          "hallucinated_numbers": []
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            1.0,
+            3.3,
+            2.0,
+            11.3,
+            3.0,
+            42.0
+          ],
+          "hallucinated_numbers": []
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.25,
+          "n_extracted": 20,
+          "n_hallucinated": 5,
+          "n_grounded": 15,
+          "extracted_numbers": [
+            2.0,
+            1.0,
+            1.43,
+            95.0,
+            1.13,
+            1.81,
+            0.63,
+            95.0,
+            0.49,
+            0.81,
+            2.0,
+            2.35,
+            95.0,
+            1.53,
+            3.62,
+            0.64,
+            0.64,
+            95.0,
+            1.0,
+            1.0
+          ],
+          "hallucinated_numbers": [
+            1.43,
+            1.13,
+            0.63,
+            0.64,
+            0.64
+          ]
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 6,
+          "n_hallucinated": 0,
+          "n_grounded": 6,
+          "extracted_numbers": [
+            2.0,
+            11.3,
+            3.3,
+            42.0,
+            1.69,
+            32.0
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.05,
+      "total_extracted": 45,
+      "total_hallucinated": 5,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   },
   {
     "patient_idx": 135,
@@ -432,6 +1140,87 @@
         "feature": "creatinine",
         "delta_risk": -0.012
       }
-    ]
+    ],
+    "hallucination_formal": {
+      "per_agent": {
+        "a1_biomarker": {
+          "hallucination_rate": 0.25,
+          "n_extracted": 4,
+          "n_hallucinated": 1,
+          "n_grounded": 3,
+          "extracted_numbers": [
+            68.0,
+            38.6,
+            40.0,
+            38.6
+          ],
+          "hallucinated_numbers": [
+            68.0
+          ]
+        },
+        "a2_risk": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 2,
+          "n_hallucinated": 0,
+          "n_grounded": 2,
+          "extracted_numbers": [
+            21.2,
+            21.2
+          ],
+          "hallucinated_numbers": []
+        },
+        "a3_differential": {
+          "hallucination_rate": 0.1429,
+          "n_extracted": 14,
+          "n_hallucinated": 2,
+          "n_grounded": 12,
+          "extracted_numbers": [
+            1.0,
+            5.2,
+            3.0,
+            2.0,
+            21.0,
+            1.0,
+            19.0,
+            4.5,
+            2.0,
+            21.0,
+            1.0,
+            3.0,
+            12.1,
+            10.0
+          ],
+          "hallucinated_numbers": [
+            3.0,
+            3.0
+          ]
+        },
+        "a4_evidence": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 0,
+          "n_hallucinated": 0,
+          "n_grounded": 0,
+          "extracted_numbers": [],
+          "hallucinated_numbers": [],
+          "note": "Empty or rate-limited response \u2014 excluded from scoring"
+        },
+        "a5_triage": {
+          "hallucination_rate": 0.0,
+          "n_extracted": 2,
+          "n_hallucinated": 0,
+          "n_grounded": 2,
+          "extracted_numbers": [
+            24.0,
+            21.2
+          ],
+          "hallucinated_numbers": []
+        }
+      },
+      "aggregate_rate": 0.0982,
+      "total_extracted": 22,
+      "total_hallucinated": 3,
+      "tolerance_pct": 15,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance"
+    }
   }
 ]

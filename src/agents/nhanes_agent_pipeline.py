@@ -219,14 +219,25 @@ spec_arr = 1 - fpr_arr
 target_specs = [0.80, 0.85, 0.90, 0.95]
 clinical_points = {}
 for ts in target_specs:
-    idx_s = np.argmin(np.abs(spec_arr - ts))
+    idx_s  = np.argmin(np.abs(spec_arr - ts))
+    thresh = float(thr_arr[idx_s])
+    pred_t = (probs >= thresh).astype(int)
+    tp = int(((pred_t==1)&(y==1)).sum())
+    fp = int(((pred_t==1)&(y==0)).sum())
+    tn = int(((pred_t==0)&(y==0)).sum())
+    fn = int(((pred_t==0)&(y==1)).sum())
+    ppv = tp / (tp + fp) if (tp + fp) > 0 else 0.0   # FIXED: was (probs[y==1]>=thresh).mean() = sensitivity
+    npv = tn / (tn + fn) if (tn + fn) > 0 else 0.0
     clinical_points[ts] = {
         "sensitivity": float(tpr_arr[idx_s]),
         "specificity": float(spec_arr[idx_s]),
-        "threshold":   float(thr_arr[idx_s]),
-        "ppv": float((probs[y==1]>=thr_arr[idx_s]).mean()),
+        "threshold":   thresh,
+        "ppv":         round(ppv, 4),
+        "npv":         round(npv, 4),
+        "tp": tp, "fp": fp, "tn": tn, "fn": fn,
     }
-    print(f"  At Specificity={ts:.0%}: Sensitivity={tpr_arr[idx_s]:.3f}, PPV={clinical_points[ts]['ppv']:.3f}")
+    print(f"  At Specificity={ts:.0%}: Sensitivity={tpr_arr[idx_s]:.3f}, PPV={ppv:.3f}, NPV={npv:.3f}")
+
 
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(fpr_arr, tpr_arr, color="#2196F3", lw=2.5, label=f"GBM (AUROC=0.724, 95%CI {ci['AUROC'][0]:.3f}–{ci['AUROC'][1]:.3f})")

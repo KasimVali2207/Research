@@ -1,0 +1,419 @@
+[
+  {
+    "eval_idx": 0,
+    "patient_idx": 0,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 60.0,
+    "gender": "F",
+    "risk": 0.01,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "Based on the patient's laboratory results, which are all within normal range, there is no indication of an oncological pattern that would suggest the presence of hematological malignancy, with specific values such as a hemoglobin level likely within the range of 12-15.5 g/dL, a white blood cell count within the range of 4.5-11 x10^9/L, and a platelet count within the range of 150-450 x10^9/L. The patient's 1% risk factor is relatively low, and in the absence of any abnormal laboratory findings, such as an elevated lactate dehydrogenase (LDH) level (reference range: 100-190 U/L) or an abnormal complete blood count (CBC), there is no clear evidence to suggest an underlying oncological process at this time.",
+    "a2_risk": "The cancer risk of 1.0% is relatively low, indicating that the individual is at a lower-than-average risk of developing cancer. The fact that all abnormal test results are within normal ranges suggests that there are no significant deviations from expected values that would increase the risk, supporting the low cancer risk assessment of 1.0%.",
+    "a3_differential": "Based on the provided patient information, here's a ranking of cancer likelihood along with a biomarker-specific reason for each:\n\n1. **Colorectal Cancer**: The patient's risk for colorectal cancer is relatively low, but a specific biomarker to consider is the Carcinoembryonic Antigen (CEA) level. Given that all values are within normal range, a CEA level of \u22642.5 ng/mL (which is often considered the upper limit of normal) suggests a low likelihood of colorectal cancer.\n\n2. **Lung Cancer**: For lung cancer, a relevant biomarker could be the Cyfra 21-1 level, which is a fragment of cytokeratin 19 and is sometimes elevated in lung cancer patients. Assuming a normal value, a Cyfra 21-1 level of \u22643.5 ng/mL indicates a lower risk for lung cancer.\n\n3. **Liver Cancer**: The Alpha-Fetoprotein (AFP) level is a biomarker for liver cancer. Given that all values are within normal range, an AFP level of \u226410 ng/mL suggests a low likelihood of liver cancer, particularly hepatocellular carcinoma.\n\nPlease note, these rankings and biomarker values are based on the assumption that",
+    "a4_evidence": "[Chen 2019 Journal of Clinical Laboratory Analysis]: found that low albumin levels, high white blood cell (WBC) counts, and elevated creatinine levels were associated with poor prognosis and increased risk of cancer, particularly in patients with gastrointestinal cancer.\n\n[Li 2020 Oncotarget]: discovered that a combination of low albumin, high WBC, and elevated creatinine was a significant predictor of cancer detection, especially in patients with lung, breast, and colorectal cancer, suggesting that these biomarkers could be used for early cancer screening and diagnosis.",
+    "a5_triage": "TRIAGE: LOW_RISK\nACTION: Schedule routine follow-up\nTIMEFRAME: 1 year\nRATIONALE: The patient's cancer risk is 1.0% and all abnormal test results are within normal range.",
+    "triage": "ROUTINE",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alp",
+      "hemoglobin"
+    ],
+    "hallucination_rate": 0.0454,
+    "hallucination_detail": {
+      "n_extracted": 26,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 1,
+    "patient_idx": 1,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0158,
+    "abnormal_features": [
+      "wbc=11.70[HIGH]",
+      "rbc=4.01[LOW]",
+      "mcv=103.30[HIGH]",
+      "platelets=116.00[LOW]",
+      "monocytes=6.70[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's laboratory results indicate a potential oncological pattern, characterized by an elevated white blood cell (WBC) count of 11.70 (reference range: 4.50-11.00) and an increased monocyte count of 6.70 (reference range: 0.20-0.80), suggesting a possible myelodysplastic syndrome or leukemia. Additionally, the patient's anemic profile, with a low red blood cell (RBC) count of 4.01 (reference range: 4.32-5.72) and a high mean corpuscular volume (MCV) of 103.30 (reference range: 79.0-97.0), along with a low platelet count of 116.00 (reference range: 150-450), further supports this suspicion and warrants further evaluation.",
+    "a2_risk": "The patient's cancer risk of 1.6% is concerning, and their abnormal blood work results, including a high white blood cell count of 11.70, high mean corpuscular volume (MCV) of 103.30, and high monocytes of 6.70, may indicate an underlying condition that warrants further investigation. Additionally, the patient's low red blood cell count of 4.01 and low platelets of 116.00 may also be relevant to their overall health and cancer risk, as these values deviate from normal ranges and could be indicative of an underlying hematological issue.",
+    "a3_differential": "Based on the provided lab results, here are the rankings with one biomarker-specific reason per cancer:\n\n1. **Colorectal cancer**: The patient's high WBC (White Blood Cell) count of 11.70 is a potential indicator of colorectal cancer, as elevated WBC counts can be associated with inflammation and infection, which are common in colorectal cancer.\n\n2. **Lung cancer**: The patient's low RBC (Red Blood Cell) count of 4.01 could be related to lung cancer, as some lung cancer patients may experience anemia due to chronic disease or bleeding, leading to decreased RBC counts.\n\n3. **Liver cancer**: The patient's high MCV (Mean Corpuscular Volume) of 103.30 may be associated with liver cancer, as liver disease can lead to macrocytosis (enlarged red blood cells), resulting in elevated MCV values.\n\nNote: These rankings are based on a single biomarker-specific reason per cancer and should not be considered a comprehensive cancer risk assessment. A thorough evaluation by a healthcare professional is necessary for accurate diagnosis and risk assessment.",
+    "a4_evidence": "[1. Sharma et al. 2019 Journal of Clinical and Diagnostic Research]: The study found that patients with cancer had significantly higher white blood cell (WBC) counts and lower red blood cell (RBC) counts, as well as altered mean corpuscular volume (MCV) values, which could serve as potential biomarkers for cancer detection.\n\n[2. Li et al. 2020 International Journal of Laboratory Hematology]: This study discovered that changes in WBC, RBC, and MCV parameters were associated with an increased risk of cancer, particularly in patients with lymphoma and leukemia, suggesting that routine complete blood count (CBC) tests could aid in early cancer detection and monitoring.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Consult a hematologist for further evaluation and potential bone marrow biopsy\nTIMEFRAME: Immediately\nRATIONALE: The patient's lab results show multiple abnormal values, including a high white blood cell count of 11.70, low red blood cell count of 4.01, high mean corpuscular volume of 103.30, low platelet count of 116.00, and high monocyte count of 6.70, which warrant urgent attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.2,
+    "eas_overlap_k": 0.4,
+    "agent_feats": [
+      "alt",
+      "ast",
+      "mcv",
+      "monocytes",
+      "platelets",
+      "rbc",
+      "wbc"
+    ],
+    "hallucination_rate": 0.0333,
+    "hallucination_detail": {
+      "n_extracted": 32,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 2,
+    "patient_idx": 2,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 47.0,
+    "gender": "F",
+    "risk": 0.095,
+    "abnormal_features": [
+      "nlr=1.16[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, a 47-year-old female with a 9.5% risk profile, presents with a notably low Neutrophil-to-Lymphocyte Ratio (NLR) of 1.16, which falls below the typical reference range of 1.5-5.0, suggesting a potential inflammatory or immune response alteration. The abnormal NLR value, being significantly lower than the reference range, may indicate a unique oncological pattern, although further evaluation is necessary to determine the underlying cause and clinical significance of this finding, considering the patient's overall risk profile and laboratory results.",
+    "a2_risk": "The calculated cancer risk of 9.5% indicates a relatively low to moderate likelihood of cancer presence, however, the neutrophil-to-lymphocyte ratio (NLR) of 1.16 is lower than the typical normal range, suggesting a potential deviation from expected immune response values. The low NLR value may warrant further investigation, as it deviates from the normal range, potentially indicating an underlying condition or inflammatory response that could be contributing to the calculated cancer risk of 9.5%.",
+    "a3_differential": "Based on the provided information, here are biomarker-specific reasons for each cancer, citing exact values:\n\n1. **Colorectal Cancer**: The patient's Neutrophil-to-Lymphocyte Ratio (NLR) is 1.16, which is considered low. However, a low NLR is not typically associated with an increased risk of colorectal cancer. Nevertheless, I will provide a reason related to NLR. Some studies suggest that an elevated NLR (usually above 3-5) is associated with poor prognosis in colorectal cancer. Although the patient's NLR is low (1.16), it's essential to monitor and investigate other biomarkers, such as CEA (Carcinoembryonic Antigen) or CA 19-9, for a more accurate assessment.\n\n2. **Lung Cancer**: The patient's risk percentage is 9.5%, which is relatively high. One biomarker-specific reason for lung cancer is the presence of low NLR values, which have been associated with a better prognosis in non-small cell lung cancer (NSCLC). However, it's crucial to consider other biomarkers, such as CYFRA 21-1 (a fragment of cytokeratin",
+    "a4_evidence": "[Shi et al. 2019 Journal of Clinical Oncology]: Found that elevated NLR (neutrophil-to-lymphocyte ratio) is associated with poor prognosis in various types of cancer, including breast, lung, and colorectal cancer.\n\n[Templeton et al. 2014 Journal of the National Cancer Institute]: Discovered that a high NLR is linked to increased risk of cancer recurrence and reduced overall survival in patients with colorectal cancer, suggesting its potential as a biomarker for cancer detection and monitoring.",
+    "a5_triage": "TRIAGE: MONITOR\nACTION: Schedule a follow-up appointment for further evaluation\nTIMEFRAME: Within the next 3-6 months\nRATIONALE: The patient's cancer risk is 9.5% and has a low NLR of 1.16, indicating a need for continued monitoring.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "nlr"
+    ],
+    "hallucination_rate": 0.05,
+    "hallucination_detail": {
+      "n_extracted": 23,
+      "n_hallucinated": 1,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 3,
+    "patient_idx": 3,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0218,
+    "abnormal_features": [
+      "creatinine=1.29[HIGH]",
+      "bun=30.00[HIGH]",
+      "sii=522.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, an 80-year-old male, presents with abnormal laboratory values, including elevated creatinine at 1.29 (reference range: 0.6-1.2 mg/dL) and BUN at 30.00 (reference range: 6-24 mg/dL), indicating impaired renal function. The significantly elevated sII (soluble interleukin-2 receptor) at 522.00 (reference range: 223-710 U/mL, but considering the context, this value is notably high, suggesting potential lymphoproliferative disorder or other malignancies, although the upper limit of normal can vary by lab) warrants further investigation for a possible underlying oncological condition, particularly given the patient's 2.2% risk profile.",
+    "a2_risk": "The patient's cancer risk is relatively low at 2.2%, but their kidney function appears to be compromised, as evidenced by elevated creatinine (1.29, above the normal range) and BUN (30.00, above the normal range) levels, which may indicate impaired renal function. Additionally, the significantly elevated SII (522.00) suggests a potential inflammatory or infectious process, which, in conjunction with the abnormal kidney function tests, warrants further investigation to determine the underlying cause and potential impact on the patient's overall health and cancer risk.",
+    "a3_differential": "Based on the provided patient data, here are biomarker-specific reasons for each cancer, citing exact values:\n\n1. **Colorectal Cancer**: Elevated BUN (30.00) may indicate dehydration or kidney issues, which can be associated with colorectal cancer, particularly if the cancer is causing a bowel obstruction. However, a more specific biomarker for colorectal cancer is not provided in the given data.\n\n2. **Lung Cancer**: The high SII (522.00) value could be indicative of inflammation or tumor activity, which is often seen in lung cancer patients. Elevated SII values have been associated with poor prognosis in various cancers, including lung cancer.\n\n3. **Liver Cancer**: The elevated creatinine (1.29) may suggest impaired liver function, as the liver plays a role in regulating creatinine levels. Liver cancer can lead to liver dysfunction, resulting in elevated creatinine levels. However, it's essential to note that creatinine is not a specific biomarker for liver cancer, and other liver function tests would be more informative.",
+    "a4_evidence": "[Johnson 2018 Journal of Clinical Oncology]: Elevated serum creatinine and blood urea nitrogen (BUN) levels were associated with poor prognosis in patients with renal cell carcinoma, suggesting their potential role in cancer detection.\n\n[Chen 2020 European Journal of Cancer]: The Systemic Immune-Inflammation Index (SII), which is calculated using lymphocyte, neutrophil, and platelet counts, was found to be a significant predictor of overall survival in patients with hepatocellular carcinoma, and its combination with creatinine and BUN levels improved the accuracy of cancer detection.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Refer to a nephrologist for further evaluation\nTIMEFRAME: Immediately\nRATIONALE: The patient's high creatinine level of 1.29, elevated BUN of 30.00, and increased SII of 522.00 indicate a potential kidney issue that requires prompt attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.2857,
+    "eas_overlap_k": 0.4,
+    "agent_feats": [
+      "alt",
+      "bun",
+      "creatinine",
+      "sii"
+    ],
+    "hallucination_rate": 0.1042,
+    "hallucination_detail": {
+      "n_extracted": 25,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 4,
+    "patient_idx": 4,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 60.0,
+    "gender": "F",
+    "risk": 0.1232,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "Based on the patient's profile, with an age of 60.0 years, female sex, and a risk score of 12.3%, the oncological pattern does not indicate any abnormal laboratory findings, as all lab results are within normal ranges. The lack of abnormal lab results, such as elevated white blood cell counts (normal range: 4.5-11.0 x10^9/L) or platelet counts (normal range: 150-450 x10^9/L), suggests that there are no overt hematological malignancies or disorders present at this time, but the 12.3% risk score warrants further evaluation and monitoring.",
+    "a2_risk": "The calculated cancer risk of 12.3% indicates a slightly elevated likelihood of cancer presence, despite all abnormal test results being within normal ranges, suggesting that the risk is not solely driven by overtly abnormal values. The fact that all abnormal results are within normal ranges implies that the 12.3% risk is likely driven by subtle patterns or combinations of factors that do not individually exceed normal thresholds, warranting further investigation to determine the underlying causes of this elevated risk.",
+    "a3_differential": "Based on the provided information, here's a ranking of cancer likelihood with a biomarker-specific reason per cancer:\n\n1. **Colorectal cancer**: The patient's age (60.0) is a significant risk factor, as the majority of colorectal cancer cases occur in people over 50. For example, the fecal occult blood test (FOBT) is often used as a screening tool, and a hemoglobin level of >100 ng/mL is considered abnormal, indicating potential colorectal cancer. However, since all test results are within normal range, we can't pinpoint an exact biomarker value, but age remains a crucial factor.\n\n2. **Lung cancer**: Although the patient's sex (F) is a factor, with women being more likely to develop lung cancer than men, especially if they are non-smokers, a specific biomarker value is the CYFRA 21-1 level. Elevated CYFRA 21-1 (>3.5 ng/mL) is associated with an increased risk of lung cancer. Without an exact value, we can't confirm an elevated level, but it's essential to monitor.\n\n3. **Liver cancer**: The patient's risk percentage (12.3%) is relatively high, but",
+    "a4_evidence": "[Chen 2019 Journal of Clinical Laboratory Analysis]: found that low albumin levels, high white blood cell (WBC) counts, and elevated creatinine levels were associated with poor prognosis and increased risk of cancer, particularly in patients with gastrointestinal cancer.\n\n[Li 2020 Oncotarget]: discovered that a combination of low albumin, high WBC, and elevated creatinine was a significant predictor of cancer detection, especially in patients with lung, breast, and colorectal cancer, suggesting that these biomarkers could be used for early cancer screening and diagnosis.",
+    "a5_triage": "TRIAGE: MONITOR\nACTION: Schedule a follow-up appointment\nTIMEFRAME: 6 months\nRATIONALE: The patient's cancer risk is 12.3%, which although relatively high, does not necessitate urgent action given that all other abnormal test results are within normal range.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "hemoglobin"
+    ],
+    "hallucination_rate": 1.0,
+    "hallucination_detail": {
+      "n_extracted": 25,
+      "n_hallucinated": 25,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 5,
+    "patient_idx": 5,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 77.0,
+    "gender": "M",
+    "risk": 0.0395,
+    "abnormal_features": [
+      "rbc=4.06[LOW]",
+      "neutrophils=1.70[LOW]",
+      "creatinine=1.50[HIGH]",
+      "crp=7.13[HIGH]",
+      "nlr=1.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, a 77-year-old male, presents with a low red blood cell (RBC) count of 4.06, which is below the normal range, indicating potential anemia, alongside low neutrophils at 1.70, suggesting a possible infection or bone marrow disorder. The elevated creatinine level of 1.50 and high C-reactive protein (CRP) at 7.13, combined with a low neutrophil-to-lymphocyte ratio (NLR) of 1.00, may indicate a chronic inflammatory state or possible malignancy, warranting further investigation, particularly given the patient's elevated risk profile of 3.9%.",
+    "a2_risk": "The patient's cancer risk is estimated to be 3.9%, which is a relatively low probability, but their laboratory results indicate some abnormal values that may warrant further investigation, including a low red blood cell count of 4.06, low neutrophils at 1.70, and elevated creatinine at 1.50, as well as high CRP at 7.13. The low neutrophil-to-lymphocyte ratio (NLR) of 1.00, which is below the normal range, may also be a factor to consider, although the low NLR value in this case is not typically associated with increased cancer risk, and the high CRP and creatinine levels may be indicative of inflammation or kidney dysfunction rather than cancer.",
+    "a3_differential": "Based on the provided lab results, here's a ranking of cancer likelihood with one biomarker-specific reason per cancer:\n\n1. **Colorectal cancer**: The patient's low neutrophils (1.70) may not be directly related to colorectal cancer. However, considering the patient's age (77.0) and elevated CRP (7.13), which can indicate inflammation, colorectal cancer is a possibility. The elevated CRP can be associated with various conditions, including colorectal cancer.\n\n2. **Lung cancer**: The patient's low NLR (1.00) is not typically associated with lung cancer, as an elevated NLR is often seen in lung cancer patients. However, the patient's elevated CRP (7.13) can be related to lung cancer, as chronic inflammation is a known risk factor.\n\n3. **Liver cancer**: The patient's high creatinine (1.50) may indicate impaired kidney function, which can be a consequence of liver disease, including liver cancer. Elevated creatinine levels can be associated with liver cancer, especially in older adults.\n\nNote: These rankings are based on limited information and should not be considered a definitive diagnosis. A comprehensive medical evaluation, including additional tests and clinical",
+    "a4_evidence": "[Seidel et al., 2018, Journal of Clinical Oncology]: Elevated red blood cell (RBC) distribution width and neutrophil-to-lymphocyte ratio, along with increased creatinine levels, were associated with poor prognosis and reduced overall survival in patients with renal cell carcinoma.\n\n[Lopez-Otin et al., 2013, Nature Medicine]: A study of 1,019 cancer patients found that elevated levels of creatinine, RBC, and neutrophils were linked to the presence of cancer, particularly in the cases of colorectal, breast, and lung cancers, suggesting that these biomarkers may be useful in cancer detection and diagnosis.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Consult a healthcare professional for further evaluation and possible treatment\nTIMEFRAME: Immediately\nRATIONALE: The patient's lab results show abnormal values, including low rbc (4.06) and neutrophils (1.70), high creatinine (1.50) and crp (7.13), and low nlr (1.00), which require prompt medical attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.2222,
+    "eas_overlap_k": 0.4,
+    "agent_feats": [
+      "alt",
+      "creatinine",
+      "crp",
+      "neutrophils",
+      "nlr",
+      "rbc"
+    ],
+    "hallucination_rate": 0.0556,
+    "hallucination_detail": {
+      "n_extracted": 27,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 6,
+    "patient_idx": 6,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0589,
+    "abnormal_features": [
+      "creatinine=1.81[HIGH]",
+      "bun=30.00[HIGH]",
+      "nlr=3.06[HIGH]",
+      "sii=534.72[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, an 80-year-old male with a 5.9% risk, presents with abnormal laboratory results, including elevated creatinine (1.81, reference range: 0.6-1.2 mg/dL) and BUN (30.00, reference range: 6-24 mg/dL), indicating impaired renal function. Additionally, the patient's NLR (3.06, reference range: 0.78-2.38) and SII (534.72, reference range: 0-500) are elevated, suggesting a potential inflammatory and oncological process, although further evaluation is needed to determine the underlying cause of these abnormalities.",
+    "a2_risk": "The patient's cancer risk of 5.9% is concerning, and when considered in conjunction with abnormal lab results, including elevated creatinine (1.81, indicating impaired kidney function) and BUN (30.00, suggesting potential kidney stress), it warrants closer examination. Additionally, the high NLR (3.06) and SII (534.72) values, which exceed normal ranges, may indicate a heightened state of inflammation and immune system activation, potentially correlating with the increased cancer risk and necessitating further investigation and monitoring.",
+    "a3_differential": "Based on the provided patient data, here are biomarker-specific reasons for each cancer type, along with exact values:\n\n1. **Colorectal Cancer**: Elevated NLR (Neutrophil-to-Lymphocyte Ratio) of 3.06 is associated with a higher risk of colorectal cancer. An NLR above 3 is considered high and has been linked to poor prognosis in colorectal cancer patients.\n\n2. **Lung Cancer**: The patient's high BUN (Blood Urea Nitrogen) level of 30.00 is a concern. Elevated BUN levels have been observed in patients with lung cancer, particularly in those with advanced disease. A BUN level above 25 is considered abnormal and may indicate poor renal function or other underlying conditions that could be related to lung cancer.\n\n3. **Liver Cancer**: The patient's high creatinine level of 1.81 is a biomarker-specific reason for concern. Elevated creatinine levels can indicate liver dysfunction, which is a risk factor for liver cancer. A creatinine level above 1.2 is considered abnormal, and the patient's level of 1.81 suggests impaired liver function that may be related to liver cancer.",
+    "a4_evidence": "[Choi et al. 2018 Journal of Clinical Oncology]: Elevated creatinine and BUN levels were associated with poor prognosis in patients with renal cell carcinoma, and the neutrophil-to-lymphocyte ratio (NLR) was a significant predictor of overall survival.\n\n[Demir et al. 2020 European Journal of Cancer]: The study found that high NLR, creatinine, and BUN levels were significantly associated with advanced tumor stage and poor overall survival in patients with colorectal cancer, suggesting that these biomarkers may be useful in detecting and monitoring cancer progression.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Consult a nephrologist for further evaluation and potential kidney function tests\nTIMEFRAME: Immediately\nRATIONALE: The patient's high creatinine level of 1.81, elevated BUN of 30.00, high NLR of 3.06, and elevated SII of 534.72 indicate potential kidney dysfunction requiring prompt attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.25,
+    "eas_overlap_k": 0.4,
+    "agent_feats": [
+      "alt",
+      "bun",
+      "creatinine",
+      "nlr",
+      "sii"
+    ],
+    "hallucination_rate": 0.0635,
+    "hallucination_detail": {
+      "n_extracted": 32,
+      "n_hallucinated": 3,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 7,
+    "patient_idx": 7,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 73.0,
+    "gender": "M",
+    "risk": 0.024,
+    "abnormal_features": [
+      "rbc=3.78[LOW]",
+      "hemoglobin=11.10[LOW]",
+      "hematocrit=33.80[LOW]",
+      "platelets=86.00[LOW]",
+      "albumin=2.80[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient presents with a pancytopenic pattern, characterized by low red blood cell count (RBC) of 3.78 (reference range: 4.32-5.72 million cells/\u03bcL), low hemoglobin level of 11.10 (reference range: 13.5-17.5 g/dL), low hematocrit of 33.80 (reference range: 40.7-50.3%), and low platelet count of 86.00 (reference range: 150-450 thousand/\u03bcL), suggesting a potential underlying bone marrow disorder. Additionally, the patient's low albumin level of 2.80 (reference range: 3.4-5.4 g/dL) may indicate malnutrition or liver dysfunction, which can be associated with various oncological conditions, particularly in the context of the patient's age (73.0 years) and risk profile (2.4%).",
+    "a2_risk": "The patient's cancer risk is estimated to be 2.4%, which is a relatively low probability, but their laboratory results indicate several abnormal values, including low red blood cell count (3.78), hemoglobin (11.10), hematocrit (33.80), and platelets (86.00), as well as low albumin (2.80), suggesting potential underlying conditions that may require further investigation. The deviation of these values from normal ranges, such as the low hemoglobin and hematocrit, which are typically expected to be above 13.5 and 40.7, respectively, may indicate anemia or other hematological disorders that could be contributing to the patient's overall health risk profile.",
+    "a3_differential": "Based on the provided lab results, here's a ranking of cancer likelihood with one biomarker-specific reason per cancer, citing exact values:\n\n1. **Colorectal cancer**: Low hemoglobin level (11.10) is a biomarker-specific reason, as colorectal cancer can cause chronic blood loss leading to anemia. The patient's low hemoglobin value is below the normal range, which could indicate a possible gastrointestinal bleed, a common symptom of colorectal cancer.\n\n2. **Lung cancer**: Low albumin level (2.80) is a biomarker-specific reason, as lung cancer can cause paraneoplastic syndromes, including hypoalbuminemia. The patient's albumin value is significantly low, which could be related to lung cancer's effect on liver function and nutrition.\n\n3. **Liver cancer**: Low platelet count (86.00) is a biomarker-specific reason, as liver cancer can cause splenic sequestration due to portal hypertension, leading to thrombocytopenia. The patient's low platelet count could indicate liver dysfunction or cirrhosis, which is a risk factor for liver cancer.\n\nNote: These rankings are based on a single biomarker-specific reason per cancer and should not",
+    "a4_evidence": "[Chen 2019 Journal of Clinical Oncology]: Lower red blood cell (RBC) count, hemoglobin, and hematocrit levels were associated with poor prognosis in patients with lung cancer.\n\n[Barcellini 2018 American Journal of Clinical Pathology]: Anemia, characterized by low RBC count, hemoglobin, and hematocrit, was found to be a common condition in patients with various types of cancer, including colorectal, breast, and lung cancer, and was associated with advanced disease stage and poor survival outcomes.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Conduct further blood tests and consult a hematologist\nTIMEFRAME: Immediately\nRATIONALE: The patient's lab results show multiple abnormal values, including low red blood cell count (3.78), low hemoglobin (11.10), low hematocrit (33.80), low platelets (86.00), and low albumin (2.80), indicating a potential severe underlying condition.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0909,
+    "eas_overlap_k": 0.2,
+    "agent_feats": [
+      "albumin",
+      "alt",
+      "ast",
+      "hematocrit",
+      "hemoglobin",
+      "platelets",
+      "rbc"
+    ],
+    "hallucination_rate": 0.0754,
+    "hallucination_detail": {
+      "n_extracted": 36,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 8,
+    "patient_idx": 8,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0177,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "Given the patient's age of 80.0 years and sex of male, with a risk score of 1.8%, the oncological pattern appears to be relatively low-risk, as the patient's laboratory values are all within normal ranges, such as a hemoglobin level likely between 13.5-17.5 g/dL, hematocrit between 40-54%, and platelet count between 150-450 x10^9/L. The absence of abnormal lab results, including a normal white blood cell count (4-11 x10^9/L), suggests that there is no overt indication of hematological malignancy at this time, although close monitoring may still be warranted given the patient's age and risk profile.",
+    "a2_risk": "The calculated cancer risk of 1.8% is slightly elevated, indicating a higher-than-average likelihood of cancer presence, although all abnormal test results are within normal ranges, suggesting that the risk is not excessively high. The fact that all abnormal results are within normal ranges implies that the 1.8% risk is not driven by significantly abnormal values, but rather by subtle patterns or combinations of results that, when considered together, contribute to an increased risk profile.",
+    "a3_differential": "Based on the provided information, here's a ranking of cancer likelihood with a biomarker-specific reason per cancer:\n\n1. **Colorectal cancer**: The patient's age (80.0) is a significant risk factor, but a specific biomarker to consider is the Carcinoembryonic Antigen (CEA) level. Although not provided, a normal CEA level is typically below 3.0 ng/mL. If the patient's CEA level is within this range (e.g., 2.5 ng/mL), it might suggest a lower likelihood of colorectal cancer.\n\n2. **Lung cancer**: A biomarker to consider is the Cyfra 21-1 level, which is a fragment of cytokeratin 19. A normal Cyfra 21-1 level is typically below 3.3 ng/mL. If the patient's Cyfra 21-1 level is within this range (e.g., 2.8 ng/mL), it might indicate a lower likelihood of lung cancer.\n\n3. **Liver cancer**: A biomarker to consider is the Alpha-Fetoprotein (AFP) level. A normal AFP level is typically below 10.9 ng/mL. If the patient's AFP",
+    "a4_evidence": "[Chen 2019 Journal of Clinical Laboratory Analysis]: The study found that low albumin levels, high white blood cell (WBC) counts, and elevated creatinine levels were associated with poor prognosis and cancer detection in patients with lung cancer.\n\n[Li 2020 Oncotarget]: The research discovered that a combination of low albumin, high WBC, and elevated creatinine levels could serve as a potential biomarker for predicting cancer risk and detecting cancer, particularly in patients with colorectal cancer.",
+    "a5_triage": "TRIAGE: LOW_RISK\nACTION: Schedule routine follow-up\nTIMEFRAME: 1 year\nRATIONALE: The patient's cancer risk is 1.8% and all abnormal test results are within normal range.",
+    "triage": "ROUTINE",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alp",
+      "alt",
+      "hematocrit",
+      "hemoglobin"
+    ],
+    "hallucination_rate": 1.0,
+    "hallucination_detail": {
+      "n_extracted": 32,
+      "n_hallucinated": 32,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 9,
+    "patient_idx": 9,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 44.0,
+    "gender": "F",
+    "risk": 0.0136,
+    "abnormal_features": [
+      "crp=6.18[HIGH]",
+      "plr=159.50[HIGH]",
+      "sii=701.80[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, a 44-year-old female with a 1.4% risk, presents with an elevated C-reactive protein (CRP) level of 6.18, which is above the normal reference range, indicating inflammation. Additionally, her platelet-to-lymphocyte ratio (PLR) is 159.50, and systemic immune-inflammation index (SII) is 701.80, both of which are significantly elevated, suggesting a potential oncological pattern associated with chronic inflammation, with these values exceeding the normal ranges for CRP (typically < 0.5-1 mg/dL), PLR (typically < 150), and SII (typically < 400-500).",
+    "a2_risk": "The patient's cancer risk is estimated to be 1.4%, which is a relatively low probability, but the presence of abnormal inflammatory markers, including a high C-reactive protein (CRP) level of 6.18, a high platelet-to-lymphocyte ratio (PLR) of 159.50, and a high systemic immune-inflammation index (SII) of 701.80, may indicate an increased risk of underlying malignancy. These values are significantly elevated above normal ranges, with CRP, PLR, and SII levels exceeding normal limits, suggesting a potential inflammatory response that may be associated with cancer development, and warrant further investigation to determine the underlying cause of these abnormalities.",
+    "a3_differential": "Based on the provided information, here are biomarker-specific reasons for each cancer type, along with exact values:\n\n1. **Colorectal Cancer**: Elevated C-Reactive Protein (CRP) level of 6.18 mg/L is a biomarker-specific reason. High CRP levels have been associated with increased inflammation, which is a known risk factor for colorectal cancer.\n\n2. **Lung Cancer**: Elevated Platelet-to-Lymphocyte Ratio (PLR) of 159.50 is a biomarker-specific reason. A high PLR has been linked to poor prognosis and increased risk of lung cancer, possibly due to the role of platelets in tumor growth and metastasis.\n\n3. **Liver Cancer**: Elevated Systemic Immune-Inflammation Index (SII) of 701.80 is a biomarker-specific reason. A high SII, which is calculated based on platelet, lymphocyte, and neutrophil counts, has been associated with increased risk of liver cancer, possibly due to the role of chronic inflammation in liver carcinogenesis.",
+    "a4_evidence": "[Proctor et al. 2011 Journal of Clinical Oncology]: Elevated C-reactive protein (CRP) levels are associated with poor prognosis in patients with cancer, and CRP can be used as a marker for cancer detection and monitoring.\n\n[Wei et al. 2020 International Journal of Cancer]: The combination of platelet-to-lymphocyte ratio (PLR) and systemic immune-inflammation index (SII) can be used as a prognostic factor for cancer, with higher values indicating poorer overall survival, and these markers can aid in the early detection and treatment of cancer.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Immediate medical evaluation and further testing\nTIMEFRAME: As soon as possible\nRATIONALE: The patient's high levels of CRP (6.18), PLR (159.50), and SII (701.80) indicate a potential serious underlying condition that requires prompt attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "ast",
+      "crp",
+      "platelets",
+      "plr",
+      "sii"
+    ],
+    "hallucination_rate": 0.2708,
+    "hallucination_detail": {
+      "n_extracted": 23,
+      "n_hallucinated": 8,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  }
+]
