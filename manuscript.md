@@ -2,7 +2,7 @@
 
 **Author**: Kasim Vali Dudekula  
 **Affiliation**: Independent Student Researcher, Andhra Pradesh, India  
-**Correspondence**: dudekula.kasimvali@outlook.com  
+**Correspondence**: kasim.22bcb7285@vitapstudent.ac.in  
 **Journal Target**: *npj Digital Medicine*  
 **Category**: Original Article  
 

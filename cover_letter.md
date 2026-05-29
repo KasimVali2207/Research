@@ -1,7 +1,7 @@
 Kasim Vali Dudekula
 Independent Student Researcher
 Andhra Pradesh, India
-dudekula.kasimvali@outlook.com
+kasim.22bcb7285@vitapstudent.ac.in
 
 May 29, 2026
 
@@ -35,4 +35,4 @@ Sincerely,
 Kasim Vali Dudekula  
 Independent Student Researcher  
 Andhra Pradesh, India  
-dudekula.kasimvali@outlook.com
+kasim.22bcb7285@vitapstudent.ac.in
