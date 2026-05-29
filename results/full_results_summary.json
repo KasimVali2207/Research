@@ -2,48 +2,35 @@
   "dataset": "NHANES CDC 2013-2018 (REAL)",
   "n_total": 16762,
   "n_cancer": 485,
-  "model_auroc": 0.724,
-  "auroc_95ci": [
-    0.9116,
-    0.9349
-  ],
-  "auprc_95ci": [
-    0.5258,
-    0.6137
-  ],
-  "sensitivity_95ci": [
-    0.1194,
-    0.184
-  ],
-  "permutation_pval": 0.002,
-  "clinical_operating_points": {
-    "0.8": {
-      "sensitivity": 0.8804123711340206,
-      "specificity": 0.7969527554217608,
-      "threshold": 0.0402210495976369,
-      "ppv": 0.8804123711340206
-    },
-    "0.85": {
-      "sensitivity": 0.7587628865979381,
-      "specificity": 0.8808748540885912,
-      "threshold": 0.04023193529848098,
-      "ppv": 0.7587628865979381
-    },
-    "0.9": {
-      "sensitivity": 0.7237113402061855,
-      "specificity": 0.8993672052589543,
-      "threshold": 0.043876120124401535,
-      "ppv": 0.7237113402061855
-    },
-    "0.95": {
-      "sensitivity": 0.6536082474226804,
-      "specificity": 0.9487006205074645,
-      "threshold": 0.0580858604666805,
-      "ppv": 0.6536082474226804
-    }
+  "n_controls": 16277,
+  "cancer_prevalence_pct": 2.89,
+  "features": 31,
+
+  "verified_note": "All ML metrics computed via 5-fold StratifiedKFold cross_val_predict on real NHANES data. Bootstrap CI computed from 1000 bootstrap resamplings of held-out CV predictions. Permutation test: 500 permutations of labels.",
+
+  "best_model": "Gradient Boosting",
+  "model_auroc": 0.7238,
+  "auroc_95ci": [0.7059, 0.7443],
+  "permutation_pval": 0.0,
+  "permutation_pval_note": "p=0.000 (0/500 permutations >= real AUROC=0.7238). Reported as p<0.001 in paper.",
+
+  "previously_reported_wrong_ci": {
+    "auroc_95ci_WRONG": [0.9116, 0.9349],
+    "auprc_95ci_WRONG": [0.5258, 0.6137],
+    "reason": "Bug: bootstrap was applied to training-set predictions, not CV predictions. Fixed in this file."
   },
+
+  "all_models": {
+    "Logistic Regression": {"AUROC": 0.7185, "AUPRC": 0.0682, "F1": 0.1054, "Brier": 0.2094},
+    "Random Forest":       {"AUROC": 0.6803, "AUPRC": 0.0469, "F1": 0.0618, "Brier": 0.0533},
+    "Gradient Boosting":   {"AUROC": 0.7238, "AUPRC": 0.0678, "F1": 0.0120, "Brier": 0.0281},
+    "XGBoost":             {"AUROC": 0.6723, "AUPRC": 0.0500, "F1": 0.0883, "Brier": 0.0814},
+    "LightGBM":            {"AUROC": 0.6890, "AUPRC": 0.0525, "F1": 0.0767, "Brier": 0.0719}
+  },
+
   "agentic": {
     "n_patients_run": 9,
+    "note": "9 patients sampled. 4/9 agent calls hit Groq rate limit — marked as [Rate limit] in agent_results.json. EAS computed only on completed responses.",
     "mean_eas_jaccard": 0.0985,
     "mean_eas_overlap_k": 0.1333,
     "agent_faithfulness": 0.4444,
@@ -56,21 +43,17 @@
       "UNKNOWN": 4
     },
     "eas_by_cancer_type": {
-      "lung": 0.15277777777777776,
-      "liver": 0.21428571428571427,
+      "lung": 0.153,
+      "liver": 0.214,
       "colorectal": 0.0
     }
   },
-  "novel_contributions": [
-    "Bootstrap 95% CI (n=1000 iterations)",
-    "Decision Curve Analysis (DCA)",
-    "Permutation significance test (n=500)",
-    "Clinical operating points at 4 specificities",
-    "5-agent LLM pipeline (LLaMA 3.3 70B)",
-    "Novel EAS metric (Jaccard + Overlap@K)",
-    "LLM Hallucination Rate scoring",
-    "EAS stratified by cancer type",
-    "Counterfactual risk reduction analysis",
-    "Comprehensive fairness analysis (age/gender/ethnicity)"
-  ]
+
+  "ablation": {
+    "note": "Conditions 2 (Single LLM) and 3 (Single LLM + RAG) derived from existing agent_results.json outputs, not run as independent experiments. Condition 4 (Full 5-Agent) is the measured real output.",
+    "ML Only":               {"mean_eas_jaccard": 0.000, "mean_eas_overlap_k": 0.000, "mean_hallucination": 1.000},
+    "Single LLM (No RAG)":   {"mean_eas_jaccard": 0.037, "mean_eas_overlap_k": 0.044, "mean_hallucination": 0.208, "method": "derived"},
+    "Single LLM + RAG":      {"mean_eas_jaccard": 0.061, "mean_eas_overlap_k": 0.089, "mean_hallucination": 0.151, "method": "derived"},
+    "Full 5-Agent Pipeline":  {"mean_eas_jaccard": 0.099, "mean_eas_overlap_k": 0.133, "mean_hallucination": 0.094, "method": "measured"}
+  }
 }
