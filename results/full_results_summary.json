@@ -54,34 +54,37 @@
     }
   },
   "agentic": {
-    "n_patients_run": 28,
-    "mean_eas_jaccard": 0.0511,
-    "mean_eas_overlap_k": 0.0857,
-    "mean_hallucination_rate": 0.2015,
+    "n_patients_run": 95,
+    "mean_eas_jaccard": 0.0151,
+    "mean_eas_overlap_k": 0.0253,
+    "mean_hallucination_rate": 0.0652,
     "triage_distribution": {
       "ROUTINE": 2,
-      "URGENT": 9,
-      "MONITOR": 6,
-      "UNKNOWN": 11
+      "URGENT": 11,
+      "MONITOR": 9,
+      "UNKNOWN": 73
     },
     "eas_by_cancer_type": {
-      "lung": 0.0294,
-      "liver": 0.0601,
-      "colorectal": 0.0846
+      "lung": 0.0153,
+      "liver": 0.0361,
+      "colorectal": 0.0508,
+      "none": 0.0
     },
     "all_agents_complete": true,
-    "note": "Evaluation on n=28 real NHANES patients (cancer: lung=13, liver=9, colorectal=6; control=0). Mode: {'5agent': 12, 'single_prompt_fast': 16}. Formal hallucination scorer (regex \u00b115% tolerance). LLaMA 3.3 70B via Groq.",
-    "mean_eas_jaccard_sd": 0.0887,
-    "mean_eas_overlap_k_sd": 0.1457,
-    "mean_hallucination_sd": 0.3469,
+    "note": "Evaluation on n=95 real NHANES patients (cancer: lung=25, liver=15, colorectal=10; control=45). Mode: {'5agent': 12, 'single_prompt_fast': 17, 'parallel_4key': 66}. Formal hallucination scorer (regex \u00b115% tolerance). LLaMA 3.3 70B via Groq.",
+    "mean_eas_jaccard_sd": 0.0535,
+    "mean_eas_overlap_k_sd": 0.0882,
+    "mean_hallucination_sd": 0.2104,
     "hallucination_by_cancer_type": {
-      "lung": 0.1738,
-      "liver": 0.2469,
-      "colorectal": 0.1933
+      "lung": 0.0953,
+      "liver": 0.1481,
+      "colorectal": 0.116,
+      "none": 0.0096
     },
     "mode_breakdown": {
       "5agent": 12,
-      "single_prompt_fast": 16
+      "single_prompt_fast": 17,
+      "parallel_4key": 66
     }
   },
   "ablation": {

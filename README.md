@@ -141,9 +141,9 @@ Tolerance 15%: chosen to accommodate clinical paraphrasing (e.g., WBC=8.2 ≈ "a
 | ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | 16,762 | Computed |
 | Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | 9 | **Real LLM** |
 | Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | 9 | **Real LLM** |
-| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.051** | **0.086** | **0.202** | **28** | **Real LLM** |
+| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.015** | **0.025** | **0.065** | **95** | **Real LLM** |
 
-> **Real n=28 results** (13 lung, 9 liver, 6 colorectal; stratified sample). EAS Jaccard = 0.051 ± 0.089 (95% CI: [0.018, 0.084]) — falls in the moderate alignment band. By cancer type: colorectal shows best alignment (EAS=0.085), lung lowest (EAS=0.029). Hallucination = 0.202 ± 0.347 — high variance; some responses contain many numeric claims that don't match exact patient values. These are proof-of-concept results; a powered study (n≥200 + clinician annotation) is needed for statistical conclusions. See [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png) and [`fig31_eas_by_cancer_type_n100`](results/figures/fig31_eas_by_cancer_type_n100.png).
+> **Real n=95 results** (25 lung, 15 liver, 10 colorectal, 45 controls; 4 parallel API keys). EAS Jaccard = 0.015 ± 0.054 (95% CI: [0.004, 0.026]). By cancer type: colorectal highest alignment (EAS=0.051), liver (EAS=0.036), lung (EAS=0.015), controls (EAS=0.000 — expected, no cancer biomarker pattern). Hallucination = 0.065 ± 0.210 — low mean, high-variance tail driven by responses with many numeric claims. Controls show near-zero hallucination (Hall=0.010) vs cancer cases (Hall=0.12). These are real LLM inference results on real NHANES data; a fully powered study (n≥200 + clinician annotation of explanation quality) is recommended before clinical translation. See [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png) and [`fig31_eas_by_cancer_type_n100`](results/figures/fig31_eas_by_cancer_type_n100.png).
 
 
 

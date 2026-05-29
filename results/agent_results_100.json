@@ -1116,5 +1116,2552 @@
       "note": "Single-prompt mode: all 5 agent roles in one API call"
     },
     "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 28,
+    "patient_idx": 28,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 40.0,
+    "gender": "M",
+    "risk": 0.0419,
+    "abnormal_features": [
+      "wbc=13.30[HIGH]",
+      "neutrophils=12.40[HIGH]",
+      "lymphocytes=0.70[LOW]",
+      "ast=44.00[HIGH]",
+      "glucose=145.00[HIGH]",
+      "nlr=17.71[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated white blood cell (WBC) count of 13.30 and neutrophils of 12.40, combined with a low lymphocytes count of 0.70, may indicate an underlying inflammatory or infectious process, which can be associated with an increased risk of cancer. The abnormal lab values, including an aspartate aminotransferase (AST) of 44.00 and glucose of 145.00, further suggest a potential link to cancer, with the neutrophil-to-lymphocyte ratio (NLR) of 17.71 being particularly concerning.",
+    "a2_risk": "The patient's cancer risk score of 4.2% is slightly elevated, and when combined with the abnormal lab values, such as the high WBC and neutrophils, and low lymphocytes, it suggests an increased risk of cancer, particularly considering the reference range for WBC is typically between 4.5-11.0.",
+    "a3_differential": "Ranking cancer likelihood: Lung (high, due to the elevated NLR of 17.71), Liver (moderate, due to the elevated AST of 44.00), Colorectal (low, but still possible due to the elevated glucose of 145.00 and potential for underlying inflammation).",
+    "a4_evidence": "Templeton et al 2014 BMJ: found that elevated WBC and neutrophil counts were associated with an increased risk of cancer, particularly lung and colorectal cancer.",
+    "a5_triage": "BIOMARKER: The patient's elevated white blood cell (WBC) count of 13.30 and neutrophils of 12.40, combined with a low lymphocytes count of 0.70, may indicate an underlying inflammatory or infectious process, which can be associated with an increased risk of cancer. The abnormal lab values, including an aspartate aminotransferase (AST) of 44.00 and glucose of 145.00, further suggest a potential link to cancer, with the neutrophil-to-lymphocyte ratio (NLR) of 17.71 being particularly concerning.\n\nRISK: The patient's cancer risk score of 4.2% is slightly elevated, and when combined with the abnormal lab values, such as the high WBC and neutrophils, and low lymphocytes, it suggests an increased risk of cancer, particularly considering the reference range for WBC is typically between 4.5-11.0.\n\nDIFFERENTIAL: Ranking cancer likelihood: Lung (high, due to the elevated NLR of 17.71), Liver (moderate, due to the elevated AST of 44.00), Colorectal (low, but still possible due to the elevated glucose of 145.00 and potential for underlying inflammation).\n\nEVIDENCE: Templeton et al 2014 BMJ: found that elevated WBC and neutrophil counts were associated with an increased risk of cancer, particularly lung and colorectal cancer.\n\nTRIAGE: URGENT\nACTION: Order a comprehensive imaging workup, including a chest CT scan and abdominal ultrasound, to evaluate for potential malignancies.\nRATIONALE: The patient's significantly elevated NLR of 17.71, combined with abnormal lab values, such as the high WBC of 13.30 and AST of 44.00, necessitate urgent further evaluation to rule out an underlying cancer.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "ast",
+      "glucose",
+      "lymphocytes",
+      "neutrophils",
+      "nlr",
+      "wbc"
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 27,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 31,
+    "patient_idx": 31,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 61.0,
+    "gender": "F",
+    "risk": 0.0137,
+    "abnormal_features": [
+      "crp=6.73[HIGH]",
+      "nlr=1.06[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated C-reactive protein (CRP) level of 6.73 indicates a potential inflammatory response, which may be associated with underlying malignancy or other conditions. The low neutrophil-to-lymphocyte ratio (NLR) of 1.06 suggests a relatively favorable immune response, but its interpretation should be considered in conjunction with other clinical and laboratory findings.",
+    "a2_risk": "The patient's cancer risk score of 1.4% is relatively low, but it does not entirely rule out the possibility of cancer, and further evaluation is necessary to determine the cause of the abnormal laboratory results.",
+    "a3_differential": "1. Lung: The elevated CRP level of 6.73 could be indicative of lung cancer, which is often associated with chronic inflammation.\n2. Liver: The low NLR of 1.06 may not be directly related to liver cancer, but abnormal liver function tests could contribute to an elevated CRP level of 6.73.\n3. Colorectal: The CRP level of 6.73 could be associated with colorectal cancer, particularly if there is underlying inflammation or infection in the gastrointestinal tract.",
+    "a4_evidence": "Li et al. 2019 Journal of Clinical Oncology: found that elevated CRP levels and NLR were associated with poor prognosis in various types of cancer, including lung, liver, and colorectal cancer.",
+    "a5_triage": "BIOMARKER: The patient's elevated C-reactive protein (CRP) level of 6.73 indicates a potential inflammatory response, which may be associated with underlying malignancy or other conditions. The low neutrophil-to-lymphocyte ratio (NLR) of 1.06 suggests a relatively favorable immune response, but its interpretation should be considered in conjunction with other clinical and laboratory findings.\n\nRISK: The patient's cancer risk score of 1.4% is relatively low, but it does not entirely rule out the possibility of cancer, and further evaluation is necessary to determine the cause of the abnormal laboratory results.\n\nDIFFERENTIAL: \n1. Lung: The elevated CRP level of 6.73 could be indicative of lung cancer, which is often associated with chronic inflammation.\n2. Liver: The low NLR of 1.06 may not be directly related to liver cancer, but abnormal liver function tests could contribute to an elevated CRP level of 6.73.\n3. Colorectal: The CRP level of 6.73 could be associated with colorectal cancer, particularly if there is underlying inflammation or infection in the gastrointestinal tract.\n\nEVIDENCE: Li et al. 2019 Journal of Clinical Oncology: found that elevated CRP levels and NLR were associated with poor prognosis in various types of cancer, including lung, liver, and colorectal cancer.\n\nTRIAGE: MONITOR\nACTION: Order a comprehensive metabolic panel, complete blood count, and imaging studies (e.g., chest X-ray, abdominal ultrasound) to further evaluate the patient's condition.\nRATIONALE: The patient's abnormal laboratory results, including a CRP level of 6.73 and an",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "ast",
+      "crp",
+      "nlr"
+    ],
+    "hallucination_rate": 0.0584,
+    "hallucination_detail": {
+      "n_extracted": 21,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 29,
+    "patient_idx": 29,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0943,
+    "abnormal_features": [
+      "wbc=12.10[HIGH]",
+      "rbc=3.90[LOW]",
+      "neutrophils=7.60[HIGH]",
+      "crp=15.65[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 30,
+    "patient_idx": 30,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0513,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 32,
+    "patient_idx": 32,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 65.0,
+    "gender": "M",
+    "risk": 0.0081,
+    "abnormal_features": [
+      "glucose=132.00[HIGH]",
+      "nlr=3.27[HIGH]",
+      "plr=173.64[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 35,
+    "patient_idx": 35,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 36.0,
+    "gender": "F",
+    "risk": 0.0111,
+    "abnormal_features": [
+      "crp=5.25[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 34,
+    "patient_idx": 34,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 60.0,
+    "gender": "F",
+    "risk": 0.0042,
+    "abnormal_features": [
+      "alp=149.00[HIGH]",
+      "glucose=105.00[HIGH]",
+      "crp=4.50[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 33,
+    "patient_idx": 33,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.0291,
+    "abnormal_features": [
+      "sodium=130.00[LOW]",
+      "glucose=114.00[HIGH]",
+      "plr=153.08[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 36,
+    "patient_idx": 36,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 64.0,
+    "gender": "M",
+    "risk": 0.0397,
+    "abnormal_features": [
+      "glucose=108.00[HIGH]",
+      "nlr=6.00[HIGH]",
+      "plr=155.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 39,
+    "patient_idx": 39,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 72.0,
+    "gender": "F",
+    "risk": 0.0302,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 38,
+    "patient_idx": 38,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 71.0,
+    "gender": "F",
+    "risk": 0.0128,
+    "abnormal_features": [
+      "ast=66.00[HIGH]",
+      "glucose=239.00[HIGH]",
+      "nlr=1.42[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 37,
+    "patient_idx": 37,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 78.0,
+    "gender": "M",
+    "risk": 0.0499,
+    "abnormal_features": [
+      "wbc=11.60[HIGH]",
+      "neutrophils=8.00[HIGH]",
+      "monocytes=1.50[HIGH]",
+      "glucose=120.00[HIGH]",
+      "crp=5.70[HIGH]",
+      "nlr=4.71[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 40,
+    "patient_idx": 40,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 74.0,
+    "gender": "F",
+    "risk": 0.0098,
+    "abnormal_features": [
+      "rbc=4.04[LOW]",
+      "platelets=66.00[LOW]",
+      "creatinine=0.47[LOW]",
+      "glucose=106.00[HIGH]",
+      "nlr=1.42[LOW]",
+      "plr=34.74[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 43,
+    "patient_idx": 43,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.036,
+    "abnormal_features": [
+      "glucose=107.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 47,
+    "patient_idx": 47,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 73.0,
+    "gender": "F",
+    "risk": 0.0173,
+    "abnormal_features": [
+      "glucose=112.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated glucose level of 112.00 is a potential indicator of increased cancer risk, as high blood sugar levels have been linked to various types of cancer. The glucose value of 112.00 is higher than the normal range, suggesting the need for further evaluation and monitoring.",
+    "a2_risk": "The patient's cancer risk score of 1.7% is relatively low, but the presence of abnormal labs, such as the high glucose level, warrants closer examination and potential intervention.",
+    "a3_differential": "1. Lung: The patient's age and glucose level of 112.00 may increase the risk of lung cancer, although no specific lung-related symptoms or findings are reported.\n2. Liver: The elevated glucose level of 112.00 could be related to liver dysfunction or insulin resistance, which may contribute to an increased risk of liver cancer.\n3. Colorectal: The patient's age and glucose level of 112.00 may also increase the risk of colorectal cancer, particularly if there are underlying conditions such as insulin resistance or metabolic syndrome.",
+    "a4_evidence": "A study by Giovannucci et al. (2010) in the journal Diabetes Care found that high blood glucose levels are associated with an increased risk of various types of cancer, including pancreatic, liver, and colorectal cancer.",
+    "a5_triage": "BIOMARKER: The patient's elevated glucose level of 112.00 is a potential indicator of increased cancer risk, as high blood sugar levels have been linked to various types of cancer. The glucose value of 112.00 is higher than the normal range, suggesting the need for further evaluation and monitoring.\n\nRISK: The patient's cancer risk score of 1.7% is relatively low, but the presence of abnormal labs, such as the high glucose level, warrants closer examination and potential intervention.\n\nDIFFERENTIAL: \n1. Lung: The patient's age and glucose level of 112.00 may increase the risk of lung cancer, although no specific lung-related symptoms or findings are reported.\n2. Liver: The elevated glucose level of 112.00 could be related to liver dysfunction or insulin resistance, which may contribute to an increased risk of liver cancer.\n3. Colorectal: The patient's age and glucose level of 112.00 may also increase the risk of colorectal cancer, particularly if there are underlying conditions such as insulin resistance or metabolic syndrome.\n\nEVIDENCE: A study by Giovannucci et al. (2010) in the journal Diabetes Care found that high blood glucose levels are associated with an increased risk of various types of cancer, including pancreatic, liver, and colorectal cancer.\n\nTRIAGE: MONITOR\n\nACTION: Order a comprehensive metabolic panel, including insulin and hemoglobin A1c levels, to further evaluate the patient's glucose metabolism and potential cancer risk.\n\nRATIONALE: The patient's glucose level of 112.00 and cancer risk score of 1.7% necessitate a more detailed evaluation, including additional laboratory tests, to determine the underlying cause of the elevated",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "glucose",
+      "hemoglobin"
+    ],
+    "hallucination_rate": 0.0644,
+    "hallucination_detail": {
+      "n_extracted": 20,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 41,
+    "patient_idx": 41,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 40.0,
+    "gender": "F",
+    "risk": 0.1063,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 44,
+    "patient_idx": 44,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 56.0,
+    "gender": "F",
+    "risk": 0.0054,
+    "abnormal_features": [
+      "glucose=109.00[HIGH]",
+      "crp=7.50[HIGH]",
+      "nlr=1.22[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 42,
+    "patient_idx": 42,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 56.0,
+    "gender": "F",
+    "risk": 0.0397,
+    "abnormal_features": [
+      "alt=62.00[HIGH]",
+      "ast=49.00[HIGH]",
+      "glucose=112.00[HIGH]",
+      "nlr=1.13[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 51,
+    "patient_idx": 51,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 35.0,
+    "gender": "F",
+    "risk": 0.0397,
+    "abnormal_features": [
+      "plr=197.50[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 45,
+    "patient_idx": 45,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 57.0,
+    "gender": "F",
+    "risk": 0.0245,
+    "abnormal_features": [
+      "rbc=4.05[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 48,
+    "patient_idx": 48,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0247,
+    "abnormal_features": [
+      "wbc=11.30[HIGH]",
+      "albumin=3.30[LOW]",
+      "ast=42.00[HIGH]",
+      "creatinine=1.69[HIGH]",
+      "bun=32.00[HIGH]",
+      "glucose=169.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 46,
+    "patient_idx": 46,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0307,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 55,
+    "patient_idx": 55,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 42.0,
+    "gender": "F",
+    "risk": 0.0242,
+    "abnormal_features": [
+      "neutrophils=7.90[HIGH]",
+      "creatinine=0.47[LOW]",
+      "crp=9.40[HIGH]",
+      "nlr=5.64[HIGH]",
+      "plr=177.86[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 49,
+    "patient_idx": 49,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 64.0,
+    "gender": "M",
+    "risk": 0.0229,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 52,
+    "patient_idx": 52,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 45.0,
+    "gender": "F",
+    "risk": 0.0183,
+    "abnormal_features": [
+      "creatinine=0.55[LOW]",
+      "potassium=3.34[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 50,
+    "patient_idx": 50,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 21.0,
+    "gender": "F",
+    "risk": 0.0179,
+    "abnormal_features": [
+      "creatinine=0.58[LOW]",
+      "potassium=3.40[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 59,
+    "patient_idx": 59,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 57.0,
+    "gender": "M",
+    "risk": 0.0091,
+    "abnormal_features": [
+      "alt=88.00[HIGH]",
+      "ast=49.00[HIGH]",
+      "glucose=110.00[HIGH]",
+      "nlr=1.29[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 53,
+    "patient_idx": 53,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0718,
+    "abnormal_features": [
+      "glucose=109.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 56,
+    "patient_idx": 56,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 31.0,
+    "gender": "M",
+    "risk": 0.0395,
+    "abnormal_features": [
+      "albumin=5.10[HIGH]",
+      "alp=31.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 54,
+    "patient_idx": 54,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 51.0,
+    "gender": "F",
+    "risk": 0.0036,
+    "abnormal_features": [
+      "rbc=3.91[LOW]",
+      "hemoglobin=11.30[LOW]",
+      "hematocrit=34.70[LOW]",
+      "glucose=180.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 63,
+    "patient_idx": 63,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 63.0,
+    "gender": "M",
+    "risk": 0.2222,
+    "abnormal_features": [
+      "glucose=108.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated glucose level of 108.00 is a concern, as it may indicate an increased risk of developing certain types of cancer, such as pancreatic cancer, which has been linked to high blood sugar levels. The glucose level of 108.00 is considered high and warrants further investigation to determine the underlying cause and potential implications for cancer risk, given the patient's age of 63.0 and cancer risk score of 22.2%.",
+    "a2_risk": "The patient's cancer risk score of 22.2% indicates a moderate to high risk of developing cancer, which is further compounded by the elevated glucose level of 108.00.",
+    "a3_differential": "Rank 1: Lung - The patient's age of 63.0 and potential smoking history (not provided) may increase the risk of lung cancer, which is a common type of cancer in older adults, with a cancer risk score of 22.2% and glucose level of 108.00.\nRank 2: Liver - The elevated glucose level of 108.00 may be associated with an increased risk of liver cancer, particularly in the context of underlying liver disease or metabolic syndrome, given the patient's age of 63.0 and cancer risk score of 22.2%.\nRank 3: Colorectal - The patient's age of 63.0 and moderate to high cancer risk score of 22.2% may also increase the risk of colorectal cancer, which is a common type of cancer in older adults, with a potential link to elevated glucose levels of 108.00.",
+    "a4_evidence": "A study by Stattin et al. (2007) in the Journal of the National Cancer",
+    "a5_triage": "BIOMARKER: The patient's elevated glucose level of 108.00 is a concern, as it may indicate an increased risk of developing certain types of cancer, such as pancreatic cancer, which has been linked to high blood sugar levels. The glucose level of 108.00 is considered high and warrants further investigation to determine the underlying cause and potential implications for cancer risk, given the patient's age of 63.0 and cancer risk score of 22.2%.\n\nRISK: The patient's cancer risk score of 22.2% indicates a moderate to high risk of developing cancer, which is further compounded by the elevated glucose level of 108.00.\n\nDIFFERENTIAL: \nRank 1: Lung - The patient's age of 63.0 and potential smoking history (not provided) may increase the risk of lung cancer, which is a common type of cancer in older adults, with a cancer risk score of 22.2% and glucose level of 108.00.\nRank 2: Liver - The elevated glucose level of 108.00 may be associated with an increased risk of liver cancer, particularly in the context of underlying liver disease or metabolic syndrome, given the patient's age of 63.0 and cancer risk score of 22.2%.\nRank 3: Colorectal - The patient's age of 63.0 and moderate to high cancer risk score of 22.2% may also increase the risk of colorectal cancer, which is a common type of cancer in older adults, with a potential link to elevated glucose levels of 108.00.\n\nEVIDENCE: A study by Stattin et al. (2007) in the Journal of the National Cancer",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "glucose"
+    ],
+    "hallucination_rate": 0.1805,
+    "hallucination_detail": {
+      "n_extracted": 36,
+      "n_hallucinated": 8,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 57,
+    "patient_idx": 57,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 53.0,
+    "gender": "F",
+    "risk": 0.0292,
+    "abnormal_features": [
+      "nlr=1.07[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 58,
+    "patient_idx": 58,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 54.0,
+    "gender": "F",
+    "risk": 0.0381,
+    "abnormal_features": [
+      "nlr=0.97[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 60,
+    "patient_idx": 60,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 59.0,
+    "gender": "F",
+    "risk": 0.013,
+    "abnormal_features": [
+      "bun=26.00[HIGH]",
+      "nlr=1.25[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 67,
+    "patient_idx": 67,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 67.0,
+    "gender": "F",
+    "risk": 0.0096,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 61,
+    "patient_idx": 61,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 71.0,
+    "gender": "F",
+    "risk": 0.0056,
+    "abnormal_features": [
+      "rbc=4.13[LOW]",
+      "alp=40.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 62,
+    "patient_idx": 62,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 65.0,
+    "gender": "M",
+    "risk": 0.0263,
+    "abnormal_features": [
+      "glucose=167.00[HIGH]",
+      "crp=6.30[HIGH]",
+      "nlr=3.27[HIGH]",
+      "plr=200.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 64,
+    "patient_idx": 64,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 61.0,
+    "gender": "M",
+    "risk": 0.0132,
+    "abnormal_features": [
+      "wbc=12.10[HIGH]",
+      "neutrophils=10.80[HIGH]",
+      "lymphocytes=0.60[LOW]",
+      "sodium=135.00[LOW]",
+      "crp=27.00[HIGH]",
+      "nlr=18.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 71,
+    "patient_idx": 71,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 62.0,
+    "gender": "F",
+    "risk": 0.0037,
+    "abnormal_features": [
+      "hemoglobin=10.50[LOW]",
+      "hematocrit=32.30[LOW]",
+      "mcv=59.60[LOW]",
+      "glucose=201.00[HIGH]",
+      "nlr=1.22[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 65,
+    "patient_idx": 65,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0351,
+    "abnormal_features": [
+      "mcv=72.10[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 66,
+    "patient_idx": 66,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 62.0,
+    "gender": "M",
+    "risk": 0.0403,
+    "abnormal_features": [
+      "wbc=12.50[HIGH]",
+      "rbc=3.86[LOW]",
+      "mcv=100.80[HIGH]",
+      "alp=43.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 68,
+    "patient_idx": 68,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 47.0,
+    "gender": "F",
+    "risk": 0.0095,
+    "abnormal_features": [
+      "crp=7.90[HIGH]",
+      "nlr=3.14[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 75,
+    "patient_idx": 75,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 72.0,
+    "gender": "M",
+    "risk": 0.0098,
+    "abnormal_features": [
+      "potassium=3.40[LOW]",
+      "glucose=122.00[HIGH]",
+      "nlr=1.46[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 72,
+    "patient_idx": 72,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.014,
+    "abnormal_features": [
+      "crp=3.37[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated C-reactive protein (CRP) level of 3.37 is indicative of inflammation, which can be associated with various types of cancer, and warrants further investigation to determine the underlying cause. The CRP value of 3.37 is considered high and may suggest an increased risk of cancer, although the cancer risk score of 1.4% is relatively low.",
+    "a2_risk": "The patient's overall cancer risk is relatively low, with a cancer risk score of 1.4%, which is below the average risk threshold, but the elevated CRP level of 3.37 requires careful consideration and further evaluation.",
+    "a3_differential": "1. Lung: The patient's age and elevated CRP level of 3.37 may increase the suspicion for lung cancer, which is a common type of cancer in older adults.\n2. Liver: The elevated CRP level of 3.37 could be indicative of liver inflammation or damage, which may be associated with liver cancer.\n3. Colorectal: The patient's age and elevated CRP level of 3.37 may also increase the risk of colorectal cancer, which is a common type of cancer in older adults.",
+    "a4_evidence": "Ridker PM 2000 N Engl J Med: found that elevated CRP levels are associated with an increased risk of cancer, particularly colorectal and lung cancer.",
+    "a5_triage": "BIOMARKER: The patient's elevated C-reactive protein (CRP) level of 3.37 is indicative of inflammation, which can be associated with various types of cancer, and warrants further investigation to determine the underlying cause. The CRP value of 3.37 is considered high and may suggest an increased risk of cancer, although the cancer risk score of 1.4% is relatively low.\n\nRISK: The patient's overall cancer risk is relatively low, with a cancer risk score of 1.4%, which is below the average risk threshold, but the elevated CRP level of 3.37 requires careful consideration and further evaluation.\n\nDIFFERENTIAL: \n1. Lung: The patient's age and elevated CRP level of 3.37 may increase the suspicion for lung cancer, which is a common type of cancer in older adults.\n2. Liver: The elevated CRP level of 3.37 could be indicative of liver inflammation or damage, which may be associated with liver cancer.\n3. Colorectal: The patient's age and elevated CRP level of 3.37 may also increase the risk of colorectal cancer, which is a common type of cancer in older adults.\n\nEVIDENCE: Ridker PM 2000 N Engl J Med: found that elevated CRP levels are associated with an increased risk of cancer, particularly colorectal and lung cancer.\n\nTRIAGE: MONITOR\nACTION: Order a comprehensive metabolic panel, complete blood count, and imaging studies (e.g., CT scan) to further evaluate the patient's condition and determine the cause of the elevated CRP level.\nRATIONALE: The patient's elevated CRP level of 3.37 and age of",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "crp"
+    ],
+    "hallucination_rate": 0.25,
+    "hallucination_detail": {
+      "n_extracted": 23,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 70,
+    "patient_idx": 70,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 48.0,
+    "gender": "M",
+    "risk": 0.0267,
+    "abnormal_features": [
+      "alt=78.00[HIGH]",
+      "ast=41.00[HIGH]",
+      "bilirubin_total=1.60[HIGH]",
+      "sodium=134.00[LOW]",
+      "glucose=148.00[HIGH]",
+      "nlr=1.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 69,
+    "patient_idx": 69,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 39.0,
+    "gender": "M",
+    "risk": 0.0161,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 79,
+    "patient_idx": 79,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 67.0,
+    "gender": "F",
+    "risk": 0.0531,
+    "abnormal_features": [
+      "glucose=111.00[HIGH]",
+      "crp=5.14[HIGH]",
+      "nlr=1.40[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 76,
+    "patient_idx": 76,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 45.0,
+    "gender": "M",
+    "risk": 0.0222,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 74,
+    "patient_idx": 74,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 30.0,
+    "gender": "F",
+    "risk": 0.0096,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 73,
+    "patient_idx": 73,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 61.0,
+    "gender": "F",
+    "risk": 0.0074,
+    "abnormal_features": [
+      "rbc=3.94[LOW]",
+      "plr=208.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 83,
+    "patient_idx": 83,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 52.0,
+    "gender": "M",
+    "risk": 0.005,
+    "abnormal_features": [
+      "alp=35.00[LOW]",
+      "creatinine=1.29[HIGH]",
+      "glucose=103.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 80,
+    "patient_idx": 80,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 63.0,
+    "gender": "F",
+    "risk": 0.0106,
+    "abnormal_features": [
+      "rbc=4.15[LOW]",
+      "creatinine=0.56[LOW]",
+      "sodium=146.00[HIGH]",
+      "nlr=1.05[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 78,
+    "patient_idx": 78,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 19.0,
+    "gender": "M",
+    "risk": 0.0183,
+    "abnormal_features": [
+      "neutrophils=7.80[HIGH]",
+      "nlr=6.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 77,
+    "patient_idx": 77,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 62.0,
+    "gender": "M",
+    "risk": 0.0421,
+    "abnormal_features": [
+      "platelets=139.00[LOW]",
+      "crp=16.67[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 87,
+    "patient_idx": 87,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 47.0,
+    "gender": "M",
+    "risk": 0.0166,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 84,
+    "patient_idx": 84,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 62.0,
+    "gender": "M",
+    "risk": 0.0139,
+    "abnormal_features": [
+      "neutrophils=7.60[HIGH]",
+      "alp=38.00[LOW]",
+      "creatinine=1.21[HIGH]",
+      "glucose=132.00[HIGH]",
+      "nlr=4.22[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 82,
+    "patient_idx": 82,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.0283,
+    "abnormal_features": [
+      "rbc=4.17[LOW]",
+      "monocytes=1.20[HIGH]",
+      "nlr=4.92[HIGH]",
+      "plr=169.23[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 81,
+    "patient_idx": 81,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 41.0,
+    "gender": "F",
+    "risk": 0.0421,
+    "abnormal_features": [
+      "hemoglobin=11.70[LOW]",
+      "mcv=79.50[LOW]",
+      "sodium=135.00[LOW]",
+      "ferritin=10.70[LOW]",
+      "nlr=0.91[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 91,
+    "patient_idx": 91,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 19.0,
+    "gender": "M",
+    "risk": 0.0194,
+    "abnormal_features": [
+      "neutrophils=1.40[LOW]",
+      "glucose=107.00[HIGH]",
+      "nlr=0.50[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 95,
+    "patient_idx": 95,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 68.0,
+    "gender": "M",
+    "risk": 0.0081,
+    "abnormal_features": [
+      "glucose=256.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated glucose level of 256.00 is a potential indicator of pancreatic cancer or other malignancies that can cause hyperglycemia, and further evaluation is needed to determine the underlying cause of this abnormality. The glucose level of 256.00 is significantly higher than the normal range, suggesting a possible link to cancer or other serious health conditions.",
+    "a2_risk": "The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal labs, particularly the high glucose level of 256.00, warrants further investigation to assess the overall risk of cancer.",
+    "a3_differential": "1. Lung: The patient's age and sex could increase the risk of lung cancer, but there are no specific lab values provided to support this diagnosis.\n2. Liver: The elevated glucose level of 256.00 could be related to liver dysfunction or cancer, which can cause abnormal glucose metabolism.\n3. Colorectal: The patient's age of 68.0 puts them at higher risk for colorectal cancer, but the glucose level of 256.00 is not a specific indicator for this type of cancer.",
+    "a4_evidence": "A study by Stattin et al. 2007 Diabetes Care: found that high glucose levels are associated with an increased risk of cancer, particularly pancreatic cancer.",
+    "a5_triage": "BIOMARKER: The patient's elevated glucose level of 256.00 is a potential indicator of pancreatic cancer or other malignancies that can cause hyperglycemia, and further evaluation is needed to determine the underlying cause of this abnormality. The glucose level of 256.00 is significantly higher than the normal range, suggesting a possible link to cancer or other serious health conditions.\n\nRISK: The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal labs, particularly the high glucose level of 256.00, warrants further investigation to assess the overall risk of cancer.\n\nDIFFERENTIAL: \n1. Lung: The patient's age and sex could increase the risk of lung cancer, but there are no specific lab values provided to support this diagnosis.\n2. Liver: The elevated glucose level of 256.00 could be related to liver dysfunction or cancer, which can cause abnormal glucose metabolism.\n3. Colorectal: The patient's age of 68.0 puts them at higher risk for colorectal cancer, but the glucose level of 256.00 is not a specific indicator for this type of cancer.\n\nEVIDENCE: A study by Stattin et al. 2007 Diabetes Care: found that high glucose levels are associated with an increased risk of cancer, particularly pancreatic cancer.\n\nTRIAGE: URGENT\nACTION: Order a comprehensive metabolic panel, including liver function tests and pancreatic enzymes, to further evaluate the cause of the patient's hyperglycemia.\nRATIONALE: The patient's glucose level of 256.00 is significantly elevated, requiring immediate attention and further evaluation to determine the underlying cause and potential risk of cancer, with a cancer risk score",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "glucose"
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 21,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 88,
+    "patient_idx": 88,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 56.0,
+    "gender": "F",
+    "risk": 0.047,
+    "abnormal_features": [
+      "glucose=106.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 86,
+    "patient_idx": 86,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 18.0,
+    "gender": "F",
+    "risk": 0.0225,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 85,
+    "patient_idx": 85,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 27.0,
+    "gender": "F",
+    "risk": 0.0215,
+    "abnormal_features": [
+      "alp=37.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 99,
+    "patient_idx": 99,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 28.0,
+    "gender": "F",
+    "risk": 0.0186,
+    "abnormal_features": [
+      "glucose=104.00[HIGH]",
+      "crp=4.40[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 3
+  },
+  {
+    "eval_idx": 92,
+    "patient_idx": 92,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 44.0,
+    "gender": "M",
+    "risk": 0.0073,
+    "abnormal_features": [
+      "alp=38.00[LOW]",
+      "nlr=1.28[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
+  },
+  {
+    "eval_idx": 90,
+    "patient_idx": 90,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 56.0,
+    "gender": "F",
+    "risk": 0.0111,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 2
+  },
+  {
+    "eval_idx": 89,
+    "patient_idx": 89,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 44.0,
+    "gender": "F",
+    "risk": 0.0037,
+    "abnormal_features": [
+      "creatinine=0.58[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 1
+  },
+  {
+    "eval_idx": 96,
+    "patient_idx": 96,
+    "true_label": 0,
+    "cancer_type": "none",
+    "age": 18.0,
+    "gender": "F",
+    "risk": 0.0397,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance"
+    },
+    "mode": "parallel_4key",
+    "worker": 4
   }
 ]
