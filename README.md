@@ -149,11 +149,11 @@ Tolerance 15%: chosen to accommodate clinical paraphrasing (e.g., WBC=8.2 ≈ "a
 
 | Explainer | Top-5 Features | EAS (mean, n=9) | Cross-method Jaccard |
 |---|---|---|---|
-| **SHAP** (TreeExplainer) | albumin, age, nlr, ... | — | — |
-| **LIME** (tabular, n=50) | — | — | SHAP↔LIME: — |
-| **Permutation** (n=10 repeats) | — | — | SHAP↔Perm: — |
+| **SHAP** (TreeExplainer) | hemoglobin, rbc, alp, total_protein, bun | 0.0832 ± 0.0454 | SHAP↔LIME: **0.250** |
+| **LIME** (tabular, n=50) | lymphocytes, rbc, ferritin, hematocrit, total_protein | 0.0474 ± 0.0537 | SHAP↔Perm: **0.429** |
+| **Permutation** (n=10 repeats) | rbc, hemoglobin, calcium, hematocrit, bun | 0.0582 ± 0.0525 | LIME↔Perm: **0.250** |
 
-> Results populated by `python -m src.explainability.lime_comparison`. See [`results/explainability_comparison.json`](results/explainability_comparison.json) and [`fig38_shap_vs_lime`](results/figures/fig38_shap_vs_lime.png).
+> Kendall tau rank correlation (all 31 features): SHAP↔Permutation τ=0.613 (p<0.001), SHAP↔LIME τ=0.381 (p=0.002). EAS scores across all three explainers span the same moderate range (0.05–0.08), confirming EAS is not an artefact of the SHAP explainer. See [`fig38_shap_vs_lime`](results/figures/fig38_shap_vs_lime.png) and [`results/explainability_comparison.json`](results/explainability_comparison.json).
 
 ### Clinical Operating Points (PPV correctly computed as TP/(TP+FP))
 
