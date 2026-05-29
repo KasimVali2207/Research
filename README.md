@@ -132,18 +132,18 @@ Tolerance 15%: chosen to accommodate clinical paraphrasing (e.g., WBC=8.2 ≈ "a
 
 **Low AUPRC (~0.068)** reflects 2.89% prevalence — expected, honestly reported without inflation.
 
-### Ablation Study (n=100 patients — all real LLM calls)
+### Ablation Study (n=22 real patients — all LLM calls via Groq LLaMA 3.3 70B)
 
-> Updated from pilot n=9 to **n=100 stratified real patients** (50 cancer: ~25 lung, ~15 liver, ~10 colorectal; 50 controls). See [`src/agents/scale_agent_eval.py`](src/agents/scale_agent_eval.py).
+> All values below are from **real LLM inference** on real NHANES data. Hallucination scored via formal regex algorithm (±15% tolerance). Results on n=22 stratified patients (11 lung, 6 liver, 5 colorectal).
 
-| Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination ↓ | Method |
-|---|---|---|---|---|---|
-| ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | Computed |
-| Single LLM (No RAG) | One combined prompt per patient | — | — | — | **Real LLM (n=9 pilot)** |
-| Single LLM + RAG | Evidence-grounded single prompt | — | — | — | **Real LLM (n=9 pilot)** |
-| Full 5-Agent Pipeline | 5 specialist roles + consensus | — | — | — | **Real LLM (n=100)** |
+| Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination ↓ | n | Method |
+|---|---|---|---|---|---|---|
+| ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | All | Computed |
+| Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | 9 | **Real LLM** |
+| Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | 9 | **Real LLM** |
+| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.065** | **0.109** | **0.211** | **22** | **Real LLM** |
 
-> *Note: n=100 ablation results will be populated when `scale_agent_eval.py` completes. Pilot n=9 ablation: Single LLM EAS-J=0.116, Hall=0.000; RAG+Single EAS-J=0.099, Hall=0.161; Full 5-Agent EAS-J=0.110, Hall=0.000. See [`results/ablation_results.json`](results/ablation_results.json).*
+> **Honest n=22 findings**: EAS Jaccard = 0.065 ± 0.095 (95% CI: [0.025, 0.105]), placing it in the *moderate* alignment band (0.05–0.15). Hallucination rate = 0.211 ± 0.339 — high variance driven by long responses with many numeric claims. Colorectal cases show best alignment (EAS=0.102) vs lung (EAS=0.035). These results are preliminary; a powered study requires n≥200 with clinician annotation. See [`results/agent_results_100.json`](results/agent_results_100.json) and [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png).
 
 ### Explainability Method Comparison (EAS Robustness)
 

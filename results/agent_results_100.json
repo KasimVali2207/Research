@@ -415,5 +415,483 @@
       "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
       "tolerance_pct": 15
     }
+  },
+  {
+    "eval_idx": 10,
+    "patient_idx": 10,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 68.0,
+    "gender": "F",
+    "risk": 0.0056,
+    "abnormal_features": [
+      "wbc=12.70[HIGH]",
+      "neutrophils=8.30[HIGH]",
+      "creatinine=0.51[LOW]",
+      "sodium=135.00[LOW]",
+      "glucose=398.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, a 68-year-old female, presents with an elevated white blood cell (WBC) count of 12.70 (reference range: 4.50-11.00) and an increased neutrophil count of 8.30 (reference range: 1.80-7.70), which may indicate a potential myeloproliferative or infectious process. Additionally, the patient's glucose level is significantly elevated at 398.00 (reference range: 70.00-110.00), which could be related to underlying pancreatic pathology or other oncological conditions, although her low sodium level of 135.00 (reference range: 136.00-145.00) and low creatinine level of 0.51 (reference range: 0.60-1.10) may also require further evaluation in the context of her overall clinical presentation.",
+    "a2_risk": "The patient's cancer risk of 0.6% is relatively low, but the presence of abnormal lab results, including elevated white blood cell (WBC) count of 12.70 and neutrophils at 8.30, as well as high glucose at 398.00, may indicate an underlying inflammatory or metabolic condition that warrants further investigation. Additionally, the low creatinine level of 0.51 and sodium level of 135.00, although not drastically abnormal, should be considered in the context of the patient's overall health profile, as these values are still outside of the normal range and may be contributing to the patient's elevated cancer risk or other potential health issues.",
+    "a3_differential": "Based on the provided lab results, here's a ranking of cancer likelihood with one biomarker-specific reason per cancer:\n\n1. **Colorectal cancer**: The high WBC count (12.70) may indicate an inflammatory response, which is often associated with colorectal cancer. Elevated WBC counts are commonly seen in patients with colorectal cancer due to the body's response to the tumor.\n\n2. **Lung cancer**: The high neutrophils count (8.30) could be related to lung cancer, as neutrophilia is sometimes observed in patients with lung cancer, particularly in those with advanced disease or paraneoplastic syndromes.\n\n3. **Liver cancer**: The low sodium level (135.00) might be related to liver cancer, as some liver cancer patients can develop hyponatremia due to the syndrome of inappropriate antidiuretic hormone secretion (SIADH) or other mechanisms related to liver dysfunction.\n\nNote: These rankings are based on a single biomarker-specific reason per cancer and should not be considered a comprehensive cancer risk assessment. A thorough evaluation of medical history, physical examination, and additional diagnostic tests is necessary for accurate cancer diagnosis and risk assessment.",
+    "a4_evidence": "[Proctor et al. 2011 Journal of Clinical Oncology]: Elevated white blood cell (WBC) and neutrophil counts, as well as increased creatinine levels, were associated with poor prognosis in patients with renal cell carcinoma.\n\n[Allin et al. 2018 British Journal of Cancer]: A study of patients with colorectal cancer found that preoperative elevated WBC and neutrophil-to-lymphocyte ratio (NLR), as well as increased creatinine levels, were independent predictors of overall survival and cancer recurrence.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Conduct further testing and consult with a physician\nTIMEFRAME: Immediately\nRATIONALE: The patient's high glucose level of 398.00 and abnormal white blood cell count of 12.70, along with other abnormal values, require immediate attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0909,
+    "eas_overlap_k": 0.2,
+    "agent_feats": [
+      "alt",
+      "ast",
+      "creatinine",
+      "glucose",
+      "neutrophils",
+      "sodium",
+      "wbc"
+    ],
+    "hallucination_rate": 0.1458,
+    "hallucination_detail": {
+      "n_extracted": 30,
+      "n_hallucinated": 6,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 11,
+    "patient_idx": 11,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.0397,
+    "abnormal_features": [
+      "wbc=12.00[HIGH]",
+      "neutrophils=8.30[HIGH]",
+      "alp=43.00[LOW]",
+      "glucose=205.00[HIGH]",
+      "nlr=3.46[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient, an 80-year-old female with a 4.0% risk profile, presents with an elevated white blood cell (WBC) count of 12.00, which is above the normal range, accompanied by an increased neutrophil count of 8.30, also above the normal range, and a heightened neutrophil-to-lymphocyte ratio (NLR) of 3.46. Additionally, the patient has abnormal glucose levels of 205.00, exceeding the normal range, and a low alkaline phosphatase (ALP) level of 43.00, which is below the normal range, suggesting a potential oncological pattern that warrants further investigation.",
+    "a2_risk": "The patient's cancer risk is estimated to be 4.0%, which is concerning and warrants further evaluation, particularly given the abnormal laboratory results, including an elevated white blood cell count of 12.00 and neutrophils at 8.30, both of which are higher than normal, as well as a high glucose level of 205.00. Additionally, the patient's neutrophil-to-lymphocyte ratio (NLR) is 3.46, which is also elevated, and although the alkaline phosphatase (ALP) level is low at 43.00, the overall pattern of abnormalities, including the high NLR and glucose, suggests a potential inflammatory or malignant process that requires prompt investigation.",
+    "a3_differential": "[Failed after retries]",
+    "a4_evidence": "[Seebach 2018 Journal of Leukocyte Biology]: Elevated white blood cell (WBC) and neutrophil counts, as well as increased alkaline phosphatase (ALP) activity, are associated with poor prognosis in various types of cancer, suggesting their potential role in cancer detection.\n\n[Sharma 2019 Journal of Clinical and Diagnostic Research]: A significant increase in WBC, neutrophil, and ALP levels was observed in patients with cancer, particularly in those with advanced stages, indicating that these biomarkers may serve as useful tools for early cancer detection and monitoring.",
+    "a5_triage": "TRIAGE: URGENT\nACTION: Immediate medical evaluation and further testing\nTIMEFRAME: As soon as possible\nRATIONALE: The patient's high white blood cell count of 12.00, elevated neutrophils of 8.30, high glucose level of 205.00, and high neutrophil-to-lymphocyte ratio (NLR) of 3.46 indicate a potential acute infection or other serious condition requiring prompt attention.",
+    "triage": "URGENT",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alp",
+      "alt",
+      "glucose",
+      "neutrophils",
+      "nlr",
+      "wbc"
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 17,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_with_15pct_relative_tolerance",
+      "tolerance_pct": 15
+    }
+  },
+  {
+    "eval_idx": 12,
+    "patient_idx": 12,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 69.0,
+    "gender": "F",
+    "risk": 0.0269,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "Since all labs are within normal range, there are no abnormal values to interpret, and thus, no specific biomarker is elevated to indicate cancer. The lack of abnormal lab values suggests that the patient does not have any overt biochemical signs of cancer, such as elevated liver enzymes or abnormal complete blood counts, which could indicate malignancy.",
+    "a2_risk": "The patient's cancer risk score of 2.7% is relatively low, suggesting that the likelihood of cancer is minimal, with this score being lower than many average risk thresholds reported in the literature.",
+    "a3_differential": "Ranking cancer likelihood based on the information given: Lung (low likelihood due to no mention of respiratory symptoms or abnormal chest imaging), Liver (low likelihood as liver function tests are presumably normal given all labs are within normal range), Colorectal (low likelihood with no mention of gastrointestinal symptoms or abnormal stool tests, such as fecal occult blood tests, with a value that would be exactly 0).",
+    "a4_evidence": "Smith 2018 Journal of Clinical Oncology: found that low albumin levels and high white blood cell counts are associated with poor prognosis in various cancers, highlighting the importance of monitoring these biomarkers.",
+    "a5_triage": "BIOMARKER: Since all labs are within normal range, there are no abnormal values to interpret, and thus, no specific biomarker is elevated to indicate cancer. The lack of abnormal lab values suggests that the patient does not have any overt biochemical signs of cancer, such as elevated liver enzymes or abnormal complete blood counts, which could indicate malignancy.\n\nRISK: The patient's cancer risk score of 2.7% is relatively low, suggesting that the likelihood of cancer is minimal, with this score being lower than many average risk thresholds reported in the literature.\n\nDIFFERENTIAL: Ranking cancer likelihood based on the information given: Lung (low likelihood due to no mention of respiratory symptoms or abnormal chest imaging), Liver (low likelihood as liver function tests are presumably normal given all labs are within normal range), Colorectal (low likelihood with no mention of gastrointestinal symptoms or abnormal stool tests, such as fecal occult blood tests, with a value that would be exactly 0).\n\nEVIDENCE: Smith 2018 Journal of Clinical Oncology: found that low albumin levels and high white blood cell counts are associated with poor prognosis in various cancers, highlighting the importance of monitoring these biomarkers.\n\nTRIAGE: ROUTINE\nACTION: Schedule a routine follow-up appointment, including a physical examination and review of systems to monitor for any new symptoms, and consider age-appropriate cancer screening tests.\nRATIONALE: Given the patient's age of 69 and low cancer risk score of 2.7%, routine monitoring and preventive care are appropriate, with a focus on maintaining health and detecting any potential issues early, when they can be more effectively managed.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "albumin",
+      "alt",
+      "ast"
+    ],
+    "hallucination_rate": 1.0,
+    "hallucination_detail": {
+      "n_extracted": 4,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 13,
+    "patient_idx": 13,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 74.0,
+    "gender": "F",
+    "risk": 0.008,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 14,
+    "patient_idx": 14,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 53.0,
+    "gender": "F",
+    "risk": 0.0421,
+    "abnormal_features": [
+      "creatinine=0.54[LOW]",
+      "crp=3.67[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 15,
+    "patient_idx": 15,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 57.0,
+    "gender": "F",
+    "risk": 0.0079,
+    "abnormal_features": [
+      "rbc=3.99[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's low red blood cell (RBC) count of 3.99 is indicative of anemia, which can be a symptom of various underlying conditions, including malignancies. A low RBC count can lead to decreased oxygen delivery to tissues, potentially exacerbating cancer-related symptoms, with this patient's value being below the normal range of 4.32-5.72 million cells per microliter for females.",
+    "a2_risk": "The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal labs, such as a low RBC count, warrants further evaluation to determine the underlying cause and assess the overall risk.",
+    "a3_differential": "Ranking cancer likelihood based on the low RBC count, the likelihood is as follows: Colorectal (high, due to possible gastrointestinal bleeding), Liver (moderate, as liver disease can lead to anemia), and Lung (low, as lung cancer is less directly associated with anemia at this early stage, with no other specific biomarkers provided).",
+    "a4_evidence": "Kaushansky 2010 New England Journal of Medicine: found that anemia is a common complication in patients with cancer, with a low RBC count being a significant predictor of poor outcomes.",
+    "a5_triage": "BIOMARKER: The patient's low red blood cell (RBC) count of 3.99 is indicative of anemia, which can be a symptom of various underlying conditions, including malignancies. A low RBC count can lead to decreased oxygen delivery to tissues, potentially exacerbating cancer-related symptoms, with this patient's value being below the normal range of 4.32-5.72 million cells per microliter for females.\n\nRISK: The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal labs, such as a low RBC count, warrants further evaluation to determine the underlying cause and assess the overall risk.\n\nDIFFERENTIAL: Ranking cancer likelihood based on the low RBC count, the likelihood is as follows: Colorectal (high, due to possible gastrointestinal bleeding), Liver (moderate, as liver disease can lead to anemia), and Lung (low, as lung cancer is less directly associated with anemia at this early stage, with no other specific biomarkers provided).\n\nEVIDENCE: Kaushansky 2010 New England Journal of Medicine: found that anemia is a common complication in patients with cancer, with a low RBC count being a significant predictor of poor outcomes.\n\nTRIAGE: MONITOR\nACTION: Order a complete blood count (CBC) with differential and iron studies to further evaluate the cause of anemia.\nRATIONALE: The patient's low RBC count of 3.99, which is below the normal range, necessitates further investigation to determine the underlying cause of anemia, guiding subsequent management and potential referral to a specialist.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.1667,
+    "eas_overlap_k": 0.2,
+    "agent_feats": [
+      "ast",
+      "rbc"
+    ],
+    "hallucination_rate": 0.5778,
+    "hallucination_detail": {
+      "n_extracted": 9,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 16,
+    "patient_idx": 16,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 80.0,
+    "gender": "M",
+    "risk": 0.0125,
+    "abnormal_features": [
+      "rbc=4.03[LOW]",
+      "platelets=136.00[LOW]",
+      "lymphocytes=0.80[LOW]",
+      "nlr=4.62[HIGH]",
+      "plr=170.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 17,
+    "patient_idx": 17,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 76.0,
+    "gender": "M",
+    "risk": 0.0074,
+    "abnormal_features": [
+      "lymphocytes=0.40[LOW]",
+      "bun=28.00[HIGH]",
+      "glucose=102.00[HIGH]",
+      "nlr=11.50[HIGH]",
+      "plr=482.50[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 18,
+    "patient_idx": 18,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 77.0,
+    "gender": "F",
+    "risk": 0.0037,
+    "abnormal_features": [
+      "rbc=4.03[LOW]",
+      "creatinine=1.35[HIGH]",
+      "bun=30.00[HIGH]",
+      "sodium=135.00[LOW]",
+      "nlr=3.55[HIGH]",
+      "plr=180.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 19,
+    "patient_idx": 19,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 51.0,
+    "gender": "F",
+    "risk": 0.0079,
+    "abnormal_features": [
+      "rbc=4.12[LOW]",
+      "hematocrit=35.80[LOW]",
+      "glucose=164.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's low red blood cell (RBC) count of 4.12 and low hematocrit level of 35.80 may indicate anemia, which can be a symptom of underlying cancer, and the high glucose level of 164.00 may be related to pancreatic or other cancers that affect glucose metabolism. These abnormal lab values, particularly the low RBC and hematocrit, may suggest a potential underlying malignancy that requires further investigation.",
+    "a2_risk": "The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal lab values, including low RBC and hematocrit, and high glucose, warrants further evaluation to determine the underlying cause of these abnormalities.",
+    "a3_differential": "Ranking the likelihood of cancer based on the biomarkers, Lung cancer is unlikely as there are no specific biomarkers mentioned, Liver cancer is possible due to the high glucose level of 164.00, and Colorectal cancer is a consideration due to the low RBC count of 4.12, which could indicate gastrointestinal bleeding.",
+    "a4_evidence": "Sharma et al. 2019 Journal of Clinical Oncology: found that anemia, characterized by low RBC and hematocrit levels, was a common symptom in patients with colorectal cancer, with 35% of patients presenting with anemia at diagnosis.",
+    "a5_triage": "BIOMARKER: The patient's low red blood cell (RBC) count of 4.12 and low hematocrit level of 35.80 may indicate anemia, which can be a symptom of underlying cancer, and the high glucose level of 164.00 may be related to pancreatic or other cancers that affect glucose metabolism. These abnormal lab values, particularly the low RBC and hematocrit, may suggest a potential underlying malignancy that requires further investigation.\n\nRISK: The patient's cancer risk score of 0.8% is relatively low, but the presence of abnormal lab values, including low RBC and hematocrit, and high glucose, warrants further evaluation to determine the underlying cause of these abnormalities.\n\nDIFFERENTIAL: Ranking the likelihood of cancer based on the biomarkers, Lung cancer is unlikely as there are no specific biomarkers mentioned, Liver cancer is possible due to the high glucose level of 164.00, and Colorectal cancer is a consideration due to the low RBC count of 4.12, which could indicate gastrointestinal bleeding.\n\nEVIDENCE: Sharma et al. 2019 Journal of Clinical Oncology: found that anemia, characterized by low RBC and hematocrit levels, was a common symptom in patients with colorectal cancer, with 35% of patients presenting with anemia at diagnosis.\n\nTRIAGE: MONITOR\nACTION: Order a complete blood count (CBC) with differential, liver function tests, and a colonoscopy to investigate the cause of anemia and abnormal glucose levels.\nRATIONALE: The patient's low RBC count of 4.12 and low hematocrit level of 35.80 require further investigation to determine the underlying cause, which may be related to cancer, and the high glucose level of 164.00 also warrants further evaluation.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.125,
+    "eas_overlap_k": 0.2,
+    "agent_feats": [
+      "ast",
+      "glucose",
+      "hematocrit",
+      "rbc"
+    ],
+    "hallucination_rate": 0.22,
+    "hallucination_detail": {
+      "n_extracted": 17,
+      "n_hallucinated": 2,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 20,
+    "patient_idx": 20,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.0113,
+    "abnormal_features": [
+      "nlr=1.00[LOW]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 21,
+    "patient_idx": 21,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 80.0,
+    "gender": "F",
+    "risk": 0.0421,
+    "abnormal_features": [
+      "sodium=135.00[LOW]",
+      "plr=153.57[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
   }
 ]
