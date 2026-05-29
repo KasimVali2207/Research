@@ -132,18 +132,21 @@ Tolerance 15%: chosen to accommodate clinical paraphrasing (e.g., WBC=8.2 ≈ "a
 
 **Low AUPRC (~0.068)** reflects 2.89% prevalence — expected, honestly reported without inflation.
 
-### Ablation Study (n=22 real patients — all LLM calls via Groq LLaMA 3.3 70B)
+### Ablation Study — All Real LLM Calls (LLaMA 3.3 70B via Groq)
 
-> All values below are from **real LLM inference** on real NHANES data. Hallucination scored via formal regex algorithm (±15% tolerance). Results on n=22 stratified patients (11 lung, 6 liver, 5 colorectal).
+> All values from **real LLM inference** on real NHANES patients. Hallucination scored via formal regex algorithm (±15% tolerance). See [`results/agent_results_100.json`](results/agent_results_100.json).
 
 | Condition | Description | EAS Jaccard ↑ | EAS Overlap@5 ↑ | Hallucination ↓ | n | Method |
 |---|---|---|---|---|---|---|
-| ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | All | Computed |
+| ML Only | Gradient Boosting, no LLM | 0.000 | 0.000 | 1.000 | 16,762 | Computed |
 | Single LLM (No RAG) | One combined prompt per patient | 0.116 | 0.200 | 0.000 | 9 | **Real LLM** |
 | Single LLM + RAG | Evidence-grounded single prompt | 0.099 | 0.156 | 0.161 | 9 | **Real LLM** |
-| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.065** | **0.109** | **0.211** | **22** | **Real LLM** |
+| **Full 5-Agent Pipeline** | **5 specialist roles + RAG consensus** | **0.051** | **0.086** | **0.202** | **28** | **Real LLM** |
 
-> **Honest n=22 findings**: EAS Jaccard = 0.065 ± 0.095 (95% CI: [0.025, 0.105]), placing it in the *moderate* alignment band (0.05–0.15). Hallucination rate = 0.211 ± 0.339 — high variance driven by long responses with many numeric claims. Colorectal cases show best alignment (EAS=0.102) vs lung (EAS=0.035). These results are preliminary; a powered study requires n≥200 with clinician annotation. See [`results/agent_results_100.json`](results/agent_results_100.json) and [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png).
+> **Real n=28 results** (13 lung, 9 liver, 6 colorectal; stratified sample). EAS Jaccard = 0.051 ± 0.089 (95% CI: [0.018, 0.084]) — falls in the moderate alignment band. By cancer type: colorectal shows best alignment (EAS=0.085), lung lowest (EAS=0.029). Hallucination = 0.202 ± 0.347 — high variance; some responses contain many numeric claims that don't match exact patient values. These are proof-of-concept results; a powered study (n≥200 + clinician annotation) is needed for statistical conclusions. See [`fig29_eas_distribution_n100`](results/figures/fig29_eas_distribution_n100.png) and [`fig31_eas_by_cancer_type_n100`](results/figures/fig31_eas_by_cancer_type_n100.png).
+
+
+
 
 ### Explainability Method Comparison (EAS Robustness)
 

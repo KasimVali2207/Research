@@ -893,5 +893,228 @@
       "note": "Single-prompt mode: all 5 agent roles in one API call"
     },
     "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 22,
+    "patient_idx": 22,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 78.0,
+    "gender": "F",
+    "risk": 0.0071,
+    "abnormal_features": [
+      "glucose=126.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "The patient's elevated glucose level of 126.00 is indicative of hyperglycemia, which may be associated with an increased risk of certain cancers, particularly those related to insulin resistance and metabolic syndrome. The abnormal glucose level, exceeding the normal range of 70-99 mg/dL, warrants further evaluation to determine its impact on the patient's cancer risk, considering their cancer risk score of 0.7%.",
+    "a2_risk": "The patient's cancer risk score of 0.7% is relatively low, but the presence of hyperglycemia, with a glucose level of 126.00, may contribute to an increased risk of developing certain types of cancer, particularly in the context of other underlying risk factors.",
+    "a3_differential": "Ranking the likelihood of cancer based on the biomarker, I would prioritize Colorectal (due to the link between insulin resistance and colorectal cancer), followed by Liver (as elevated glucose can contribute to liver damage and increase cancer risk), and then Lung cancer (although the direct link between glucose and lung cancer is less clear, metabolic syndrome can increase the risk of lung cancer), with the glucose level of 126.00 being a common underlying factor.",
+    "a4_evidence": "Panico et al. 2019 Journal of Clinical Oncology: found that elevated glucose levels were associated with an increased risk of colorectal cancer, particularly in patients with a history of metabolic syndrome.",
+    "a5_triage": "BIOMARKER: The patient's elevated glucose level of 126.00 is indicative of hyperglycemia, which may be associated with an increased risk of certain cancers, particularly those related to insulin resistance and metabolic syndrome. The abnormal glucose level, exceeding the normal range of 70-99 mg/dL, warrants further evaluation to determine its impact on the patient's cancer risk, considering their cancer risk score of 0.7%.\n\nRISK: The patient's cancer risk score of 0.7% is relatively low, but the presence of hyperglycemia, with a glucose level of 126.00, may contribute to an increased risk of developing certain types of cancer, particularly in the context of other underlying risk factors.\n\nDIFFERENTIAL: Ranking the likelihood of cancer based on the biomarker, I would prioritize Colorectal (due to the link between insulin resistance and colorectal cancer), followed by Liver (as elevated glucose can contribute to liver damage and increase cancer risk), and then Lung cancer (although the direct link between glucose and lung cancer is less clear, metabolic syndrome can increase the risk of lung cancer), with the glucose level of 126.00 being a common underlying factor.\n\nEVIDENCE: Panico et al. 2019 Journal of Clinical Oncology: found that elevated glucose levels were associated with an increased risk of colorectal cancer, particularly in patients with a history of metabolic syndrome.\n\nTRIAGE: MONITOR\nACTION: Order a comprehensive metabolic panel, including insulin levels and HbA1c, to further evaluate the patient's glucose metabolism and assess the need for lifestyle modifications or pharmacological interventions.\nRATIONALE: Given the patient's age of 78.0 and elevated glucose level of 126.00, it is essential to monitor their metabolic status closely to prevent potential complications and determine the impact on their cancer risk score of 0.7%.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "alt",
+      "glucose"
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 17,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 23,
+    "patient_idx": 23,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 69.0,
+    "gender": "M",
+    "risk": 0.0124,
+    "abnormal_features": [
+      "neutrophils=8.80[HIGH]",
+      "lymphocytes=0.60[LOW]",
+      "glucose=217.00[HIGH]",
+      "nlr=14.67[HIGH]",
+      "plr=306.67[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 24,
+    "patient_idx": 24,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 75.0,
+    "gender": "M",
+    "risk": 0.0117,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 25,
+    "patient_idx": 25,
+    "true_label": 1,
+    "cancer_type": "lung",
+    "age": 71.0,
+    "gender": "F",
+    "risk": 0.0413,
+    "abnormal_features": [
+      "neutrophils=8.20[HIGH]",
+      "crp=4.20[HIGH]",
+      "nlr=8.20[HIGH]",
+      "plr=195.00[HIGH]"
+    ],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 26,
+    "patient_idx": 26,
+    "true_label": 1,
+    "cancer_type": "colorectal",
+    "age": 73.0,
+    "gender": "M",
+    "risk": 0.0081,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "Since all labs are within normal range, there are no abnormal values to interpret, and thus, no specific biomarker is elevated to indicate cancer. The lack of abnormal lab values suggests that the patient does not have overt biochemical evidence of cancer at this time.",
+    "a2_risk": "The patient's cancer risk score of 0.8% is relatively low, indicating a minimal likelihood of cancer based on the machine learning model prediction, which is lower than the general population risk.",
+    "a3_differential": "Ranking cancer likelihood based on common types: Lung (low likelihood due to no mentioned respiratory symptoms or abnormal lab values), Liver (low likelihood as liver function tests are presumably within normal range), Colorectal (low likelihood with no mentioned gastrointestinal symptoms or abnormal lab values such as anemia).",
+    "a4_evidence": "Patel 2019 Journal of Clinical Oncology: found that low albumin levels and elevated white blood cell counts are associated with poor prognosis in various cancers, highlighting the importance of monitoring these biomarkers.",
+    "a5_triage": "BIOMARKER: Since all labs are within normal range, there are no abnormal values to interpret, and thus, no specific biomarker is elevated to indicate cancer. The lack of abnormal lab values suggests that the patient does not have overt biochemical evidence of cancer at this time.\n\nRISK: The patient's cancer risk score of 0.8% is relatively low, indicating a minimal likelihood of cancer based on the machine learning model prediction, which is lower than the general population risk.\n\nDIFFERENTIAL: Ranking cancer likelihood based on common types: Lung (low likelihood due to no mentioned respiratory symptoms or abnormal lab values), Liver (low likelihood as liver function tests are presumably within normal range), Colorectal (low likelihood with no mentioned gastrointestinal symptoms or abnormal lab values such as anemia).\n\nEVIDENCE: Patel 2019 Journal of Clinical Oncology: found that low albumin levels and elevated white blood cell counts are associated with poor prognosis in various cancers, highlighting the importance of monitoring these biomarkers.\n\nTRIAGE: ROUTINE\nACTION: Schedule a routine follow-up appointment, including a physical examination and review of systems to monitor for any new symptoms, and consider age-appropriate cancer screening tests.\nRATIONALE: Given the patient's age of 73 and low cancer risk score of 0.8%, routine monitoring is appropriate, with a focus on preventive care and early detection of potential issues.",
+    "triage": "MONITOR",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [
+      "albumin",
+      "ast"
+    ],
+    "hallucination_rate": 1.0,
+    "hallucination_detail": {
+      "n_extracted": 4,
+      "n_hallucinated": 4,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
+  },
+  {
+    "eval_idx": 27,
+    "patient_idx": 27,
+    "true_label": 1,
+    "cancer_type": "liver",
+    "age": 64.0,
+    "gender": "M",
+    "risk": 0.0096,
+    "abnormal_features": [],
+    "shap_top": [
+      "bun",
+      "mcv",
+      "creatinine",
+      "rbc",
+      "globulin"
+    ],
+    "a1_biomarker": "",
+    "a2_risk": "",
+    "a3_differential": "",
+    "a4_evidence": "",
+    "a5_triage": "[Failed after retries]",
+    "triage": "UNKNOWN",
+    "eas_jaccard": 0.0,
+    "eas_overlap_k": 0.0,
+    "agent_feats": [],
+    "hallucination_rate": 0.0,
+    "hallucination_detail": {
+      "n_extracted": 0,
+      "n_hallucinated": 0,
+      "algorithm": "regex_numeric_extraction_15pct_tolerance",
+      "note": "Single-prompt mode: all 5 agent roles in one API call"
+    },
+    "mode": "single_prompt_fast"
   }
 ]
