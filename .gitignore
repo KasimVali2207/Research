@@ -64,3 +64,12 @@ configs/
 *.joblib
 *.pt
 *.pth
+
+# Journal publication drafts (to prevent public similarity/plagiarism flags)
+cover_letter.md
+cover_letter.docx
+manuscript.md
+manuscript.docx
+supplementary_material.md
+supplementary_material.docx
+compile_docx.py
